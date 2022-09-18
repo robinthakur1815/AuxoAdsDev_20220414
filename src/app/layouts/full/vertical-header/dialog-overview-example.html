@@ -1,0 +1,63 @@
+<div mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</div>
+<h2 class="font-bold"  mat-dialog-title><strong>Inventory Settings</strong></h2>
+
+<mat-dialog-content class="pb-3">
+<div fxLayout="row wrap">
+  <!-- 1 column start -->
+ <!--  <div fxFlex="100" fxFlex.gt-md="80" fxFlex.gt-xs="80">
+    <h4 class="m-t-0">Use Dynamic Allocation
+      <sup class="text-muted font-14"><br>Read More</sup>
+    </h4> 
+  </div>
+
+  <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-xs="20" class="m-t-5 m-t-mobile">
+    <mat-slide-toggle [(ngModel)]="isChecked1">{{isChecked1}}</mat-slide-toggle>
+  </div> -->
+
+  <!-- 2 column start -->
+  <div fxFlex="100" fxFlex.gt-md="80" fxFlex.gt-xs="80">
+    <h4 class="m-t-0">Activate Premium Demand
+      <sup class="text-muted font-14"><br>Read More</sup>
+    </h4> 
+  </div>
+  <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-xs="20" class="m-t-5 m-t-mobile">
+    <mat-slide-toggle [(ngModel)]="isChecked2">{{isChecked2}}</mat-slide-toggle>
+  </div>
+
+  <!-- 3 column start -->
+  <div fxFlex="100" fxFlex.gt-md="80" fxFlex.gt-xs="80">
+    <h4 class="m-t-0">Maximize Fill Rates
+      <sup class="text-muted font-14"><br>Read More</sup>
+    </h4> 
+  </div>
+  <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-xs="20" class="m-t-5 m-t-mobile">
+    <mat-slide-toggle [(ngModel)]="isChecked3">{{isChecked3}}</mat-slide-toggle>
+  </div>
+
+  <!-- 4 column start -->
+  <div fxFlex="100" fxFlex.gt-md="80" fxFlex.gt-xs="80">
+   <h4 class="m-t-0">Activate Auxo Ads Analytics
+      <sup class="text-muted font-14"><br>Read More</sup>
+    </h4> 
+  </div>
+  <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-xs="20" class="m-t-5 m-t-mobile">
+    <mat-slide-toggle></mat-slide-toggle>
+  </div>
+
+   <div fxFlex="100" fxFlex.gt-md="80" fxFlex.gt-xs="80">
+    <h4 class="m-t-0">Get Auxo Ads Newsletter
+       <sup class="text-muted font-14"><br>Read More</sup>
+     </h4> 
+   </div>
+   <div fxFlex="100" fxFlex.gt-md="20" fxFlex.gt-xs="20" class="m-t-5 m-t-mobile">
+     <mat-slide-toggle></mat-slide-toggle>
+   </div>
+</div>
+</mat-dialog-content>
+
+<div mat-dialog-actions align="center" class="m-b-0">
+  <button class="bg-danger text-white" mat-button [mat-dialog-close]="data.animal" tabindex="2">Submit</button>
+  <!-- <button class="bg-danger text-white" mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button> -->
+</div>

@@ -1,0 +1,57 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="text-right m-r-0 m-b-25" style="margin-top: 5px!important;">
+          <div (click)="backPage()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+          </div>
+        </div>
+        <mat-card-title>DFP Sticky Ads Tag Generator</mat-card-title>
+        <!-- form start -->
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-sm="100" fxFlex="100">
+            <form class="m-t-20  p-b-20">
+              <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Where you want ads to be stick?</mat-label>
+                    <mat-select #fontSize value="16px">
+                      <mat-option value="Bottom">Bottom</mat-option>
+                      <mat-option value="Right">Right</mat-option>
+                      <mat-option value="Left">Left</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0  m-b-f5">
+                    <mat-label>On which device you need this to appear?</mat-label>
+                    <mat-select #fontSize value="16px">
+                      <mat-option value="Mobile Only">Mobile Only</mat-option>
+                      <mat-option value="Desktop Only">Desktop Only</mat-option>
+                      <mat-option value="Desktop Only">Both</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                  <div class="p-r-0 m-b-10">
+                    <button mat-stroked-button color="" class=" bg-danger text-white">Generate Tag</button>
+                  </div>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Your Code</mat-label>
+                    <textarea matInput placeholder=""></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

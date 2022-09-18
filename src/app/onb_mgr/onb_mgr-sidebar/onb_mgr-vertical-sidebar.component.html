@@ -1,0 +1,61 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<!-- <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
+    <div class="profile-img">
+        <img src="assets/images/users/profile.png" alt="user"> </div>
+    <div class="profile-text">
+        <a [matMenuTriggerFor]="sdprofile" class=""> Markarn Doe
+            <i class="ti-angle-down font-12 m-l-5"></i>
+        </a>
+    </div>
+    <mat-menu #sdprofile="matMenu" class="mymegamenu">
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon> Settings
+        </button>
+        <button mat-menu-item>
+            <mat-icon>account_box</mat-icon> Profile
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon> Disable notifications
+        </button>
+        <button mat-menu-item>
+            <mat-icon >exit_to_app</mat-icon> Sign Out
+        </button>
+    </mat-menu>
+</div> --> 
+
+<mat-nav-list>
+    <mat-list-item [ngClass]="{selected: getActiveDashboard('/obm-dashboard')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'obm-dashboard']" (click)="handleNotify('obm-dashboard')">
+            <mat-icon>av_timer</mat-icon>
+            <span>Dashboard</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+
+    <mat-list-item [ngClass]="{selected: getActiveInvite('/obm-admanager-invite')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'obm-admanager-invite']" (click)="handleNotify('obm-admanager-invite')">
+            <mat-icon>insert_invitation</mat-icon>
+            <span>Ad Manager Invite</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+
+    <mat-list-item  [ngClass]="{selected: getActiveDomain('/obm-admanager-domain')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'obm-admanager-domain']" (click)="handleNotify('obm-admanager-domain')">
+            <mat-icon>domain</mat-icon>
+            <span>Domain Status</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+
+    <mat-list-item  [ngClass]="{selected: getActiveApp('/obm-admanager-app')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'obm-admanager-app']" (click)="handleNotify('obm-admanager-app')">
+            <mat-icon>devices</mat-icon>
+            <span>App Status</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+
+</mat-nav-list>

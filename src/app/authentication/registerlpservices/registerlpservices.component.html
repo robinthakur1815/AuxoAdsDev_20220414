@@ -1,0 +1,186 @@
+      <header class="text-white" style="background: linear-gradient(135deg, #27cb71e3 0%, #8d70fa 100%);">
+         <nav class="navbar osahan-navbar navbar-expand-lg navbar-dark fadeInDown" id="mainNav">
+            <div class="container">
+               <a class="navbar-brand js-scroll-trigger menu-btn1" href="/">
+                <img class="img-fluid" src="assets/registerlp/img/new/safe-logo1.png" alt="" height="70px" width="140px">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#page-top">Home</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#features">Platform</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#services">Services</a>
+                     </li>
+                     
+                     <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#testimonials">Testimonials</a>
+                     </li>
+                     
+                     <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="/#newsletter">Newsletter</a>
+                     </li>
+                    
+                     <li class="nav-item">
+                        <a [routerLink]="['/authentication/login']" class="js-scroll-trigger menu-btn">Login</a>
+                        <!-- <a class="js-scroll-trigger menu-btn" href="/authentication/login">Login</a> -->
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+       
+         <section class="banner-block pb-0 info-banner" id="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-6 text-left fadeInUp animated box bounce">
+                        <img class="img-fluid mb-1 wow fadeInUp animated imgsize" src="assets/registerlp/img/new/pregistration.png" width="550" alt="">
+                    </div>
+                    <!--loader-->
+                
+                        <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                            <div class="parent parent-landingpage">
+                            <div class="spin1"></div>
+                            </div>
+                        </div>
+                           <!--loaderend--> 
+                    <div class="col-md-6 col-md-6">
+                     <mat-card>
+                        <mat-card-content>
+                           <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                              <div class="text-center">
+                                 <!-- <img alt="homepage" class="mobile-logo"  width="140" src="assets/registerlp/img/new/safe-logo.png"> -->
+                                 <h6 class="m-t-15 m-b-20" style="font-size: 21px;">To complete registration, please select the services you would like from Auxo Ads</h6>
+                             </div>
+                           
+                              <div class="services funkyradio">
+
+                                 <div *ngFor="let service of servicesData; let i = index">
+
+                                  <div class="form-check form-check-inline col-md-12 funkyradio-primary m-b-10 m-l-10">
+                                    <input class="form-check-input" name="" type="checkbox" id="{{service.serv_id}}" [value]="service.serv_id" (click)="dropChange($event)" (change)="onCheckboxChange($event)" [checked]="service.serv_id ==1">
+                                    <label class="form-check-label" for="{{service.serv_id}}">{{service.service_name}}</label>
+                                  </div>
+                      
+                                  <div *ngIf="drop"> 
+                                    <div class="monetizationdiv m-l-40" *ngFor="let subcate of service.subcategories">
+                                         <div class="form-check form-check-inline col-md-12 funkyradio-primary m-b-10 m-l-10">
+                                         <input class="form-check-input" name="childlist" type="checkbox" id="{{subcate.serv_id}}" [value]="subcate.serv_id" (change)="onCheckboxChange($event)" [checked]="accepted">
+                                         <label class="form-check-label" for="{{subcate.serv_id}}">{{subcate.service_name}}</label>
+                                         </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                              </div>
+              
+                             <div fxLayout="row wrap">
+                                <div style="margin-bottom: -10px;" class="m-t-15 m-l-10 p-r-5" *ngIf="other" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                  <mat-form-field appearance="outline">
+                                      <mat-label>Other Services</mat-label>
+                                        <input  matInput placeholder="Other Services" [formControl]="form.controls['othertext']">
+                                    </mat-form-field>
+                                </div>
+                                 
+                               <span class="m-b-5 m-l-10 font-12" *ngIf="this.form.controls['checkArray'].errors?.required && submitted" style="color:#e94265;">Service is required, select atleast one value</span>
+                              <!-- <span  *ngIf="submitted && form.valid"  style="color: #3dd080;" class="m-b-5 m-l-10 font-16">{{message}}</span> -->
+                              <span  *ngIf="submitted && form.valid"  style="color:#e94265;" class="m-b-5 m-l-10  font-16">{{error}}</span>
+                                <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                   <button type="submit" id="reg_submit" name="" class="btn btn-primary btn-lg btn-block m-b-10 m-t-20">COMPLETE SIGN UP</button>
+                                </div>
+                            </div>
+                          </form>
+                        </mat-card-content>
+                    </mat-card>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <div class="effectiv">
+            <img class="svg" src="assets/registerlp/img/bg2.svg" alt="" />
+         </div>
+      </header>
+      <!-- Header end -->
+   
+      <!-- Footer start -->
+      <footer class="py-5 text-center wow animated zoomIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-3  col-sm-6 col-xs-6">
+               <ul class="list-inline links links1"> 
+                <p class="footertitle">OUR OFFICES</p>
+                <!-- <p class="footertitle" style="font-size: 15px!important;"><u>Singapore Office</u></p> -->
+              <u><li style="font-size: 15px!important; font-weight: 500;">Singapore Office</li></u> 
+                <li>#1403, High Street Center </li>
+                <li>North Bridge Road  </li>
+                <li>Singapore - 179094</li>
+                </ul>
+   
+                <ul class="list-inline links links1"> 
+                  <br>
+               <!-- <p class="footertitle" style="font-size: 15px!important;"><u>India Office</u></p> -->
+                  <u><li style="font-size: 15px!important; font-weight: 500;">India Office</li></u> 
+                  <li>Cyber House B-35 Sec-32  </li>
+                  <li>Gurgaon (NCR Delhi)</li>
+                  <li>India - 122001</li>
+                  </ul>
+               </div>
+   
+   
+            <div class="col-md-3 col-sm-6 col-xs-6">
+               <ul class="list-inline links"><p class="footertitle">PLATFORM</p>
+                  <li><a href="#gam">Ads Management</a></li>
+                  <li><a href="#d-ad">Programmatic Demand</a></li>
+                  <li><a href="#report">Unified Reporting</a></li>
+                  <li><a href="#ed">Editorial Dashboard</a></li>
+                  <li><a href="#da">Deep Analytics</a></li>
+                  <li><a href="#afm">Auxo Ads Log In & Payments</a></li>
+               </ul>
+            </div>
+   
+            <div class="col-md-3 col-sm-6 col-xs-6">
+               <ul class="list-inline links"><p class="footertitle">SERVICES</p>
+               <li><a href="#cdp">Customer Data Platform (CDP)</a></li>
+               <li><a href="#ao">Ad Operation Management</a></li>
+               <li><a href="#seo">Search Engine Optimization</a></li>
+               <li><a href="#cs">Content Strategy</a></li>
+               </ul>
+            </div>
+   
+            <div class="col-md-3 col-sm-6 col-xs-6 logos">
+               <ul class="list-inline links"><p class="footertitle">CONTACT</p>
+                  <li style="font-size:14px;"><strong>Email : </strong> <a href="mailto:enquiry@auxoads.com">enquiry@auxoads.com</a></li>
+                  <li>
+                     <img src="assets/registerlp/img/new/safe-logo.png" class="marginfooter" style="margin-left: -10px!important;" width="170" height="auto">
+                  </li>
+               </ul>
+   
+              <!-- <span style="float:left;">
+               <a href="https://www.facebook.com/CyberMedia-India-Limited-127319944012858/" target="_blank"><i style="font-size: 25px;" class="fa fa-facebook-official" aria-hidden="true"></i></a>
+      
+               <a href="https://in.linkedin.com/company/cybermedia" target="_blank"><i style="font-size: 25px; margin-left: 5px;" class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+               </span>
+               <br>
+   
+             <ul class="list-inline links">
+                <li>
+               <img src="assets/registerlp/img/safe-logo.png" style="margin-left: -60px!important; margin-top: 15px!important;" width="170" height="auto">
+                </li>
+             </ul> -->
+          </div>
+   
+         </div>
+      </div>
+   
+      <div class="container" style="border-top:1px solid #f1f1f1; margin-top:30px;">
+         <p style="position: relative; top: 17px;" class="mt-0 mb-0 pt-2">&copy; Copyright 2022  <a class="text-primary">Auxo Ads</a>. All Rights Reserved.</p>
+      </div>
+   </footer>
+ 
+  

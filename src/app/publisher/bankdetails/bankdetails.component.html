@@ -1,0 +1,539 @@
+<mat-card>
+  <mat-card-content>
+    <div class="text-right m-r-0 m-b-25" style="margin-top: 5px!important;">
+      <div (click)="backPage()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </div>
+    </div>
+    <mat-card-title>Bank Details</mat-card-title>
+    <!--loader-->
+    <div class="bg-opacity" *ngIf="isSpinnerVisible">
+      <div class="parent">
+        <div class="spin1"></div>
+      </div>
+    </div>
+    <!--loaderend-->
+    <form class="m-t-35" [formGroup]="bankdetailform">
+      <div fxLayout="row wrap">
+        <div fxFlex.gt-sm="100" fxFlex="100" class="m-b-18">
+          <mat-form-field appearance="outline" class="p-r-0">
+            <mat-label>Organization Type</mat-label>
+            <mat-select #fontSize [(ngModel)]="pub_company_type" (selectionChange)="onaadharChange($event)"
+              [formControl]="bankdetailform.controls['org_type']">
+              <mat-option value="company">Company</mat-option>
+              <mat-option value="individual">Individual</mat-option>
+              <mat-option value="firm">Firm</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxFlex.gt-sm="100" fxFlex="100">
+
+          <mat-form-field appearance="outline" class="p-r-0">
+            <mat-label>Country</mat-label>
+            <mat-select #fontSize [(ngModel)]="pub_country" (selectionChange)="onPercentChange($event)"
+              [formControl]="bankdetailform.controls['org_country']">
+              <mat-option *ngFor="let country of countrydata;" value="{{country.id}}">{{country.nicename}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!---------------------------------------------------------->
+
+      <div fxLayout="row wrap">
+        <div fxFlex.gt-sm="100" fxFlex="100">
+          <mat-card-title class="m-t-10 p-b-20">Organisation Address Details</mat-card-title>
+          <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Address" [(ngModel)]="pub_acc_holder_address"
+                  [formControl]="bankdetailform.controls['org_address']">
+              </mat-form-field>
+              <small
+                *ngIf="bankdetailform.controls['org_address'].errors?.whitespace && bankdetailform.controls['org_address'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                address</small>
+              <small *ngIf="bankdetailform.controls['org_address'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Address must be 5
+                characters</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="City" [(ngModel)]="pub_city"
+                  [formControl]="bankdetailform.controls['org_city']">
+              </mat-form-field>
+              <small
+                *ngIf="bankdetailform.controls['org_city'].errors?.whitespace && bankdetailform.controls['org_city'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                city</small>
+              <small *ngIf="bankdetailform.controls['org_city'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> City must be 3
+                characters</small>
+              <small *ngIf="bankdetailform.controls['org_city'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">City must be
+                characters</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>State</mat-label>
+                <input *ngIf="!countryInd" matInput placeholder="State" [(ngModel)]="pub_state"
+                  [formControl]="bankdetailform.controls['org_state']">
+                <mat-select *ngIf="countryInd" #fontSize [(ngModel)]="pub_state"
+                  [formControl]="bankdetailform.controls['org_state']">
+                  <mat-option *ngFor="let stateOrg of statedata;" value="{{stateOrg.state}}">{{stateOrg.state}}</mat-option>
+                  
+                </mat-select>
+              </mat-form-field>
+              <small
+                *ngIf="bankdetailform.controls['org_state'].errors?.whitespace && bankdetailform.controls['org_state'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                state name</small>
+              <small *ngIf="bankdetailform.controls['org_state'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> State name must be 3
+                characters</small>
+              <small *ngIf="bankdetailform.controls['org_state'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid state name</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Postal-Zip Code</mat-label>
+                <input matInput #postalCode placeholder="Postal-Zip Code" [(ngModel)]="pub_postal_code"
+                  [formControl]="bankdetailform.controls['org_postelcode']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['org_postelcode'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter valid postal-zip code</small>
+              <small *ngIf="bankdetailform.controls['org_postelcode'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Postal-Zip code must be
+                3 numeric characters</small>
+                <small *ngIf="bankdetailform.controls['org_postelcode'].errors?.maxlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Postal-Zip code maximum length should be 12 characters</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!----------------------------------------------------------> 
+
+      <div id="margin1" fxLayout="row wrap">
+        <div fxFlex.gt-sm="100" fxFlex="100">
+          <mat-card-title class="m-t-30 p-b-20">Bank Details</mat-card-title>
+          <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Company</mat-label>
+                <input matInput placeholder="Company" [(ngModel)]="pub_acc_holder_name"
+                  [formControl]="bankdetailform.controls['acc_holder_name']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['acc_holder_name'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter characters only</small>
+              <small
+                *ngIf="bankdetailform.controls['acc_holder_name'].errors?.whitespace && bankdetailform.controls['acc_holder_name'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                company name</small>
+              <small *ngIf="bankdetailform.controls['acc_holder_name'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Company name must be 3
+                characters</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Bank Name</mat-label>
+                <input matInput placeholder="Bank" [(ngModel)]="pub_bank_name"
+                  [formControl]="bankdetailform.controls['bank_name']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['bank_name'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter characters only</small>
+              <small
+                *ngIf="bankdetailform.controls['bank_name'].errors?.whitespace && bankdetailform.controls['bank_name'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid bank
+                name</small>
+              <small *ngIf="bankdetailform.controls['bank_name'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Bank name must be 3
+                characters</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Account Number</mat-label>
+                <input matInput #account_number placeholder="Account Number" [(ngModel)]="pub_acc_number"
+                  [formControl]="bankdetailform.controls['account_number']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['account_number'].errors?.pattern" class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter numeric characters only</small>
+              <small *ngIf="bankdetailform.controls['account_number'].errors?.whitespace && bankdetailform.controls['account_number'].touched" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid account number</small>
+              <small *ngIf="bankdetailform.controls['account_number'].errors?.minlength" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Account number must be 5 characters</small>
+              <small *ngIf="bankdetailform.controls['account_number'].errors?.maxlength" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Account number maximum length should be 34 characters</small>
+            </div>
+
+            <!-- <div *ngIf="countryInd" fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>IFSC Code</mat-label>
+                <input matInput #bank_ifsc maxlength="11" placeholder="IFSC Code" [(ngModel)]="pub_bank_ifsc"
+                  [formControl]="bankdetailform.controls['bank_ifsc']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['bank_ifsc'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter valid IFSC code</small>
+              
+              <small *ngIf="bankdetailform.controls['bank_ifsc'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> IFSC Code must be 11
+                characters</small>
+            </div> -->
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Swift Code</mat-label>
+                <input matInput #bank_swift_code maxlength="11" placeholder="Swift Code" [(ngModel)]="pub_swift_code"
+                  [formControl]="bankdetailform.controls['bank_swift_code']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['bank_swift_code'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Swift Code must be 8
+                characters</small>
+              <small *ngIf="bankdetailform.controls['bank_swift_code'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid swift
+                code</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Address" [(ngModel)]="pub_bank_address"
+                  [formControl]="bankdetailform.controls['bank_address']">
+              </mat-form-field>
+              <small
+                *ngIf="bankdetailform.controls['bank_address'].errors?.whitespace && bankdetailform.controls['bank_address'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                address </small>
+              <small *ngIf="bankdetailform.controls['bank_address'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Address must be 5
+                characters </small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="City" [(ngModel)]="pub_bank_city"
+                  [formControl]="bankdetailform.controls['bank_city']">
+              </mat-form-field>
+              <small
+                *ngIf="bankdetailform.controls['bank_city'].errors?.whitespace && bankdetailform.controls['bank_city'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                city</small>
+              <small *ngIf="bankdetailform.controls['bank_city'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> City must be 3
+                characters</small>
+              <small *ngIf="bankdetailform.controls['bank_city'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">City must be
+                characters</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>State</mat-label>
+                <input *ngIf="!countryInd" matInput placeholder="State" [(ngModel)]="pub_bank_state"
+                  [formControl]="bankdetailform.controls['bank_state']">
+                <mat-select *ngIf="countryInd" #fontSize [(ngModel)]="pub_bank_state"
+                  [formControl]="bankdetailform.controls['bank_state']">
+                  <mat-option *ngFor="let stateOrg of statedata;" value="{{stateOrg.state}}">{{stateOrg.state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <small
+                *ngIf="bankdetailform.controls['bank_state'].errors?.whitespace && bankdetailform.controls['bank_state'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                state name</small>
+              <small *ngIf="bankdetailform.controls['bank_state'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> State name must be 3
+                characters</small>
+              <small *ngIf="bankdetailform.controls['bank_state'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                state name</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Postal-Zip Code</mat-label>
+                <input matInput #postalCode placeholder="Postal-Zip Code" [(ngModel)]="pub_bank_postal"
+                  [formControl]="bankdetailform.controls['bank_postalcode']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['bank_postalcode'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter number only</small>
+              <small *ngIf="bankdetailform.controls['bank_postalcode'].errors?.minlength"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Postal-Zip code must be 3 numeric characters</small>
+              <small *ngIf="bankdetailform.controls['bank_postalcode'].errors?.whitespace && bankdetailform.controls['bank_postalcode'].touched" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid postal-zip code </small>
+              <small *ngIf="bankdetailform.controls['bank_postalcode'].errors?.maxlength" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Postal-Zip code maximum length should be 12 characters</small>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>Bank Account Type</mat-label>
+                <mat-select #fontSize [(ngModel)]="pub_bank_acc_type"
+                  [formControl]="bankdetailform.controls['bank_acctype']">
+                  <mat-option value="current">Current Account</mat-option>
+                  <mat-option value="saving">Saving Account</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="countryInd" fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <mat-label>PAN Number</mat-label>
+                <input matInput maxlength="10" placeholder="PAN Number" [(ngModel)]="pub_pan_number"
+                  [formControl]="bankdetailform.controls['PAN_num']">
+              </mat-form-field>
+              <small *ngIf="bankdetailform.controls['PAN_num'].errors?.pattern"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter valid pan
+                number</small>
+              <small
+                *ngIf="bankdetailform.controls['PAN_num'].errors?.minlength && bankdetailform.controls['PAN_num'].touched"
+                class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Pan number must be
+                10 characters</small>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!---------------------------------------------------------->
+
+      <div id="margin1" fxLayout="row wrap">
+        <div fxFlex.gt-sm="100" fxFlex="100">
+          <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+            <ng-container *ngIf="gstregistredouter">
+              <div fxFlex.gt-sm="50" fxFlex="100" class="p-t-30 p-b-30 p-l-15">
+                <label>Are You GST Registered ? </label>
+                <mat-radio-group [(ngModel)]="gstregistred" [formControl]="bankdetailform.controls['GST']">
+                  <mat-radio-button (change)="onRadioChange($event)" [value]="1" class="m-l-15">Yes</mat-radio-button>
+                  <mat-radio-button (change)="onRadioChange($event)" [value]="0" class="m-l-15">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+              <ng-container *ngIf="gstregistredinner">
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0" [hideRequiredMarker]="options.value.hideRequired">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Address" [(ngModel)]="pub_gst_address"
+                      [formControl]="bankdetailform.controls['GST_address']">
+                  </mat-form-field>
+                  <small
+                    *ngIf="bankdetailform.controls['GST_address'].errors?.whitespace && bankdetailform.controls['GST_address'].touched"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                    address </small>
+                  <small *ngIf="bankdetailform.controls['GST_address'].errors?.minlength"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Address must be 5
+                    characters </small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City" [(ngModel)]="pub_gst_city"
+                      [formControl]="bankdetailform.controls['GST_city']">
+                  </mat-form-field>
+                  <small
+                    *ngIf="bankdetailform.controls['GST_city'].errors?.whitespace && bankdetailform.controls['GST_city'].touched"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                    city</small>
+                  <small *ngIf="bankdetailform.controls['GST_city'].errors?.minlength"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> City must be 3
+                    characters</small>
+                  <small *ngIf="bankdetailform.controls['GST_city'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">City must be
+                    characters</small>
+                </div>
+
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0" [hideRequiredMarker]="options.value.hideRequired">
+                    <mat-label>State</mat-label>
+                    <input *ngIf="!countryInd" matInput placeholder="State" [(ngModel)]="pub_gst_state"
+                      [formControl]="bankdetailform.controls['GST_state']">
+                    <mat-select *ngIf="countryInd" #fontSize [(ngModel)]="pub_gst_state"
+                      [formControl]="bankdetailform.controls['GST_state']">
+                      <mat-option *ngFor="let stateOrg of statedata;" value="{{stateOrg.state}}">{{stateOrg.state}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <small
+                    *ngIf="bankdetailform.controls['GST_state'].errors?.whitespace && bankdetailform.controls['GST_state'].touched"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                    state</small>
+                  <small *ngIf="bankdetailform.controls['GST_state'].errors?.minlength"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> State must be 3
+                    characters</small>
+                  <small *ngIf="bankdetailform.controls['GST_state'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">State must be
+                    characters</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Postal-Zip Code</mat-label>
+                    <input matInput #postalCode placeholder="Postal-Zip Code"
+                      [(ngModel)]="pub_gst_postal" [formControl]="bankdetailform.controls['GST_postalcode']">
+                  </mat-form-field>
+                  <small *ngIf="bankdetailform.controls['GST_postalcode'].errors?.pattern" class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter number only</small>
+                  <small *ngIf="bankdetailform.controls['GST_postalcode'].errors?.minlength" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Postal-Zip code must be 3 numeric characters</small>
+                  <small *ngIf="bankdetailform.controls['GST_postalcode'].errors?.whitespace && bankdetailform.controls['GST_postalcode'].touched" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid Postal-Zip code</small>
+                  <small *ngIf="bankdetailform.controls['GST_postalcode'].errors?.maxlength" class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Postal-Zip code maximum length should be 12 characters</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>GST Number</mat-label>
+                    <input matInput maxlength="15" placeholder="GST Number" [(ngModel)]="pub_gst_num"
+                      [formControl]="bankdetailform.controls['GST_num']">
+                  </mat-form-field>
+                  <small *ngIf="bankdetailform.controls['GST_num'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter valid GST
+                    number</small>
+                  <small *ngIf="bankdetailform.controls['GST_num'].errors?.minlength"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> GST number
+                    must be
+                    10 characters</small>
+                  
+                </div>
+                <ng-container *ngIf="!bankdataresult">
+                  <div fxFlex.gt-sm="50" fxFlex="100" class="p-10 p-b-30">
+                    <mat-label>GST Certificate *</mat-label>
+                    <input class="form-control b-b" placeholder="file" value="" type="file"
+                      accept=".pdf,.jpg,.png,.jpeg" [formControl]="bankdetailform.controls['GST_file']"
+                      (change)="onFileChange_gst($event)">
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="bankdataresult">
+                  <div fxFlex.gt-sm="40" fxFlex="100" class="p-10 p-b-30">
+                    <mat-label>GST Certificate *</mat-label>
+                    <input class="form-control b-b" placeholder="file" type="file" accept=".pdf,.jpg,.png,.jpeg" (change)="onFileChange_gst($event)" [formControl]="bankdetailform.controls['GST_file']">
+                  </div>
+                  <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 23px;">
+                    <div mat-card-avatar style="height: 45px;  width: 45px;">
+                      <img *ngIf="gst_extn=='pdf'" src="assets/images/users/pdf.png" (click)="openDialog('gstfile')"
+                        class="img-fluid" />
+                      <img *ngIf="gst_extn=='png' || gst_extn=='jpg' || gst_extn=='jpeg'"
+                        src="assets/images/users/image.png" (click)="openDialog('gstfile')" class="img-fluid" />
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="!gstregistredinner">
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="!bankdataresult">
+              <div *ngIf="countryInd" fxFlex.gt-sm="50" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>PAN Card Copy *</mat-label>
+                <input class="form-control b-b" placeholder="file" value="" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['pan_file']" (change)="onFileChange_pan($event)">
+              </div>
+
+              <div *ngIf="countryInd && incorpshowhide" fxFlex.gt-sm="50" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>Certificate of Incorporation *</mat-label>
+                <input class="form-control b-b" placeholder="file" value="" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['incorp_file']" (change)="onFileChange_corp($event)">
+              </div>
+
+              <div *ngIf="countryInd && aadharshowhide" fxFlex.gt-sm="50" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>Aadhaar/ Driving License Copy *</mat-label>
+                <input class="form-control b-b" placeholder="file" value="" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['aadhaar_file']" (change)="onFileChange_aadhar($event)">
+              </div>
+
+              <div *ngIf="countryInd" fxFlex.gt-sm="50" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>Cancelled Cheque Copy *</mat-label>
+                <input class="form-control b-b" placeholder="file" value="" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['cancelcheck_file']" (change)="onFileChange_cheque($event)">
+              </div>
+            </ng-container>
+            <ng-container *ngIf="bankdataresult">
+              <div *ngIf="countryInd" fxFlex.gt-sm="40" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>PAN Card Copy *</mat-label>
+                <input class="form-control b-b" placeholder="file" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['pan_file']" (change)="onFileChange_pan($event)">
+                  <div *ngIf="pub_pan_card_file=='' || pub_pan_card_file==null" >
+                    <small *ngIf="bankdetailform.controls['pan_file'].errors && bankdetailform.controls['pan_file'].touched" class="text-danger support-text logintrp-css spacing-adjust m-b-20 m-t-10 customWidth">This field is required.</small>
+                  </div>
+              </div>
+              <div *ngIf="countryInd" fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                style="margin-top: 23px;">
+                <div mat-card-avatar style="height: 45px;  width: 45px;">
+                  <img *ngIf="pan_extn=='pdf'" src="assets/images/users/pdf.png" (click)="openDialog('pancard')"
+                    class="img-fluid" />
+                  <img *ngIf="pan_extn=='png' || pan_extn=='jpg' || pan_extn=='jpeg'"
+                    src="assets/images/users/image.png" (click)="openDialog('pancard')" class="img-fluid" />
+                </div>
+              </div>
+              <div *ngIf="countryInd && incorpshowhide" fxFlex.gt-sm="40" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>Certificate of Incorporation *</mat-label>
+                <input class="form-control b-b" placeholder="file" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['incorp_file']" (change)="onFileChange_corp($event)">
+                  <div *ngIf="pub_incorp_certificate_fille=='' || pub_incorp_certificate_fille==null" >
+                    <small *ngIf="bankdetailform.controls['incorp_file'].errors && bankdetailform.controls['incorp_file'].touched" class="text-danger support-text logintrp-css spacing-adjust m-b-20 m-t-10 customWidth">This field is required.</small>
+                  </div>
+              </div>
+              <div *ngIf="countryInd && incorpshowhide" fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 23px;">
+                <div mat-card-avatar style="height: 45px;  width: 45px;">
+                  <img *ngIf="incorp_extn=='pdf'" src="assets/images/users/pdf.png" (click)="openDialog('incorp')"
+                    class="img-fluid" />
+                  <img *ngIf="incorp_extn=='png' || incorp_extn=='jpg' || incorp_extn=='jpeg'"
+                    src="assets/images/users/image.png" (click)="openDialog('incorp')" class="img-fluid" />
+                </div>
+              </div>
+              <div *ngIf="countryInd && aadharshowhide" fxFlex.gt-sm="40" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>Aadhaar/ Driving License Copy *</mat-label>
+                <input class="form-control b-b" placeholder="file" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['aadhaar_file']" (change)="onFileChange_aadhar($event)">
+                  <div *ngIf="pub_aadhaar_card_file=='' || pub_aadhaar_card_file==null" >
+                    <small *ngIf="bankdetailform.controls['aadhaar_file'].errors && bankdetailform.controls['aadhaar_file'].touched" class="text-danger support-text logintrp-css spacing-adjust m-b-20 m-t-10 customWidth">This field is required.</small>
+                  </div>
+              </div>
+              <div *ngIf="countryInd && aadharshowhide" fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                style="margin-top: 23px;">
+                <div mat-card-avatar style="height: 45px;  width: 45px;">
+                  <img *ngIf="aadhar_extn=='pdf'" src="assets/images/users/pdf.png" (click)="openDialog('aadhar')"
+                    class="img-fluid" />
+                  <img *ngIf="aadhar_extn=='png' || aadhar_extn=='jpg' || aadhar_extn=='jpeg'"
+                    src="assets/images/users/image.png" (click)="openDialog('aadhar')" class="img-fluid" />
+                </div>
+              </div>
+              <div *ngIf="countryInd" fxFlex.gt-sm="40" fxFlex="100" class="p-10 p-b-30">
+                <mat-label>Cancelled Cheque Copy *</mat-label>
+                <input class="form-control b-b" placeholder="file" type="file" accept=".pdf,.jpg,.png,.jpeg"
+                  [formControl]="bankdetailform.controls['cancelcheck_file']" (change)="onFileChange_cheque($event)">
+                  <div *ngIf="pub_cancel_check_file=='' || pub_cancel_check_file==null" >
+                    <small *ngIf="bankdetailform.controls['cancelcheck_file'].errors && bankdetailform.controls['cancelcheck_file'].touched" class="text-danger support-text logintrp-css spacing-adjust m-b-20 m-t-10 customWidth">This field is required.</small>
+                  </div>
+                  
+              </div>
+              <div *ngIf="countryInd" fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                style="margin-top: 23px;">
+                <div mat-card-avatar style="height: 45px;  width: 45px;">
+                  <img *ngIf="cheque_extn=='pdf'" src="assets/images/users/pdf.png" (click)="openDialog('cheque')"
+                    class="img-fluid" />
+                  <img *ngIf="cheque_extn=='png' || cheque_extn=='jpg' || cheque_extn=='jpeg'"
+                    src="assets/images/users/image.png" (click)="openDialog('cheque')" class="img-fluid" />
+                </div>
+              </div>
+              
+            </ng-container>
+            <div *ngIf="!bankdataresult" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="text-center p-t-30">
+              <button mat-stroked-button (click)="bankSubmit()" class="m-r-10 bg-danger text-white">Submit</button>
+            </div>
+            <div *ngIf="pub_status_bank==2" fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="text-center p-t-30">
+              <button mat-stroked-button (click)="updateBankForm()" class="m-r-10 bg-danger text-white">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--------------------------------------------------->
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,66 @@
+ <!-- CyberAds Pro start -->
+ <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>CyberAds Network For Display - Mobile OS : ( 22 Jun - 28 Jun , 2021 )</mat-card-title>
+                <mat-card-title style="cursor: pointer;" class="text-right"> <mat-icon color="warn" class="font-bold font-20 m-0 respomobile-laptop">file_download</mat-icon></mat-card-title>
+                <!-- <div [chart]="prodashboarddisplaydeviceone"></div> -->
+                <div id="container"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+ </div>
+
+ <!-- Adsense Adtypes- Devicetable start -->
+ <div fxLayout="row wrap">
+    <div  fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="table-responsive">
+                    <table class="no-wrap m-t-0 v-middle" width="100%">
+                        <thead>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Types </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Requests </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Impressions </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Matched Ad Request </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Coverage </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> CTR </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated CPM ($) </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated Revenue ($) </th>
+                        </thead>
+
+                    <tbody>
+                    <ng-container *ngFor="let data of data1">
+                      <tr (click)="data.expanded = !data.expanded">
+                        <td class="p-15 font-normal fontfamily"> {{ data.expanded ? '&ndash;' : '+'}} <span style="padding-left: 15px;">{{data.name}}</span> </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.place}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.phone}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.request}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.coverage}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.ctr}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.cpm}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.revenue}} </td>
+                      </tr>
+                    
+                      <ng-container *ngIf="data.expanded">
+                        <tr *ngFor="let details of findDetails(data)">
+                          <td style="padding-left: 40px;" class="p-15 font-normal fontfamily"> {{details.datades.name}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.hobbies}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.profession}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.requestex}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.coveragex}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.ctrex}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.cpmex}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.revenuex}} </td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                    </tbody>
+                    </table>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

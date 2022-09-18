@@ -1,0 +1,75 @@
+<!-- <div mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </div>
+  
+  <div fxLayout="row wrap">
+    <div fxFlex="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+      <h4 class="m-l-10 m-r-10 popuplineheight" align="center">
+        Are You Sure ! You Want To Update Set CPM Value
+      </h4>
+    </div>
+  </div>
+  
+  <div mat-dialog-actions align="center" class="m-b-0 btmspacing1">
+    <mat-card-actions class="btmspacing2">
+      <a class="m-r-15">
+        <button mat-stroked-button color="" class="m-b-10 m-r-10 bg-danger text-white">OK</button>
+      </a>
+  
+      <a class="m-r-15">
+        <button mat-stroked-button color="" class="m-b-10 m-r-10 bg-danger text-white">Cancel</button>
+      </a>
+    </mat-card-actions>
+  </div> -->
+
+<div mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</div>
+
+<!-- <div fxLayout="row wrap">
+    <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+      <h4 class="m-l-10 m-r-10 popuplineheight" align="center">
+        Set eCPM For Ad Unit Id {{deal_adunitId}}
+      </h4>
+    </div>
+  </div> -->
+
+<div fxLayout="row wrap">
+  <div fxFlex="100" fxFlex.gt-md="100" fxFlex.gt-xs="100">
+    <h4 class="m-l-10 m-r-10 popuplineheight" align="center">
+      Set eCPM For Ad Unit Id
+    </h4>
+
+    <h4 class="m-l-10 m-r-10 popuplineheight font-22" align="center" style="margin-top: -5px!important;">
+      {{deal_adunitId}}
+    </h4>
+  </div>
+</div>
+
+
+<form [formGroup]="ecpmForm" (ngSubmit)="updateCPM()">
+  <div fxLayout="row wrap" fxFlexAlign="center">
+    <div fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100" class="p-10">
+      <mat-form-field appearance="outline" class="p-r-0">
+        <mat-label>Set eCPM Value</mat-label>
+        <input matInput [formControl]="ecpmForm.controls['set_ecpm']" [(ngModel)]="deal_eCPM_val"
+          placeholder="Enter eCPM Value">
+      </mat-form-field>
+      <small *ngIf="ecpmForm.controls['set_ecpm'].errors?.whitespace && ecpmForm.controls['set_ecpm'].touched"
+        class="text-danger support-text logintrp-css spacing-adjust">Please enter valid eCPM value</small>
+      <small *ngIf="ecpmForm.controls['set_ecpm'].errors?.pattern"
+        class="text-danger support-text logintrp-css spacing-adjust">eCPM value must be numeric characters</small>
+    </div>
+
+    <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+      <div class="p-r-0 text-center">
+        <button mat-stroked-button class=" bg-danger text-white">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="bg-opacity" *ngIf="isSpinnerVisible">
+  <div class="parent">
+    <div class="spin1"></div>
+  </div>
+</div>

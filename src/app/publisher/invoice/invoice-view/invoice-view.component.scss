@@ -1,0 +1,72 @@
+table {
+  width: 100%;  
+  }
+  
+  table, th , td  {
+  border: 1px solid #e8eef3;
+  }
+  
+  // table tr:nth-child(odd) {
+  //   background-color: aliceblue;
+  // }
+  
+  table tr:nth-child(even) {
+  background-color: aliceblue;
+  }
+  
+  // paid css start 8 march 2022
+  .stamp {
+  transform: rotate(12deg);
+  color: #555;
+  font-size: 40px;
+  font-weight: 700;
+  border: 0.25rem solid #555;
+  display: inline-block;
+  // padding: 0.25rem 1rem;
+  padding: 0.50rem 1rem;
+  text-transform: uppercase;
+  border-radius: 1rem;
+  font-family: 'Courier';
+  mask-size: 944px 604px;
+  mix-blend-mode: multiply;
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  animation-delay:1.5s;
+  -webkit-animation-delay:1.5s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  opacity: 0;
+  -webkit-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+  }
+  
+  @keyframes pulse{
+    0%{
+      opacity: 0;
+    }
+    10%{
+      opacity:.50;
+      transform-origin: 50% 50%;
+      transform: rotate(-2deg) scale(5);
+      transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    }
+    100%{
+      opacity:1;
+      transform: rotate(-15deg) scale(1);
+    }
+  }
+  
+  .is-paid {
+  color: #27cb71e3;
+  border: 0.5rem solid #27cb71e3;
+  mask-position: 13rem 6rem;
+  transform: rotate(-14deg);
+  border-radius: 0;
+  } 
+  
+  @media all and (min-width: 1268px) and (max-width: 2560px) {
+  .laptopstamp {
+    position: relative;
+    top: -15px
+  }
+  }

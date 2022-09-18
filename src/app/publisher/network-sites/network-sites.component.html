@@ -1,0 +1,71 @@
+
+ <!-- Earning Cyberads table start -->
+ <div fxLayout="row wrap">
+    <div  fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="table-responsive"><!-- responsive-table -->
+                    <table mat-table [dataSource]="dataSource" matSort class="no-wraap m-t-0 v-middle" style="width: 100%;">
+                        <!--  -->
+                        <ng-container matColumnDef="sites">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15 fontfamilyth p-15brk"> Website </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal fontfamily breaklinetable"> {{element.sites}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="adreq">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15 fontfamilyth p-15brk"> Ads Requests </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right fontfamily"> {{element.adreq}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="adimpr">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15 fontfamilyth p-15brk"> Ads Impressions </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right fontfamily"> {{element.adimpr}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="fillrate">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15 fontfamilyth p-15brk"> Fill Rate (%) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right fontfamily"> {{element.fillrate}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="covg">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15 fontfamilyth p-15brk"> Coverage (%) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right fontfamily"> {{element.covg}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="ctr">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15 fontfamilyth p-15brk"> CTR (%) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right fontfamily"> {{element.ctr}} </td>
+                        </ng-container>
+
+                         <!--  -->
+                         <ng-container matColumnDef="ecpm">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15 fontfamilyth p-15brk"> Estimated CPM ($) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right fontfamily"> {{element.ecpm}} </td>
+                        </ng-container>
+
+                         <!--  -->
+                         <ng-container matColumnDef="revenue_cmsShare">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15 fontfamilyth p-15brk"> Estimated Earnings ($) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right fontfamily"> {{element.revenue_cmsShare}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+            </mat-card-content>
+            <!--loader-->
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                <div class="spin1"></div>
+                </div>
+            </div>
+            <!--loaderend-->
+        </mat-card>
+    </div>
+</div>   

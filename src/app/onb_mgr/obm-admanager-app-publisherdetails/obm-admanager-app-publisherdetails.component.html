@@ -1,0 +1,138 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="text-right m-r-0 m-b-25" style="margin-top: 5px!important;">
+          <div (click)="backPage()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+          </div>
+        </div>
+        <mat-card-title>Publisher Details</mat-card-title>
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-sm="100" fxFlex="100">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="m-t-20  p-b-20">
+              <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Publisher Email</mat-label>
+                    <input matInput id="publisheremail" formControlName="publisheremail" name="publisheremail"
+                      placeholder="Enter Email">
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Publisher Contact No.</mat-label>
+                    <input matInput id="publishercontact" formControlName="publishercontact" name="publishercontact"
+                      placeholder="Enter Phone Number" value="">
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Organization Type</mat-label>
+                    <mat-select required #fontSize value="16px" placeholder="Organization Type*" id="org_type"
+                      name="org_type" formControlName="org_type" disabled>
+                      <mat-option *ngFor="let organizationtype of OrganizationType" value="{{organizationtype}}">
+                        {{organizationtype}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Organisation Name</mat-label>
+                    <input matInput required id="org_name" formControlName="org_name" name="org_name"
+                      placeholder="Enter Organisation Name" value="">
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>App Name</mat-label>
+                    <input matInput required id="app_name" formControlName="app_name" name="app_name"
+                      placeholder="Enter App Name" value="">
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Primary Traffic Source</mat-label>
+                    <mat-select matInput required #fontSize value="16px" placeholder="Primary Traffic Source*"
+                      name="traffic_source" formControlName="traffic_source"
+                      [ngClass]="{ 'is-invalid': submitted && f.traffic_source.errors }">
+                      <mat-option *ngFor="let trafficsource of TrafficSource" value="{{trafficsource}}">
+                        {{trafficsource}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Primary Geo</mat-label>
+                    <input matInput id="primary_geo" formControlName="primary_geo" name="primary_geo"
+                      placeholder="Enter Primary Geo" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['primary_geo'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Must be a valid primary geo</small>
+                  <small
+                    *ngIf="form.controls['primary_geo'].errors?.whitespace"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">white space not allowed</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Inventory Quality</mat-label>
+                    <mat-select matInput required #fontSize value="16px" placeholder="Inventory Quality*"
+                      name="inventory_quality" formControlName="inventory_quality"
+                      [ngClass]="{ 'is-invalid': submitted && f.inventory_quality.errors }">
+                      <mat-option *ngFor="let inventquality of InventoryQuality" value="{{inventquality}}">
+                        {{inventquality}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Vertical 1</mat-label>
+                    <mat-select required #fontSize [(value)]="verticleName" id="veriticle_one" name="veriticle_one"
+                      formControlName="veriticle_one">
+                      <mat-option *ngFor="let verticle of verticalsData" [value]="verticle.vname">{{verticle.vname}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Vertical 2 </mat-label>
+                    <input matInput id="veriticle_two" formControlName="veriticle_two" name="veriticle_two"
+                      placeholder="Enter Vertical 2" value="" />
+                  </mat-form-field>
+                  <small *ngIf="form.controls['veriticle_two'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Must be a valid verticle 2</small>
+                  <small
+                    *ngIf="form.controls['veriticle_two'].errors?.whitespace"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">white space not allowed</small>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                  <div class="p-r-0 m-b-10 m-t-5 text-center">
+                    <button mat-stroked-button color="" id="" class=" bg-danger text-white">Submit</button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- form End -->
+        <div class="bg-opacity" *ngIf="isSpinnerVisible">
+          <div class="parent">
+            <div class="spin1"></div>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

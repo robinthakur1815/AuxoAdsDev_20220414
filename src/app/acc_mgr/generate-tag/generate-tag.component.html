@@ -1,0 +1,498 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+
+        <div class="text-right m-r-0 m-b-25" style="margin-top: 5px!important;">
+          <div (click)="backPage()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-title class="m-l-20 m-t-15">Generate Tag :</mat-card-title>
+          </div>
+          <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-title style="cursor: pointer;" class="text-right">
+              <button mat-stroked-button (click)="openDialog()" color="" id="" class=" bg-danger text-white">Quick
+                Tags</button>
+            </mat-card-title>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-sm="100" fxFlex="100">
+            <mat-card>
+              <mat-card-content>
+                <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4bajaj" mat-align-tabs=""
+                  backgroundColor="" disableRipple="true" style="margin-top: 10px!important;">
+                  <mat-tab label="Display">
+                    <ng-template matTabContent>
+                      <form class="m-t-30  p-b-20" [formGroup]="tagform" (ngSubmit)="displaySubmit()">
+                        <div fxLayout="row wrap" fxFlexAlign="center">
+                          
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Type</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_type']">
+                                <mat-option value="CAP">CAP</mat-option>
+                                <mat-option value="CAN">CAN</mat-option>
+                                <mat-option value="PG">PG</mat-option>
+                                <mat-option value="PD">PD</mat-option>
+                                <mat-option value="CM">CM</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" *ngIf="pub_network_status">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Prefix Type</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_prefix']">
+                                <mat-option value="{{prefix}}">{{prefix}}</mat-option>
+                                
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Domain</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_domain']">
+                                <mat-option *ngFor="let domain of domainList;" value="{{domain.web_name}}">{{domain.web_name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 1</mat-label>
+                              <mat-select matInput #fontSize value="16px" (selectionChange)="getCategory2($event)" [formControl]="tagform.controls['tag_cat']">
+                                <mat-option *ngFor="let cat of categoryList;" value="{{cat.Tier_1}}">{{cat.Tier_1}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 2</mat-label>
+                              <mat-select matInput #fontSize value="16px" (selectionChange)="getCategory3($event)" [formControl]="tagform.controls['tag_cat2']">
+                                <mat-option *ngFor="let cat2 of categoryList2;" value="{{cat2.Tier_2}}">{{cat2.Tier_2}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 3</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_cat3']">
+                                <mat-option *ngFor="let cat3 of categoryList3;" value="{{cat3.Tier_3}}">{{cat3.Tier_3}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Primary Position</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_position']">
+                                <mat-option value="Top">Top</mat-option>
+                                <mat-option value="ATF">Above The Fold</mat-option>
+                                <mat-option value="BTF">Below The Fold</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Tag Type</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_pos_type']">
+                                <mat-option value="multisize">Multisize</mat-option>
+                                <mat-option value="fixed">Fixed</mat-option>
+                                <mat-option value="responsive">Responsive</mat-option>
+                              </mat-select>
+                              <input [hidden]="true" matInput [(ngModel)]="network_flag" [formControl]="tagform.controls['pub_network_flag']">
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Secondary Position</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_sec_pos']">
+                                <mat-option value="LB">Leader Board</mat-option>
+                                <mat-option value="TRSB">Top Right Sidebar</mat-option>
+                                <mat-option value="MRSB">Middle Right Sidebar</mat-option>
+                                <mat-option value="ERSB">End of the Right Sidebar</mat-option>
+                                <mat-option value="TLSB">Top Left Sidebar</mat-option>
+                                <mat-option value="MLSB">Middle Left Sidebar</mat-option>
+                                <mat-option value="ELSB">End of the Left Sidebar</mat-option>
+                                <mat-option value="BC">Before Content</mat-option>
+                                <mat-option value="BH">Below Heading</mat-option>
+                                <mat-option value="BFI">Below Featured Image</mat-option>
+                                <mat-option value="WC1">Within Content 1</mat-option>
+                                <mat-option value="WC2">Within Content 2</mat-option>
+                                <mat-option value="WC3">Within Content 3</mat-option>
+                                <mat-option value="WC4">Within Content 4</mat-option>
+                                <mat-option value="WC5">Within Content 5</mat-option>
+                                <mat-option value="EOC">End Of Content</mat-option>
+                                <mat-option value="EOP">End Of Post</mat-option>
+                                <mat-option value="MBS">Mobile Bottom Sticky</mat-option>
+                                <mat-option value="DBS">Desktop Bottom Sticky</mat-option>
+                                <mat-option value="DRPS">Desktop Right Pillar Sticky</mat-option>
+                                <mat-option value="DLPS">Desktop Left Pillar Sticky</mat-option>
+                                <mat-option value="PAU">Parallax Ad unit</mat-option>
+                                <mat-option value="INT">Interstitial</mat-option>
+                                <mat-option value="MBRS">Mobile Bottom Refresh Sticky</mat-option>
+                                <mat-option value="DBRS">Desktop Bottom Refresh Sticky</mat-option>
+                                <mat-option value="BRSR">Bottom Refresh Sticky responsive</mat-option>
+                                <mat-option value="TMRS">Top Mobile Refresh Sticky</mat-option>
+                                <mat-option value="TDRS">Top Desktop Refresh Sticky</mat-option>
+                                <mat-option value="TRS">Top Responsive sticky</mat-option>
+                                <mat-option value="AMBS">Amp mobile bottom sticky</mat-option>
+                                <mat-option value="AMBRS">Amp mobile bottom refresh sticky</mat-option>
+                                <mat-option value="AWC1">Amp Within Content 1</mat-option>
+                                <mat-option value="AWC2">Amp Within Content 2</mat-option>
+                                <mat-option value="AWC3">Amp Within Content 3</mat-option>
+                                <mat-option value="AWC4">Amp within Content 4</mat-option>
+                                <mat-option value="AEOP">Amp End of Post</mat-option>
+                                <mat-option value="AEOC">Amp End of Content</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Size</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagform.controls['tag_size']">
+                                <mat-option value="728x90">728x90</mat-option>
+                                <mat-option value="336x280">336x280</mat-option>
+                                <mat-option value="300x250">300x250</mat-option>
+                                <mat-option value="300x50">300x50</mat-option>
+                                <mat-option value="300x75">300x75</mat-option>
+                                <mat-option value="320x75">320x75</mat-option>
+                                <mat-option value="300x300">300x300</mat-option>
+                                <mat-option value="160x600">160x600</mat-option>
+                                <mat-option value="1024x768">1024x768</mat-option>
+                                <mat-option value="970x250">970x250</mat-option>
+                                <mat-option value="970x90">970x90</mat-option>
+                                <mat-option value="768x1024">768x1024</mat-option>
+                                <mat-option value="480x320">480x320</mat-option>
+                                <mat-option value="468x60">468x60</mat-option>
+                                <mat-option value="320x480">320x480</mat-option>
+                                <mat-option value="320x100">320x100</mat-option>
+                                <mat-option value="320x50">320x50</mat-option>
+                                <mat-option value="300x600">300x600</mat-option>
+                                <mat-option value="300x100">300x100</mat-option>
+                                <mat-option value="250x250">250x250</mat-option>
+                                <mat-option value="234x60">234x60</mat-option>
+                                <mat-option value="200x200">200x200</mat-option>
+                                <mat-option value="180x150">180x150</mat-option>
+                                <mat-option value="125x125">125x125</mat-option>
+                                <mat-option value="120x600">120x600</mat-option>
+                                <mat-option value="120x240">120x240</mat-option>
+                                <mat-option value="120x60">120x60</mat-option>
+                                <mat-option value="980x120">980x120</mat-option>
+                                <mat-option value="980x90">980x90</mat-option>
+                                <mat-option value="950x90">950x90</mat-option>
+                                <mat-option value="930x180">930x180</mat-option>
+                                <mat-option value="750x300">750x300</mat-option>
+                                <mat-option value="750x200">750x200</mat-option>
+                                <mat-option value="750x100">750x100</mat-option>
+                                <mat-option value="580x400">580x400</mat-option>
+                                <mat-option value="250x360">250x360</mat-option>
+                                <mat-option value="240x400">240x400</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" style="margin-top: -4px!important;">
+                            <div class="p-r-0 m-b-20 m-t-0 text-left">
+                              <button mat-stroked-button color="" id="" class=" bg-danger text-white">Generate
+                                Tag</button>
+                            </div>
+                          </div>
+
+                          <div fxFlex.gt-sm="90" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Code</mat-label>
+                              <textarea matInput #codeDisplay placeholder="">{{finalcodeDisplay}}</textarea>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                            style="margin-top: 23px;">
+                            <div mat-card-avatar style="height: 45px;  width: 45px;cursor: pointer;" (click)="copyTagsText(codeDisplay)">
+                              <img src="assets/images/users/tag.png" class="img-fluid" />
+                            </div>
+                          </div>
+                        
+                        </div>
+                      </form>
+                    </ng-template>
+                  </mat-tab>
+
+                  <mat-tab label="App" *ngIf="appStatus">
+                    <ng-template matTabContent>
+                      <form class="m-t-30  p-b-20" [formGroup]="tagformApp" (ngSubmit)="appSubmit()">
+                        <div fxLayout="row wrap" fxFlexAlign="center">
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Type</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformApp.controls['tag_type']">
+                                <mat-option value="CAP">CAP</mat-option>
+                                <mat-option value="CAN">CAN</mat-option>
+                                <mat-option value="PG">PG</mat-option>
+                                <mat-option value="PD">PD</mat-option>
+                                <mat-option value="CM">CM</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" *ngIf="pub_network_status">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Prefix Type</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformApp.controls['tag_prefix']">
+                                <mat-option value="{{prefix}}">{{prefix}}</mat-option>
+                                
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select App</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformApp.controls['tag_app']">
+                                <mat-option *ngFor="let app of appList;" value="{{app.app_name}}">{{app.app_name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>In App</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformApp.controls['tag_inApp']">
+                                <mat-option value="InApp">InApp</mat-option>
+                              </mat-select>
+                              <input [hidden]="true" matInput [(ngModel)]="network_flag" [formControl]="tagformApp.controls['pub_network_flag']">
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 1</mat-label>
+                              <mat-select matInput #fontSize value="16px" (selectionChange)="getCategory2($event)" [formControl]="tagformApp.controls['tag_cat']">
+                                <mat-option *ngFor="let cat of categoryList;" value="{{cat.Tier_1}}">{{cat.Tier_1}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 2</mat-label>
+                              <mat-select matInput #fontSize value="16px" (selectionChange)="getCategory3($event)" [formControl]="tagformApp.controls['tag_cat2']">
+                                <mat-option *ngFor="let cat2 of categoryList2;" value="{{cat2.Tier_2}}">{{cat2.Tier_2}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 3</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformApp.controls['tag_cat3']">
+                                <mat-option *ngFor="let cat3 of categoryList3;" value="{{cat3.Tier_3}}">{{cat3.Tier_3}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Ads Type</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformApp.controls['tag_position']">
+                                <mat-option value="interstitial">Interstitial</mat-option>
+                                <mat-option value="banner">Banner</mat-option>
+                                <mat-option value="Standard_Banner">Standard Banner</mat-option>
+                                <mat-option value="Anchor">Anchor</mat-option>
+                                <mat-option value="Native">Native</mat-option>
+                                <mat-option value="AppOpen">App Open</mat-option>
+                                <mat-option value="RewardedAds">Rewarded Ads</mat-option>
+                                <mat-option value="Rewarded_Interstitial">Rewarded Interstitial</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" style="margin-top: -4px!important;">
+                            <div class="p-r-0 m-b-20 m-t-0 text-left">
+                              <button mat-stroked-button color="" id="" class=" bg-danger text-white">Generate
+                                Tag</button>
+                            </div>
+                          </div>
+
+                          <div fxFlex.gt-sm="90" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Code</mat-label>
+                              <textarea matInput #codeApp placeholder="">{{finalcodeApp}}</textarea>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                            style="margin-top: 23px;">
+                            <div mat-card-avatar (click)="copyTagsText(codeApp)" style="height: 45px;  width: 45px;cursor: pointer;">
+                              <img src="assets/images/users/tag.png" class="img-fluid" />
+                            </div>
+                          </div>
+
+                        </div>
+                      </form>
+                    </ng-template>
+                  </mat-tab>
+
+                  <mat-tab label="Video">
+                    <ng-template matTabContent>
+                      <form class="m-t-30  p-b-20" [formGroup]="tagformVideo" (ngSubmit)="videoSubmit()">
+                        <div fxLayout="row wrap" fxFlexAlign="center">
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Type</mat-label>
+                              <mat-select matInput [formControl]="tagformVideo.controls['tag_type']" #fontSize value="16px">
+                                <mat-option value="CAP">CAP</mat-option>
+                                <mat-option value="CAN">CAN</mat-option>
+                                <mat-option value="PG">PG</mat-option>
+                                <mat-option value="PD">PD</mat-option>
+                                <mat-option value="CM">CM</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" *ngIf="pub_network_status">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Prefix Type</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformVideo.controls['tag_prefix']">
+                                <mat-option value="{{prefix}}">{{prefix}}</mat-option>
+                                
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Domain</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformVideo.controls['tag_domain']">
+                                <mat-option *ngFor="let domain of domainList;" value="{{domain.web_name}}">{{domain.web_name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>In Video</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformVideo.controls['tag_invdo']">
+                                <mat-option value="vdo">In Video</mat-option>
+                              </mat-select>
+                              <input [hidden]="true" matInput [(ngModel)]="network_flag" [formControl]="tagformVideo.controls['pub_network_flag']">
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 1</mat-label>
+                              <mat-select matInput #fontSize value="16px" (selectionChange)="getCategory2($event)" [formControl]="tagformVideo.controls['tag_cat']">
+                                <mat-option *ngFor="let cat of categoryList;" value="{{cat.Tier_1}}">{{cat.Tier_1}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 2</mat-label>
+                              <mat-select matInput #fontSize value="16px" (selectionChange)="getCategory3($event)" [formControl]="tagformVideo.controls['tag_cat2']">
+                                <mat-option *ngFor="let cat2 of categoryList2;" value="{{cat2.Tier_2}}">{{cat2.Tier_2}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 3</mat-label>
+                              <mat-select matInput #fontSize value="16px" [formControl]="tagformVideo.controls['tag_cat3']">
+                                <mat-option *ngFor="let cat3 of categoryList3;" value="{{cat3.Tier_3}}">{{cat3.Tier_3}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Stream Type 1</mat-label>
+                              <mat-select matInput [formControl]="tagformVideo.controls['stream_type_id']" #fontSize value="16px">
+                                <mat-option value="PRE">PRE</mat-option>
+                                <mat-option value="POST">POST</mat-option>
+                                <mat-option value="MID">MID</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Stream Type 2</mat-label>
+                              <mat-select matInput [formControl]="tagformVideo.controls['stream_type2_id']" #fontSize value="16px">
+                                <mat-option value="OUTSTREAM">Out-Stream</mat-option>
+                                <mat-option value="INSTREAM">In-Stream</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Stream Type 3</mat-label>
+                              <mat-select matInput [formControl]="tagformVideo.controls['stream_type3_id']" #fontSize value="16px">
+                                <mat-option value="Skippable">Skippable</mat-option>
+                                <mat-option value="NonSkippable">Non - Skiabble</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" style="margin-top: -4px!important;">
+                            <div class="p-r-0 m-b-20 m-t-0 text-left">
+                              <button mat-stroked-button color="" id="" class=" bg-danger text-white">Generate
+                                Tag</button>
+                            </div>
+                          </div>
+
+                          <div fxFlex.gt-sm="90" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Code</mat-label>
+                              <textarea matInput #codeVideo placeholder="">{{finalcodeVideo}}</textarea>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                            style="margin-top: 23px;">
+                            <div mat-card-avatar (click)="copyTagsText(codeVideo)" style="height: 45px;  width: 45px;cursor: pointer;">
+                              <img src="assets/images/users/tag.png" class="img-fluid" />
+                            </div>
+                          </div>
+
+                        </div>
+                      </form>
+                    </ng-template>
+                  </mat-tab>
+                </mat-tab-group>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        
+      </mat-card-content>
+      
+    </mat-card>
+    
+  </div>
+</div>
+<div class="bg-opacity" *ngIf="isSpinnerVisible">
+  <div class="parent">
+    <div class="spin1"></div>
+  </div>
+</div>

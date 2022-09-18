@@ -1,0 +1,13 @@
+// Popup Loader css only used in vertical header
+.parent{
+padding-left: 47%!important;
+}
+
+@media only screen and (max-width: 500px) {
+.parent
+{
+position: fixed;
+padding-top: 80%;
+padding-left: 37%!important;
+}
+}

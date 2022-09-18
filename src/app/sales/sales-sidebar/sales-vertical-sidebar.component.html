@@ -1,0 +1,77 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<!-- <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
+    <div class="profile-img">
+        <img src="assets/images/users/profile.png" alt="user"> </div>
+    <div class="profile-text">
+        <a [matMenuTriggerFor]="sdprofile" class=""> Markarn Doe
+            <i class="ti-angle-down font-12 m-l-5"></i>
+        </a>
+    </div>
+    <mat-menu #sdprofile="matMenu" class="mymegamenu">
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon> Settings
+        </button>
+        <button mat-menu-item>
+            <mat-icon>account_box</mat-icon> Profile
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon> Disable notifications
+        </button>
+        <button mat-menu-item>
+            <mat-icon >exit_to_app</mat-icon> Sign Out
+        </button>
+    </mat-menu>
+</div> --> 
+
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected"
+        group="{{menuitem.state}}" (click)="scrollToTop()">
+
+        <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'" (click)="handleNotify()">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+        </a>
+
+       <!--sales user hide-->
+       <!-- <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'linkuser' && salesuserMenu" (click)="handleNotify()">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+        </a> -->        
+                 
+    </mat-list-item>
+    <mat-list-item [ngClass]="{selected: getActiveUserRole('/sales-users-role')}" (click)="scrollToTop()" *ngIf="salesuserMenu">
+            <a class="" [routerLink]="['/', 'sales-users-role']" (click)="handleNotify()">
+                <mat-icon>person</mat-icon>
+                <span>User Role</span>
+                <span fxFlex></span>
+            </a>
+        </mat-list-item>
+    <mat-list-item [ngClass]="{selected: getActiveInvite('/admanager-invite')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'admanager-invite']" (click)="handleNotify()">
+            <mat-icon>insert_invitation</mat-icon>
+            <span>Ad Manager Invite</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+    <mat-list-item  [ngClass]="{selected: getActiveDomain('/admanager-domain')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'admanager-domain']" (click)="handleNotify()">
+            <mat-icon>domain</mat-icon>
+            <span>Domain Status</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+    <mat-list-item  [ngClass]="{selected: getActiveApp('/admanager-app')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'admanager-app']" (click)="handleNotify()">
+            <mat-icon>devices</mat-icon>
+            <span>App Status</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+</mat-nav-list>
+

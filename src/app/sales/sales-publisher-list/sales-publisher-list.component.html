@@ -1,0 +1,162 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <!-- <mat-card-title>Overall Publisher List  </mat-card-title> -->
+                <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+                    <div fxFlex.gt-sm="80" fxFlex.gt-lg="80" fxFlex.gt-md="80" fxFlex.gt-xs="100" fxFlex="100"
+                        class="p-10">
+                        <mat-card-title>Overall Publisher List</mat-card-title>
+                    </div>
+
+                    <div fxFlex.gt-sm="20" fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100"
+                        class="p-10 text-center">
+                        <mat-card-title style="cursor: pointer;" class="text-right">
+                            <img mat-raised-button matTooltip="Download Report" aria-label="tooltip"
+                                class="font-bold font-20 m-0 respomobile-laptop m-r-15"
+                                src="assets/images/users/iconn3.png" width="25" (click)="downloadoverall()" />
+                        </mat-card-title>
+                    </div>
+                </div>
+                <div class="p-5 p-r-20 p-l-20 m-t-20" style="background-color: aliceblue;">
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-sm="100" fxFlex="100">
+                        <form class="m-t-20  p-b-0" [formGroup]="filterform">
+                            <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>All</mat-label>
+                                        <mat-select matInput #fontSize value="16px" (selectionChange)="customFilter()" value="16px" [formControl]="filterform.controls['pub_type']">
+                                            <mat-option value="adx">AdX Publisher</mat-option>
+                                            <mat-option value="adsense">Adsense Publisher</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                               
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10" *ngIf="adminMenu">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Select Sales Person</mat-label>
+                                        <mat-select matInput #fontSize value="16px" (selectionChange)="customFilter()" [formControl]="filterform.controls['sales_person']">
+                                            <mat-option *ngFor="let sallist of salesTeamlList;" value="{{sallist.sal_id}}">
+                                                {{sallist.sal_name}}</mat-option>
+                                            
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Select Sales Channel</mat-label>
+                                        <mat-select matInput #fontSize value="16px" (selectionChange)="customFilter()" [formControl]="filterform.controls['sales_channel']">
+                                            <mat-option *ngFor="let salchlist of salesChannelList;" value="{{salchlist.channel_id}}">
+                                                {{salchlist.chan_name}}</mat-option>
+                                            
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Status</mat-label>
+                                        <mat-select matInput #fontSize value="16px" (selectionChange)="customFilter()" value="16px" [formControl]="filterform.controls['pub_status']">
+                                            <mat-option value="Y">Active</mat-option>
+                                            <mat-option value="N">InActive</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="100" fxFlex.gt-lg="8" fxFlex.gt-md="8" fxFlex.gt-xs="100" fxFlex="100"
+                                    class="p-10 m-t-15 text-right ResetGoBtnMobile">
+                                    <button mat-stroked-button color="" class="bg-danger text-white" (click)="resetFormfilter()">Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="pubUserList" matSort class="no-wraap m-t-0 v-middle"
+                        style="width: 100%;">
+                        <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Domain </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal">{{row.site_name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                AdX Account Name </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal breaklinetabletd1">{{row.name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="progress">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Sales Person </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal"> {{row.sal_name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="color">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Sales Channels </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal"> {{row.chan_name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="services">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Email Id </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal"> {{row.pub_email}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="siteid">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Estimated Earnings ($) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">{{element.revenue}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="cpm">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Estimated CPM ($) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">{{element.ecpm}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                User Status </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal" [style.color]="row.color">
+                                 <p *ngIf="row.user_status=='Y'" class="text-success">Active</p>
+                                <p *ngIf="row.user_status=='N'" class="text-danger">InActive</p>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="board">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Network Partner On Board Date </th>
+                            <td mat-cell *matCellDef="let element" class="p-10 font-normal breaklinetabletd1">{{element.onboarddate}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[25, 100]"></mat-paginator>
+                </div>
+            </mat-card-content>
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+    margin-top: 60px;
+  }
+
+  table, th , td  {
+    border: 1px solid #e8eef3;
+  }
+
+  // table tr:nth-child(odd) {
+  //   background-color: aliceblue;
+  // }
+  
+  table tr:nth-child(even) {
+    background-color: aliceblue;
+  }
+  .hegihtLoader{
+    height: 600px;
+  }

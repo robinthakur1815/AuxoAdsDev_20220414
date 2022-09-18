@@ -1,0 +1,102 @@
+<body style="overflow-y : hidden;">
+    <header class="bg-primary text-white">
+        <!-- <div id="particles-js"></div> -->
+        <nav id="mainNav">
+            <!--class="navbar osahan-navbar navbar-expand-lg navbar-dark fadeInDown"-->
+            <div class="container">
+                <a style="margin-top: 18px; margin-left: -7px;" class="navbar-brand js-scroll-trigger menu-btn1"
+                    href="/">
+                    <img class="img-fluid" src="assets/registerlp/img/new/safe-logo1.png" alt="" height="70px"
+                        width="140px">
+                </a>
+            </div>
+        </nav>
+
+        <section class="banner-block pb-0 info-banner" id="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-md-7 text-left fadeInUp animated box bounce">
+                        <img class="img-fluid mb-1 wow fadeInUp animated imgsize"
+                            src="assets/registerlp/img/new/forgot.png" width="550" alt="">
+                        <!-- position: relative; top: -67px!important-->
+                    </div>
+
+                    <div class="col-md-5 col-md-5 text-center" style="margin-top: -50px;">
+                        <mat-card>
+                            <mat-card-content>
+                                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                                    <div class="text-center">
+                                        <!-- <img alt="homepage" class="mobile-logo"  width="140" src="assets/registerlp/img/new/safe-logo.png"> -->
+                                        <h6 class="m-t-5 m-b-20" style="font-size:21px;">User Login</h6>
+                                    </div>
+                                    <p *ngIf="logerror" class="font-16" style="text-align: center; color:#e94265;">
+                                        {{logerror}}</p>
+                                    <p *ngIf="submitted && form.controls['recaptcha'].errors?.required"
+                                        style="text-align: center; color:#e94265;" class="font-16">Captcha code not
+                                        verified</p>
+                                    <div fxLayout="row wrap">
+                                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Email</mat-label>
+                                                <input matInput placeholder="Email"
+                                                    [formControl]="form.controls['uname']">
+                                            </mat-form-field>
+                                            <!-- <small *ngIf="form.controls['uname'].hasError('required') && form.controls['uname'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20">Username is required</small> -->
+                                        </div>
+
+                                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Password</mat-label>
+                                                <input matInput type="password" placeholder="Password"
+                                                    [formControl]="form.controls['password']">
+                                            </mat-form-field>
+                                            <!-- <small  class="text-danger support-text logintrp-css spacing-adjust m-b-20">Password is required</small> -->
+                                        </div>
+                                        <div class="m-b-20 g-recaptcha" fxFlex.gt-sm="100" fxFlex.gt-xs="100"
+                                            fxFlex="100" style="margin-top: 3px;">
+                                            <ngx-recaptcha2 class="g-recaptcha" #captchaElem
+                                                [siteKey]="'6Ldf-6UeAAAAAGL1CB2KTxKDIzPSCCtBP5ZP_jAg'"
+                                                (success)="handleSuccess($event)" [useGlobalDomain]="false"
+                                                formControlName="recaptcha">
+                                            </ngx-recaptcha2>
+                                        </div>
+                                        <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+                                            <mat-checkbox class="logintrp-css login-weight" color="warn">Remember me
+                                            </mat-checkbox>
+                                        </div>
+
+                                        <div fxFlex.gt-sm="50" fxFlex.gt-xs="50" class="text-right mobile-spacing">
+                                            <a [routerLink]="['/authentication/forgot']"
+                                                class="link login-weight">Forgot password ?</a>
+                                        </div>
+
+                                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                            <button style="margin-top:25px;" type="submit" id="reg_submit" name=""
+                                                class="btn btn-primary btn-lg btn-block">LOGIN</button>
+                                        </div>
+
+                                        <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100"
+                                            class="text-center login-weight m-t-20">
+                                            <span>Don't have an account?
+                                                <a [routerLink]="['/']" class="text-primary link">Sign Up</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </mat-card-content>
+                            <div class="bg-opacity" *ngIf="isSpinnerVisibleLogin">
+                                <div class="parent parent-landingpage">
+                                    <div class="spin1"></div>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="effectiv">
+            <img class="svg" src="assets/registerlp/img/bg2.svg" alt="" />
+        </div>
+    </header>
+</body>
+<!-- Header end --> 

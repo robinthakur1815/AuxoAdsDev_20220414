@@ -1,0 +1,306 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<!-- <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
+    <div class="profile-img">
+        <img src="assets/images/users/profile.png" alt="user"> </div>
+    <div class="profile-text">
+        <a [matMenuTriggerFor]="sdprofile" class=""> Markarn Doe
+            <i class="ti-angle-down font-12 m-l-5"></i>
+        </a>
+    </div>
+    <mat-menu #sdprofile="matMenu" class="mymegamenu">
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon> Settings
+        </button>
+        <button mat-menu-item>
+            <mat-icon>account_box</mat-icon> Profile
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon> Disable notifications
+        </button>
+        <button mat-menu-item>
+            <mat-icon >exit_to_app</mat-icon> Sign Out
+        </button>
+    </mat-menu>
+</div> -->
+
+<mat-nav-list appAccordion>
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected"
+        group="{{menuitem.state}}" (click)="scrollToTop()">
+
+        <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link' && !childnetmenu" (click)="handleNotify()">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+        </a>
+
+        <a class="" appAccordionToggle href="{{menuitem.state}}" *ngIf="menuitem.type === 'extLink' && !childnetmenu">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+        </a>
+
+        <a class="" appAccordionToggle href="{{menuitem.state}}" target="_blank" *ngIf="menuitem.type === 'extTabLink' && !childnetmenu" >
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate}}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+        </a>
+
+        <a class="" appAccordionToggle href="javascript:;" *ngIf="menuitem.type === 'sub' && !childnetmenu">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+        </a>
+        <!--- if Auxo Ads Network start-->
+       <a class="" appAccordionToggle [routerLink]="['/auxo']" *ngIf="menuitem.type === 'subCyberDash' && !childnetmenu">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+        </a>
+         <!--- if Auxo Ads Network end-->
+        <!--- if cyberads pro start-->
+       <a class="" appAccordionToggle [routerLink]="['/auxopro/pro-dashboard']" *ngIf="menuitem.type === 'subCyberAdsPro' && !childnetmenu">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+        </a>
+         <!--- if cyberads pro end-->
+        <!--- if childnet code is null start-->
+         <a class="" appAccordionToggle [routerLink]="['/dashboards/dashboard1']" *ngIf="menuitem.type === 'childnetcodesub' && childnetmenudash" >
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>   
+        </a>
+         <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'childnetcodelink' && childnetmenu" (click)="handleNotify()">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+        </a>
+        <!--- if childnet code is null end-->
+        <!--condtion for Adsense-->
+        <a class="" appAccordionToggle [routerLink]="['/adsense/ads-overview']" *ngIf="menuitem.type === 'subadsense' && adsMenu">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+        </a>
+
+        <mat-nav-list class="sub-item" *ngIf="menuitem.type === 'subadsense' && adsMenu">
+              <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i = childitem"
+                routerLinkActive="selected">
+                <a [routerLink]="['/', menuitem.state, childitem.state ]" *ngIf="childitem.type === 'link'"
+                    class="relative" style="padding: 11px 0px 0px 40px!important;" routerLinkActive="selected"
+                    (click)="itemSelect[i]=j" (click)="handleNotify()">{{ childitem.name | translate}}</a>
+            </mat-list-item>
+         </mat-nav-list>
+         <!--condtion for Adsense end-->
+
+        <!--- if Keyinsights start-->
+       <!-- <a class="" appAccordionToggle [routerLink]="['/keyinsights/content-performance']" *ngIf="menuitem.type === 'subkeyinsights' && !childnetmenu">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+        </a> -->
+        <a class="" appAccordionToggle href="javascript:;" *ngIf="menuitem.type === 'subInsights' && keyInsightsMenu">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name | translate }}</span>
+            <span fxFlex></span>
+            <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+        </a>
+         <mat-nav-list class="sub-item" *ngIf="menuitem.type === 'subInsights' && keyInsightsMenu">
+            <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i = childitem"
+                routerLinkActive="selected">
+                <a [routerLink]="['/', menuitem.state, childitem.state ]" *ngIf="childitem.type === 'link'"
+                    class="relative" style="padding: 11px 0px 0px 40px!important;" routerLinkActive="selected"
+                    (click)="itemSelect[i]=j" (click)="handleNotify()">{{ childitem.name | translate}}</a>
+            </mat-list-item>
+            <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i=childitem; ">
+                <a style="background-color: transparent!important; color: #000!important;" class="" href="javascript: void(0);" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                    <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                </a>
+
+                <mat-nav-list class="child-sub-item" *ngIf="childitem.type === 'subchild'">
+                    <mat-list-item *ngFor="let child of childitem.subchildren" routerLinkActive="selected" >
+
+                        <a [routerLink]="['/', menuitem.state, childitem.state, child.state ]"
+                            routerLinkActive="selected">{{child.name | translate}}</a>
+
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-list-item>
+        </mat-nav-list>
+         <!--- if Keyinsights  end-->
+
+        <mat-nav-list class="sub-item" *ngIf="menuitem.type === 'sub' && !childnetmenu">
+            <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i = childitem"
+                routerLinkActive="selected">
+                <a [routerLink]="['/', menuitem.state, childitem.state ]" *ngIf="childitem.type === 'link'"
+                    class="relative" style="padding: 11px 0px 0px 40px!important;" routerLinkActive="selected"
+                    (click)="itemSelect[i]=j" (click)="handleNotify()">{{ childitem.name | translate}}</a>
+            </mat-list-item>
+
+            <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i=childitem; ">
+                <a style="background-color: transparent!important; color: #000!important;" class="" href="javascript: void(0);" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                    <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                </a>
+
+                <mat-nav-list class="child-sub-item" *ngIf="childitem.type === 'subchild'">
+                    <mat-list-item *ngFor="let child of childitem.subchildren" routerLinkActive="selected" >
+
+                        <a [routerLink]="['/', menuitem.state, childitem.state, child.state ]"
+                            routerLinkActive="selected">{{child.name | translate}}</a>
+
+                    </mat-list-item>
+                </mat-nav-list>
+            </mat-list-item>
+        </mat-nav-list>
+
+
+         <!--- if Auxo Ads Network start-->
+         <mat-nav-list class="sub-item" *ngIf="menuitem.type === 'subCyberDash' && !childnetmenu">
+            <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i=childitem; ">
+
+               <!--  <a style="background-color: transparent!important; color: #000!important;" class="" [routerLink]="['/cyberads/display/mcm-display-overview-publisher']" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                    <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                </a> -->
+
+                <!--condition for display-->
+                 <div *ngIf="childitem.state === 'display' && displayMenu">
+
+                  <a   [routerLink]="['/', menuitem.state, childitem.state]" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                    <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                </a>
+               
+                <mat-nav-list class="child-sub-item" *ngIf="childitem.type === 'subchild'">
+                    <mat-list-item *ngFor="let child of childitem.subchildren" routerLinkActive="selected" >
+
+                        <a [routerLink]="['/', menuitem.state, childitem.state, child.state ]"
+                            routerLinkActive="selected">{{child.name | translate}}</a>
+
+                    </mat-list-item>
+                </mat-nav-list>  
+                 
+                  </div><!--condition for display end-->
+                  <!--condition for app-->
+                 <div *ngIf="childitem.state === 'app' && appMenu">
+
+                  <a   [routerLink]="['/', menuitem.state, childitem.state]" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                    <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                </a>
+               
+                <mat-nav-list class="child-sub-item" *ngIf="childitem.type === 'subchild'">
+                    <mat-list-item *ngFor="let child of childitem.subchildren" routerLinkActive="selected" >
+
+                        <a [routerLink]="['/', menuitem.state, childitem.state, child.state ]"
+                            routerLinkActive="selected">{{child.name | translate}}</a>
+
+                    </mat-list-item>
+                </mat-nav-list>  
+                 
+                  </div><!--condition for app end-->
+                <!--condition for video-->
+                 <div *ngIf="childitem.state === 'video' && videoMenu">
+
+                  <a   [routerLink]="['/', menuitem.state, childitem.state]" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                    <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                </a>
+               
+                <mat-nav-list class="child-sub-item" *ngIf="childitem.type === 'subchild'">
+                    <mat-list-item *ngFor="let child of childitem.subchildren" routerLinkActive="selected" >
+
+                        <a [routerLink]="['/', menuitem.state, childitem.state, child.state ]"
+                            routerLinkActive="selected">{{child.name | translate}}</a>
+
+                    </mat-list-item>
+                </mat-nav-list>  
+                 
+                  </div><!--condition for video end-->
+
+            </mat-list-item>
+        </mat-nav-list>
+        <!--- if Auxo Ads Network end-->
+
+
+        <!--- if cyberads pro start-->
+ <mat-nav-list class="sub-item" *ngIf="menuitem.type === 'subCyberAdsPro' && !childnetmenu">
+         <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i=childitem; ">
+
+                <a  [routerLink]="['/auxopro/display']" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                    <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                </a>
+
+                <mat-nav-list class="child-sub-item" *ngIf="childitem.type === 'subchild'">
+                    <mat-list-item *ngFor="let child of childitem.subchildren" routerLinkActive="selected" >
+
+                        <a [routerLink]="['/', menuitem.state, childitem.state, child.state ]"
+                            routerLinkActive="selected">{{child.name | translate}}</a>
+
+                    </mat-list-item>
+                </mat-nav-list>
+                
+            </mat-list-item>
+</mat-nav-list>
+        <!--- if cyberads pro end-->
+
+             <!--- if KeyInsights start-->
+ <mat-nav-list class="sub-item" *ngIf="menuitem.type === 'subkeyinsights' && !childnetmenu">
+         <mat-list-item *ngFor="let childitem of menuitem.children; let j=index; let i=childitem; ">
+
+                <a  [routerLink]="['/', menuitem.state, childitem.state]" *ngIf="childitem.type === 'subchild'" (click)="addExpandClass(childitem.name)" [ngClass]="{'selected' : showMenu === childitem.name }">
+                    <span>{{ childitem.name | translate }}</span>
+                    <span fxFlex></span>
+                   <!--  <div *ngIf="childitem.name == 'Audience Overview'">
+                        <mat-icon class="dd-icon">keyboard_arrow_down</mat-icon>
+                    </div> -->
+                </a>
+
+               <!--  <mat-nav-list class="child-sub-item" *ngIf="childitem.type === 'subchild'">
+                    <mat-list-item *ngFor="let child of childitem.subchildren" routerLinkActive="selected" >
+
+                        <a [routerLink]="['/', menuitem.state, childitem.state, child.state ]"
+                            routerLinkActive="selected">{{child.name | translate}}</a>
+
+                    </mat-list-item>
+                </mat-nav-list> -->
+                
+            </mat-list-item>
+</mat-nav-list>
+        <!--- if KeyInsights end-->
+
+
+        <div class="saperator text-muted" *ngIf="menuitem.type === 'saperator'">
+            <!-- <span>{{ menuitem.name | translate }}</span> -->
+            <span>{{ acc_name | titlecase}}</span>
+        </div>
+    </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,296 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+
+        <div class="text-right m-r-0 m-b-25" style="margin-top: 5px!important;">
+          <div (click)="backPage()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-title class="m-l-20 m-t-15">Generate Tag :</mat-card-title>
+          </div>
+          <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-title style="cursor: pointer;" class="text-right">
+              <button mat-stroked-button (click)="openDialog()" color="" id="" class=" bg-danger text-white">Quick
+                Tags</button>
+            </mat-card-title>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-sm="100" fxFlex="100">
+            <mat-card>
+              <mat-card-content>
+                <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4bajaj" mat-align-tabs=""
+                  backgroundColor="" disableRipple="true" style="margin-top: 10px!important;">
+                  <mat-tab label="Display">
+                    <ng-template matTabContent>
+                      <form class="m-t-30  p-b-20">
+                        <div fxLayout="row wrap" fxFlexAlign="center">
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Type</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">CAP</mat-option>
+                                <mat-option value="">CAN</mat-option>
+                                <mat-option value="">PG</mat-option>
+                                <mat-option value="">PD</mat-option>
+                                <mat-option value="">CM</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Domain</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">inaaj.com</mat-option>
+                                <mat-option value="">inaaj.com</mat-option>
+                                <mat-option value="">inaaj.com</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 1</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">Education</mat-option>
+                                <mat-option value="">Movies</mat-option>
+                                <mat-option value="">Food & Drink</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 2</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 3</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Primary Position</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">Top</mat-option>
+                                <mat-option value="">Above The Fold</mat-option>
+                                <mat-option value="">Below The Fold</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Tag Type</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">Multisize</mat-option>
+                                <mat-option value="">Fixed</mat-option>
+                                <mat-option value="">Responsive</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Secondary Position</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">Leader Board</mat-option>
+                                <mat-option value="">Top Right Sidebar</mat-option>
+                                <mat-option value="">Middle Right Sidebar</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Size</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">728*90</mat-option>
+                                <mat-option value="">336*280</mat-option>
+                                <mat-option value="">300*250</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" style="margin-top: -4px!important;">
+                            <div class="p-r-0 m-b-20 m-t-0 text-left">
+                              <button mat-stroked-button color="" id="" class=" bg-danger text-white">Generate
+                                Tag</button>
+                            </div>
+                          </div>
+
+                          <div fxFlex.gt-sm="90" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Code</mat-label>
+                              <textarea matInput placeholder=""></textarea>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                            style="margin-top: 23px;">
+                            <div mat-card-avatar style="height: 45px;  width: 45px;">
+                              <img src="assets/images/users/tag.png" class="img-fluid" />
+                            </div>
+                          </div>
+
+                        </div>
+                      </form>
+                    </ng-template>
+                  </mat-tab>
+
+                  <mat-tab label="Video">
+                    <ng-template matTabContent>
+                      <form class="m-t-30  p-b-20">
+                        <div fxLayout="row wrap" fxFlexAlign="center">
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Type</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">CAP</mat-option>
+                                <mat-option value="">CAN</mat-option>
+                                <mat-option value="">PG</mat-option>
+                                <mat-option value="">PD</mat-option>
+                                <mat-option value="">CM</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-b-20">
+                            <!-- <label>Video * </label> -->
+                            <mat-radio-group matInput required>
+                              <mat-radio-button [value]="1" class="m-l-15">Video</mat-radio-button>
+                              <mat-radio-button [value]="0" class="m-l-15">App</mat-radio-button>
+                            </mat-radio-group>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Domain</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">inaaj.com</mat-option>
+                                <mat-option value="">inaaj.com</mat-option>
+                                <mat-option value="">inaaj.com</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 1</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">Education</mat-option>
+                                <mat-option value="">Movies</mat-option>
+                                <mat-option value="">Food & Drink</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 2</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Category 3</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                                <mat-option value="">No data</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Stream Type 1</mat-label>
+                              <mat-select matInput required #fontSize value="16px">
+                                <mat-option value="">Pre</mat-option>
+                                <mat-option value="">Post</mat-option>
+                                <mat-option value="">Mid</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Stream Type 2</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">OutStream</mat-option>
+                                <mat-option value="">In-Stream</mat-option>
+                                <mat-option value="">Responsive</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                              <mat-label>Select Stream Type 3</mat-label>
+                              <mat-select matInput #fontSize value="16px">
+                                <mat-option value="">Skippable</mat-option>
+                                <mat-option value="">Non - Skiabble</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10" style="margin-top: -4px!important;">
+                            <div class="p-r-0 m-b-20 m-t-0 text-left">
+                              <button mat-stroked-button color="" id="" class=" bg-danger text-white">Generate
+                                Tag</button>
+                            </div>
+                          </div>
+
+                          <div fxFlex.gt-sm="90" fxFlex="100" class="p-10">
+                            <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Code</mat-label>
+                              <textarea matInput placeholder=""></textarea>
+                            </mat-form-field>
+                          </div>
+                          <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk"
+                            style="margin-top: 23px;">
+                            <div mat-card-avatar style="height: 45px;  width: 45px;">
+                              <img src="assets/images/users/tag.png" class="img-fluid" />
+                            </div>
+                          </div>
+
+                        </div>
+                      </form>
+                    </ng-template>
+                  </mat-tab>
+                </mat-tab-group>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

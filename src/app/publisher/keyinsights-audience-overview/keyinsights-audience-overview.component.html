@@ -1,0 +1,133 @@
+ <!-- Audience Overview start -->
+ <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Users and PageViews Overview : ( {{date_range_userpageviews}} )</mat-card-title>
+                <div [chart]="userprofile0"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+ </div>
+
+ <!-- Users Comparision Overview & Page Views new start -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Audience By User Profile : ( {{date}} )</mat-card-title>
+                <div style="height: 395px;" [chart]="userprofile1"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>PageViews By User Profile : ( {{date}} )</mat-card-title>
+                <div style="height: 395px;" [chart]="userprofile1A"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+ <!-- Session / Users By User Profile and Session Duration new start -->
+ <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100"> 
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Session / Users By User Profile & Avg. Session Duration : ( {{date}} )</mat-card-title>
+                <div style="height: 395px;"  [chart]="userprofile2"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+ <!--------User Profiles start------------------>
+<!-- 1 Page / Sessions start -->
+<div fxLayout="row wrap">
+<div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+        <mat-card-content>
+            <mat-card-title>Pages / Session By User Profile : ( {{date}} )</mat-card-title>
+            <div style="height: 395px;" [chart]="userprofile3"></div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!-- 2 Bounce Rate start -->
+<div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+        <mat-card-content>
+            <mat-card-title>Bounce Rate By User Profile : ( {{date}} )</mat-card-title>
+            <div style="height: 395px;" [chart]="userprofile4"></div>
+        </mat-card-content>
+    </mat-card>
+</div>
+</div>
+
+ <!-- Avg. Page Load Time Trend start -->
+ <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100"> 
+        <mat-card>
+        <mat-card-content>
+            <mat-card-title>Avg. Page Load Time Trend : ( {{date}} )</mat-card-title>
+                 <div [chart]="userprofile6"></div>
+        </mat-card-content>  
+        </mat-card>
+     </div>
+  </div>
+
+<!-- Audience Overview by Devices start -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100"> 
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Users By Devices : ( {{dateD}} )</mat-card-title>
+                <div style="height: 395px;"  [chart]="userprofile5"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <!-- Device wise Bounce Rate start -->
+    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title style="margin-bottom: 25px;">Device Wise Bounce Rate : ( {{daterange}})</mat-card-title>
+                <!-- <mat-card-subtitle style="margin-top: 15px;" class="text-muted"> ( 26 Apr - 02 May, 2021 v/s 19 Apr - 25 Apr, 2021)</mat-card-subtitle> -->
+                <div class="table-responsive" style="height: 352px!important;">
+                    <table mat-table [dataSource]="dataSource2" matSort class="no-wrap m-t-0 v-middle" style="width: 100%;">
+                        <!--  -->
+                        <ng-container matColumnDef="position2">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Device Category</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.position2}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="curr">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Current Week (%) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.curr}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="pre">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15"> Previous Week (%) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.pre}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                    </table>
+               </div>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+ <!--loader-->
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                <div class="spin1"></div>
+                </div>
+            </div>
+      <!--loaderend--> 

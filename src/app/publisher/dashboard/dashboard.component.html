@@ -1,0 +1,548 @@
+<div *ngIf="childnetdash" style="height: 575px;">
+</div>
+<div *ngIf="!childnetdash">
+    <!-- bg bank details start -->
+    <div *ngIf="bankDetailStrip" fxLayout="row wrap">
+        <div fxFlex.gt-sm="100" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card class="bg-danger">
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-sm="70" fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="50" fxFlex="100">
+                        <h2 class="font-17 text-white text-left m-0 p-20 bg-bank-details" style="line-height: normal; margin-left: 7px;">Please update your Swift Code details
+                            within Bank Details. </h2>
+                    </div>
+
+                    <div class="text-center bg-bank-btn" fxFlex.gt-sm="30" fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="50" fxFlex="100">
+                        <button [routerLink]="['/bankdetails']" mat-stroked-button color="" id="" class="m-t-15 text-danger text-center" style="background-color: azure!important;"> Click here to update now</button>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <!-- bg bank details end -->
+    <!-- tabs end -->
+    <!-- Start 4 four boxes -->
+    <div fxLayout="row wrap">
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card class="bg-primary">
+                <!-- old boxes start -->
+                <!-- <mat-card-content>
+                    <h6 class="text-white font-16">Total Earnings 10-Day Trend</h6>
+                    <div class="d-flex no-block align-items-center">
+                        <div class="stats" style="margin-top: -35px;">
+                            <h2 class="text-white font-25 m-0 m-b-0 m-t-10">${{earning10day}}</h2>
+                            <h3 class="text-white font-18 m-0 m-t-10">{{earning10dayUpDownPer/100 | percent: '1.1-1'}}
+                                <mat-icon *ngIf="earningUpArrow" class="font-18">arrow_upward</mat-icon>
+                                <mat-icon *ngIf="earningDownpArrow" class="font-18">arrow_downward</mat-icon>
+                            </h3>
+                        </div>
+                        <div class="ml-auto" style="margin-top: -45px;">
+                            <div class="d-flex flex-column">
+                                <div class="m-t-0" [chart]="topboxearningGraph" style="height: 100px; width: 105px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content> -->
+                  <!-- old boxes End -->
+                <mat-card-content>
+                    <h6 class="font15_lap1280_1365 text-white text-left"
+                        style="font-size: 15px; line-height: 20px!important;">Total Earnings 10-Days</h6>
+                    <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                        <h2 class="text-white text-left m-0 p-t-10 font-25">${{earning10day}}</h2>
+
+                        <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                            <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{earning10dayUpDownPer/100 | percent: '1.1-1'}}
+                                <mat-icon *ngIf="earningUpArrow" class="font-18">arrow_upward</mat-icon>
+                                <mat-icon *ngIf="earningDownpArrow" class="font-18">arrow_downward</mat-icon>
+                            </h3>
+                        </div>
+
+                        <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                            <div class="d-flex flex-column" style="overflow: inherit!important;">
+                                <div class="m-t-0" [chart]="topboxearningGraph"
+                                    style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- 2 box -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card class="bg-warning">
+                <mat-card-content>
+                    <h6 class="font15_lap1280_1365 text-white text-left"
+                        style="font-size: 15px; line-height: 20px!important;">Total CPM 10-Days</h6>
+                    <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                        <h2 class="text-white text-left m-0 p-t-10 font-25">${{CPM10day}}</h2>
+
+                        <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                            <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{CPM10dayUpDownPer/100 | percent: '1.1-1'}}
+                                <mat-icon *ngIf="cpmUpArrow" class="font-18">arrow_upward</mat-icon>
+                                <mat-icon *ngIf="cpmDownpArrow" class="font-18">arrow_downward</mat-icon>
+                            </h3>
+                        </div>
+
+                        <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                            <div class="d-flex flex-column" style="overflow: inherit!important;">
+                                <div class="m-t-0" [chart]="topboxcpmGraph"
+                                    style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- 3box -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card class="bg-success">
+                <mat-card-content>
+                    <h6 class="font15_lap1280_1365 text-white text-left"
+                        style="font-size: 15px; line-height: 20px!important;">Total CTR 10-Days</h6>
+                    <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                        <h2 class="text-white text-left m-0 p-t-10 font-25">{{CTR10day/100 | percent:'1.2-2'}}</h2>
+
+                        <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                            <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{CTR10dayUpDownPer/100 | percent: '1.1-1'}}
+                                <mat-icon *ngIf="ctrUpArrow" class="font-18">arrow_upward</mat-icon>
+                                <mat-icon *ngIf="ctrDownpArrow" class="font-18">arrow_downward</mat-icon>
+                            </h3>
+                        </div>
+
+                        <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                            <div class="d-flex flex-column" style="overflow: inherit!important;">
+                                <div class="m-t-0" [chart]="topboxctrGraph"
+                                    style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- 4box -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card class="bg-info">
+                <mat-card-content>
+                    <h6 class="font15_lap1280_1365 text-white text-left"
+                        style="font-size: 15px; line-height: 20px!important;">Total Filled % 10-Days</h6>
+                    <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                        <h2 class="text-white text-left m-0 p-t-10 font-25">{{Filled10day/100 | percent:'1.2-2'}}</h2>
+
+                        <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                            <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{Filled10dayUpDownPer/100 | percent: '1.1-1'}}
+                                <mat-icon *ngIf="fillUpArrow" class="font-18">arrow_upward</mat-icon>
+                                <mat-icon *ngIf="fillDownpArrow" class="font-18">arrow_downward</mat-icon>
+                            </h3>
+                        </div>
+
+                        <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                            <div class="d-flex flex-column" style="overflow: inherit!important;">
+                                <div class="m-t-0" [chart]="topboxfilledGraph"
+                                    style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <!-- start 4boxes end -->
+    <!-- Start 4 four boxes End -->
+
+    <!-- ============================================================== -->
+    <div fxLayout="row wrap">
+        <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card>
+                <mat-card-content>
+                    <mat-card-title>Total Earnings & CPM Trends : ( {{date}} )</mat-card-title>
+                    <!-- <div [chart]="earningCPMtrend" style="height: 420px;"></div> -->
+                    <div [chart]="earningCPMtrend"></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <div fxLayout="row wrap">
+        <div fxFlex.gt-lg="25" fxFlex.gt-md="35" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card>
+                <mat-card-content>
+                    <mat-card-title>Ad Requests By Devices</mat-card-title>
+                    <div [chart]="revenueadtype"></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div fxFlex.gt-lg="75" fxFlex.gt-md="65" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card>
+                <mat-card-content>
+                    <mat-card-title>Unfilled Inventory Trend</mat-card-title>
+                    <div [chart]="unfilledTrend"></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- Richmedia start -->
+    <div fxLayout="row wrap">
+        <!-- 1box start -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-xs="50" fxFlex="100">
+            <mat-card>
+                <mat-card-content class="richmediaModule">
+                    <div class="p-l-0 m-b-15">
+                        <div class="font-light font-20" style="margin-top: 5px!important;">RichMedia</div>
+                    </div>
+
+                    <div class="d-flex no-block">
+                        <div class="m-r-15 no-shrink m-t-5">
+                            <button mat-fab mat-card-icon class="shadow-none bg-primary mat-card" style="pointer-events: none !important;">
+                                <mat-icon>library_music</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row no-block">
+                                <div class="p-10 m-r-10 b-r">
+                                    <div class="font-light">Earnings</div>
+                                    <b class="font-light font-18 text-primary">${{richmediaEarningAdType | number :
+                                        '1.2-2'}}</b>
+                                </div>
+                                <div class="p-10">
+                                    <div class="font-light">CPM</div>
+                                    <b class="font-light font-18 text-primary">${{richmediaCPMAdType | number : '1.2-2'}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!-- column -->
+        <!-- 2 box start -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-xs="50" fxFlex="100">
+            <mat-card>
+                <mat-card-content class="richmediaModule">
+                    <div class="p-l-0 m-b-15">
+                        <div class="font-light font-20" style="margin-top: 5px!important;">Image</div>
+                    </div>
+
+                    <div class="d-flex no-block">
+                        <div class="m-r-15 no-shrink m-t-5">
+                            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-warning mat-card" style="pointer-events: none !important;">
+                                <mat-icon>image</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row no-block">
+                                <div class="p-10 m-r-10 b-r">
+                                    <div class="font-light">Earnings</div>
+                                    <b class="font-light font-18 text-warning">${{imageEarningAdType | number : '1.2-2'}}</b>
+                                </div>
+                                <div class="p-10">
+                                    <div class="font-light">CPM</div>
+                                    <b class="font-light font-18 text-warning">${{imageCPMAdType | number : '1.2-2'}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!-- column -->
+        <!-- 3 box -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-xs="50" fxFlex="100">
+            <mat-card>
+                <mat-card-content class="richmediaModule">
+                    <div class="p-l-0 m-b-15">
+                        <div class="font-light font-20" style="margin-top: 5px!important;">Text</div>
+                    </div>
+
+                    <div class="d-flex no-block">
+                        <div class="m-r-15 no-shrink m-t-5">
+                            <button mat-fab color="accent" mat-card-icon class="shadow-none bg-success mat-card" style="pointer-events: none !important;">
+                                <mat-icon>format_color_text</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row no-block">
+                                <div class="p-10 m-r-10 b-r">
+                                    <div class="font-light">Earnings</div>
+                                    <b class="font-light font-18 text-success">${{textEarningAdType | number : '1.2-2'}}</b>
+                                </div>
+                                <div class="p-10">
+                                    <div class="font-light">CPM</div>
+                                    <b class="font-light font-18 text-success">${{textCPMAdType | number : '1.2-2'}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!-- column -->
+        <!-- 4 box -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-xs="50" fxFlex="100">
+            <mat-card>
+                <mat-card-content class="richmediaModule">
+                    <div class="p-l-0 m-b-15">
+                        <div class="font-light font-20" style="margin-top: 5px!important;">Video</div>
+                    </div>
+
+                    <div class="d-flex no-block">
+                        <div class="m-r-15 no-shrink m-t-5">
+                            <button mat-fab color="accent" mat-card-icon class="shadow-none bg-info mat-card" style="pointer-events: none !important;">
+                                <mat-icon>video_library</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row no-block">
+                                <div class="p-10 m-r-10 b-r">
+                                    <div class="font-light">Earnings</div>
+                                    <b class="font-light font-18 text-info">${{videoEarningAdType | number : '1.2-2'}}</b>
+                                </div>
+                                <div class="p-10">
+                                    <div class="font-light">CPM</div>
+                                    <b class="font-light font-18 text-info">${{videoCPMAdType | number : '1.2-2'}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- 5box -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-xs="50" fxFlex="100">
+            <mat-card>
+                <mat-card-content class="richmediaModule">
+                    <div class="p-l-0 m-b-15">
+                        <div class="font-light font-20" style="margin-top: 5px!important;">Animated</div>
+                    </div>
+
+                    <div class="d-flex no-block">
+                        <div class="m-r-15 no-shrink m-t-5">
+                            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger mat-card" style="pointer-events: none !important;">
+                                <mat-icon>whatshot</mat-icon>
+                            </button>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row no-block">
+                                <div class="p-10 m-r-10 b-r">
+                                    <div class="font-light">Earnings</div>
+                                    <b class="font-light font-18 text-danger">${{animatedEarningAdType | number : '1.2-2'}}</b>
+                                </div>
+                                <div class="p-10">
+                                    <div class="font-light">CPM</div>
+                                    <b class="font-light font-18 text-danger">${{animatedCPMAdType | number : '1.2-2'}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <!-- 6 box -->
+        <div fxFlex.gt-sm="50" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-xs="50" fxFlex="100">
+            <mat-card>
+                <mat-card-content class="richmediaModule">
+                    <div class="p-l-0 m-b-15">
+                        <div class="font-light font-20" style="margin-top: 5px!important;">Others</div>
+                    </div>
+
+                    <div class="d-flex no-block">
+                        <div class="m-r-15 no-shrink m-t-5">
+                            <button mat-fab color="warn" mat-card-icon class="shadow-none bg-muted mat-card"
+                            style="background-color: #a9a9a9; pointer-events: none !important;">
+                            <mat-icon>zoom_in</mat-icon>
+                          </button>
+                        </div>
+                        <div>
+                            <div class="d-flex flex-row no-block">
+                                <div class="p-10 m-r-10 b-r">
+                                    <div class="font-light">Earnings</div>
+                                    <b class="font-light font-18 text-inverse">${{otherEarningAdType | number : '1.2-2'}}</b>
+                                </div>
+                                <div class="p-10">
+                                    <div class="font-light">CPM</div>
+                                    <b class="font-light font-18 text-inverse">${{otherCPMAdType | number : '1.2-2'}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <!-- Richmedia End-->
+
+
+    <!-- Industry Benchmark Start -->
+    <!-- <div fxLayout="row wrap">
+        <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card>
+                <mat-card-header class="bg-primary text-white">
+                    <mat-card-title>Industry Benchmark For Education : ( {{date}} )</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row wrap">
+                        <div fxFlex.gt-lg="80" fxFlex.gt-md="80" fxFlex.gt-xs="100" fxFlex="100">
+                            <h4>Please Share Your GA Admin Access To View How Much eCPM Your Industry Is Generating Vs
+                                Yours.
+                            </h4>
+                        </div>
+
+                        <div fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="p-r-0 m-b-10 m-t-20 text-center">
+                                <button mat-stroked-button [routerLink]="['../publisher/dashboard-admin']" color=""
+                                    id="" class=" bg-danger text-white">Admin Access</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div> -->
+    <!-- Industry Benchmark End -->
+
+    <div fxLayout="row wrap">
+        <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100" *ngFor="let indbenchdatas of indbenchdata">
+            <mat-card>
+                <mat-card-header class="bg-primary text-white">
+                    <mat-card-title>Industry Benchmark For {{indbenchdatas.vertical}} : ( {{date}} )</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div fxLayout="row wrap" *ngIf="!indbench_flag">
+                        <div fxFlex.gt-lg="80" fxFlex.gt-md="80" fxFlex.gt-xs="100" fxFlex="100">
+                            <h4>{{indbenchdatas.message}}</h4>
+                        </div>
+                        <!-- <div fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
+                            <div class="p-r-0 m-b-10 m-t-20 text-center">
+                                <button mat-stroked-button [routerLink]="['../publisher/dashboard-admin']" color=""
+                                    id="" class=" bg-danger text-white">Admin Access</button>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <!-- Table start -->
+                    <div class="table-responsive m-t-5" *ngIf="indbench_flag">
+                        <table mat-table [dataSource]="dataSource1" matSort class="no-wraap m-t-10 m-b-20 v-middle"
+                            style="width: 100%;">
+
+                            <ng-container matColumnDef="position1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">      </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.position1}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="name1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Session / User
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                    {{element.name1}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="weight1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Pages / Session
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                    {{element.weight1}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="coverage1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Avg. Time on Page
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                    {{element.coverage1}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="bounce1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Bounce Rate (%)
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                    {{element.bounce1}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="user1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Returning User (%)
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                    {{element.user1}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="ctr1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> CTR (%)
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                    {{element.ctr1}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="cpm1">
+                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Estimated CPM ($)
+                                </th>
+                                <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                    {{element.cpm1}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                        </table>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- Advertiser Trend In Last 30 days -->
+    <div fxLayout="row wrap">
+        <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card>
+                <mat-card-content>
+                    <mat-card-title>Advertiser Trend In Last 30 Days</mat-card-title>
+                    <div [chart]="advertiserTrend"></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisibleTopBox">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisibleEarnT">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisiblePVD">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisibleUFT">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisibleAdType">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisibleIB">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisibleAT">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <!-- End Advertiser Trend In Last 30 days -->
+</div>

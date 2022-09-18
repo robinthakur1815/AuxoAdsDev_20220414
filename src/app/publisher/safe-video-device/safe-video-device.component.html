@@ -1,0 +1,206 @@
+ <!-- CyberAds Pro start -->
+ <div fullscreen appUiTour #tour="appUiTour">
+ <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>                
+                <div fxLayout="row wrap">
+                  <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+                    <mat-card-title>Auxo Network Earnings By Video - Device : ( {{date}} )</mat-card-title>
+                  </div>
+
+                  <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100">
+                 <mat-card-title style="cursor: pointer;" class="text-right"> 
+
+                  <img #tooltip1="matTooltip" (mouseenter)="tooltip1.show()" matTooltipPosition="after" mat-raised-button matTooltip="Click on graph for drilldown analysis" aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn2.png" width="25"/>
+
+                  <!-- <img #tooltip2="matTooltip" (mouseenter)="tooltip2.show()" matTooltipPosition="after" mat-raised-button matTooltip="Email weekly report"  aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn1.png" width="25"/> -->
+
+                  <img #tooltip3="matTooltip" (mouseenter)="tooltip3.show()" matTooltipPosition="after" mat-raised-button matTooltip="Download Report" aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn3.png" (click)="downloadsafedevice()" width="25"/>
+
+              </mat-card-title>
+              </div>
+          </div>
+
+                <div id="container"></div>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+ </div>
+
+ <!-- Adsense Adtypes- Devicetable start -->
+ <div fxLayout="row wrap">
+    <div  fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="table-responsive">
+                    <table class="no-wraap m-t-0 v-middle" id="level1" width="100%">
+                        <thead>
+                            <th style="border-right: 1px solid transparent;" colspan="1" class="font-medium font-16 p-15brk text-left color fontfamilyth"></th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Device </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Requests </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Impressions </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Fill Rate (%) </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Coverage (%)</th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> CTR (%)</th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated CPM ($) </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated Earnings ($) </th>
+                        </thead>
+
+                    <tbody>
+                    <ng-container *ngFor="let data of tablerootdata">
+                      <tr>
+                        <td style="border-right: 1px solid transparent;" class="p-15 font-normal fontfamily breaklinetable text-center" (click)="data.expanded = !data.expanded"> {{ data.expanded ? '&ndash;' : '+'}} </td>
+                        <td class="p-15 font-normal fontfamily breaklinetable"> {{data.device}} </td>
+                        <!-- <td class="p-15 font-normal fontfamily" (click)="data.expanded = !data.expanded"> {{ data.expanded ? '&ndash;' : '+'}} <span style="padding-left: 15px;">{{data.device}}</span> </td> -->
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.adreq | number}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.adimpr | number}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.fillrate}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.covg}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.ctr}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.ecpm}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.revenue_cmsShare | number:'1.2-2'}} </td>
+                      </tr>
+                       
+                         
+                    
+                      <ng-container *ngIf="data.expanded">
+                        <tr *ngFor="let details of findDetails(data)">
+                          <td style="border-right: 1px solid transparent;" colspan="1"></td>
+                          <td style="padding-left: 40px;" class="p-15 font-normal fontfamily"> {{details.datades.dateinner}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.adrinner | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.adimrinner | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right">{{details.datades.fillrate}}</td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.covginner}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.ctrinner}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.ecpmxinner}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.datades.revenue_cmsShareinner}} </td>
+                        </tr>
+                      </ng-container>
+
+                    </ng-container>
+                        <tr *ngFor="let sumupdatas of sumupdata">
+                          <td style="border-right: 1px solid transparent;" colspan="1"></td>
+                          <td style="padding-left: 40px;" class="p-15 font-normal fontfamily"> Total </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumupdatas.adreq | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumupdatas.adimpr | number}} </td>
+                         <td class="p-15 font-normal fontfamily text-right">{{sumupdatas.fillrate}}</td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumupdatas.covg}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumupdatas.ctr}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumupdatas.ecpm}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumupdatas.revenue_cmsShare}} </td>
+                        </tr>
+                    </tbody>
+                    </table>
+
+                  <!---level 2--->  
+                    <table class="no-wraap m-t-0 v-middle" width="100%" id="level2" style="display:none;">
+                        <thead>
+                            <th style="border-right: 1px solid transparent;" colspan="1" class="font-medium font-16 p-15brk text-left color fontfamilyth"></th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Unit </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Requests </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Impressions </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Fill Rate (%) </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Coverage (%)</th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> CTR (%)</th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated CPM ($) </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated Earnings ($) </th>
+                        </thead>
+                          
+                    <tbody>
+            
+                   <ng-container *ngFor="let data of level2data">
+                      <tr>
+                        <td style="border-right: 1px solid transparent;" class="p-15 font-normal fontfamily breaklinetable text-center" (click)="data.expanded = !data.expanded"> {{ data.expanded ? '&ndash;' : '+'}} </td>
+                        <td class="p-15 font-normal fontfamily breaklinetable"> {{ (data.rep_namelvl1.length>85)? (data.rep_namelvl1 | slice:0:85)+'..':(data.rep_namelvl1) }} </td>
+                        <!-- <td class="p-15 font-normal fontfamily" (click)="data.expanded = !data.expanded"> {{ data.expanded ? '&ndash;' : '+'}} <span style="padding-left: 15px;">{{ (data.rep_namelvl1.length>30)? (data.rep_namelvl1 | slice:0:40)+'..':(data.rep_namelvl1) }}</span> </td> -->
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.adrlvl1 | number}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.adimrlvl1 | number}} </td>
+                        <td class="p-15 font-normal fontfamily text-right">  {{data.fillratelvl1}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.covglvl1}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.ctrlvl1}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.ecpmxlvl1}} </td>
+                        <td class="p-15 font-normal fontfamily text-right"> {{data.revenue_cmsSharelvl1}} </td>
+                      </tr> 
+                       
+                         
+                    
+                      <ng-container *ngIf="data.expanded">
+                        <tr *ngFor="let details of level2dataexp(data)">
+                          <td style="border-right: 1px solid transparent;" colspan="1"></td>
+                          <td style="padding-left: 40px;" class="p-15 font-normal fontfamily"> {{details.dateinnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.adrinnerlvl1 | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.adimrinnerlvl1 | number}} </td>
+                         <td class="p-15 font-normal fontfamily text-right"> {{details.fillrateinnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.covginnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.ctr}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.ecpmxinnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.revenue_cmsShareinnerlvl1}} </td>
+                        </tr>
+                      </ng-container>
+
+                    </ng-container>
+                       
+                    </tbody>
+                    </table>
+                    <!---level 2--->
+                    <!---level 3--->
+                    <table class="no-wrap m-t-0 v-middle" width="100%" id="level3" style="display:none;">
+                        <thead>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Date </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Requests </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Impressions </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Fill Rate (%) </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Coverage (%)</th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> CTR (%)</th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated CPM ($) </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated Earnings ($) </th>
+                        </thead>
+                          
+                    <tbody>
+            
+                   <ng-container *ngFor="let details of level3data">
+                     <tr>
+                          <td style="padding-left: 40px;" class="p-15 font-normal fontfamily"> {{details.dateinnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.adrinnerlvl1 | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.adimrinnerlvl1 | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.fillrateinnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.covginnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.ctr}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.ecpmxinnerlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{details.revenue_cmsShareinnerlvl1}} </td>
+                        </tr>
+                      
+
+                    </ng-container>
+                       <tr>
+                          <td style="padding-left: 40px;" class="p-15 font-normal fontfamily"> Total </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumuplvldata.adrlvl1 | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumuplvldata.adimrlvl1 | number}} </td>
+                          <td class="p-15 font-normal fontfamily text-right">{{sumuplvldata.fillratelvl1}}</td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumuplvldata.covglvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumuplvldata.ctrlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumuplvldata.ecpmxlvl1}} </td>
+                          <td class="p-15 font-normal fontfamily text-right"> {{sumuplvldata.revenue_cmsSharelvl1}} </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    <!---level 3--->  
+                </div>
+
+            </mat-card-content>
+            <!--loader-->
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                <div class="spin1"></div>
+                </div>
+            </div>
+      <!--loaderend--> 
+        </mat-card>
+    </div>
+</div>
+<div class="tour_publisherend" appUiTourStep="1"></div>
+<div class="tour_publisherend" appUiTourStep="2"></div>
+<div class="tour_publisherend" appUiTourStep="3"></div>
+</div>

@@ -1,0 +1,46 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<!-- <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
+    <div class="profile-img">
+        <img src="assets/images/users/profile.png" alt="user"> </div>
+    <div class="profile-text">
+        <a [matMenuTriggerFor]="sdprofile" class=""> Markarn Doe
+            <i class="ti-angle-down font-12 m-l-5"></i>
+        </a>
+    </div>
+    <mat-menu #sdprofile="matMenu" class="mymegamenu">
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon> Settings
+        </button>
+        <button mat-menu-item>
+            <mat-icon>account_box</mat-icon> Profile
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon> Disable notifications
+        </button>
+        <button mat-menu-item>
+            <mat-icon >exit_to_app</mat-icon> Sign Out
+        </button>
+    </mat-menu>
+</div> --> 
+
+<mat-nav-list>
+
+    <mat-list-item [ngClass]="{selected: getActiveDashboard('/acc-dashboard')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'acc-dashboard']" (click)="handleNotify('acc-dashboard')">
+            <mat-icon>av_timer</mat-icon>
+            <span>Dashboard</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+
+    <mat-list-item [ngClass]="{selected: getActiveNetworkPartner('/network-partner')}" (click)="scrollToTop()">
+        <a class="" [routerLink]="['/', 'network-partner']" (click)="handleNotify('network-partner')">
+            <mat-icon>people_outline</mat-icon>
+            <span>Network Partner</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+
+</mat-nav-list>

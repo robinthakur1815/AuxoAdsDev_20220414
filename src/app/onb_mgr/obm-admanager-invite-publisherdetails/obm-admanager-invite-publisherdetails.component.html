@@ -1,0 +1,274 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div class="text-right m-r-0 m-b-25" style="margin-top: 5px!important;">
+          <div (click)="backPage()" mat-icon-button class="close-button" [mat-dialog-close]="true">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+          </div>
+        </div>
+        <mat-card-title>Publisher Details</mat-card-title>
+        <div fxLayout="row wrap">
+          <div fxFlex.gt-sm="100" fxFlex="100">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="m-t-20  p-b-20">
+              <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Publisher Email</mat-label>
+                    <input matInput id="publisheremail" formControlName="publisheremail" name="publisheremail"
+                      placeholder="Enter Email">
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Publisher Contact No.</mat-label>
+                    <input matInput id="publishercontact" formControlName="publishercontact" name="publishercontact"
+                      placeholder="Enter Phone Number" value="">
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Publisher Type</mat-label>
+                    <mat-select matInput required #fontSize value="16px" placeholder="Publisher Type*"
+                      name="publisher_type" formControlName="publisher_type"
+                      [ngClass]="{ 'is-invalid': submitted && f.publisher_email.errors }">
+                      <mat-option *ngFor="let publishertype of PublisherType" value="{{publishertype}}">
+                        {{publishertype}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Organization Type</mat-label>
+                    <mat-select matInput required #fontSize value="16px" placeholder="Organization Type*"
+                      name="org_type" formControlName="org_type"
+                      [ngClass]="{ 'is-invalid': submitted && f.org_type.errors }">
+                      <mat-option *ngFor="let organizationtype of OrganizationType" value="{{organizationtype}}">
+                        {{organizationtype}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Organisation Name</mat-label>
+                    <input matInput id="org_name" formControlName="org_name" name="org_name"
+                      placeholder="Enter Organisation Name" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['org_name'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter characters
+                    only</small>
+                  <small
+                    *ngIf="form.controls['org_name'].errors?.whitespace && form.controls['org_name'].touched"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid
+                    organisation name
+                  </small>
+                  <small *ngIf="form.controls['org_name'].errors?.minlength"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Organisation name must be 3 characters</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Total Domain Managed</mat-label>
+                    <input matInput id="domainmanaged" name="domainmanaged" formControlName="domainmanaged"
+                      placeholder="Enter Total Domain" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['domainmanaged'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter numbers
+                    only</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Editorial Team Size</mat-label>
+                    <input matInput id="editorialteamsize" formControlName="editorialteamsize" name="editorialteamsize"
+                      placeholder="Enter Publisher Editorial Team Size" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['editorialteamsize'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter numbers
+                    only</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-b-10" style="padding:30px 16px !important;">
+                  <label>Direct Sales * </label>
+                  <mat-radio-group matInput required name="directsale" formControlName="directsale">
+                    <mat-radio-button value="Y" class="m-l-15">Yes</mat-radio-button>
+                    <mat-radio-button value="N" class="m-l-15">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-b-20" style="padding-left: 16px!important;">
+                  <mat-label>Adx For</mat-label><br>
+                  <mat-checkbox formControlName="adxforapp" class="m-t-20 m-l-20" (click)="showAppRevenue()">Adx For App
+                  </mat-checkbox>
+                  <mat-checkbox formControlName="adxforcontent" class="m-t-20 m-l-20" (click)="showContentRevenue()">
+                    Adx For Content</mat-checkbox>
+                  <mat-checkbox formControlName="adxforvideo" class="m-t-20 m-l-20" (click)="showVideoRevenue()"> Adx
+                    For Video</mat-checkbox>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10" *ngIf="isAdxforappshare">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Revenue Share for Adx-App</mat-label>
+                    <input matInput id="adxforappshare" name="adxforappshare" formControlName="adxforappshare"
+                      placeholder="Revenue Share of Adx for App" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['adxforappshare'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter numbers
+                    only</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10" *ngIf="isAdxforcontentshare">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Revenue Share for Adx-Content</mat-label>
+                    <input matInput id="adxforcontentshare" name="adxforcontentshare"
+                      formControlName="adxforcontentshare" placeholder="Revenue Share of Adx for Content" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['adxforcontentshare'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter numbers
+                    only</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10" *ngIf="isAdxforvideoshare">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Revenue Share for Adx-Video</mat-label>
+                    <input matInput id="adxforvideoshare" name="adxforvideoshare" formControlName="adxforvideoshare"
+                      placeholder="Revenue Share of Adx for Video" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['adxforvideoshare'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter numbers
+                    only</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>AdSense Network Partner ID</mat-label>
+                    <input matInput id="adsensenetworkid" name="adsensenetworkid" formControlName="adsensenetworkid"
+                      placeholder="AdSense Network Partner ID" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['adsensenetworkid'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter valid AdSense network partner ID</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Revenue Share for Adsense</mat-label>
+                    <input matInput id="adsenserevenueshare" name="adsenserevenueshare"
+                      formControlName="adsenserevenueshare" placeholder="Revenue Share for Adsense" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['adsenserevenueshare'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter numbers
+                    only</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Google Analytics Id</mat-label>
+                    <input matInput id="analyticsid" name="analyticsid" formControlName="analyticsid"
+                      placeholder="Enter Google Analytics Id" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['analyticsid'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter valid google analytics Id</small>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Sales Person</mat-label>
+
+                    <mat-select required #fontSize [(value)]="salesId" id="publishersales" name="publishersales"
+                      formControlName="publishersales">
+                      <mat-option *ngFor="let sales of publisherSales" [value]="sales.sal_id">{{sales.sal_name}}
+                      </mat-option>
+                    </mat-select>
+
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                    <mat-label>Sales Channel</mat-label>
+
+                    <mat-select required #fontSize [(value)]="channelId" id="publishersaleschannel"
+                      name="publishersaleschannel" formControlName="publishersaleschannel">
+                      <mat-option *ngFor="let saleschannel of publisherSalesChannel" [value]="saleschannel.channel_id"
+                        [value]="saleschannel.channel_id">{{saleschannel.chan_name}}</mat-option>
+                    </mat-select>
+
+                  </mat-form-field>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Remark</mat-label>
+                    <textarea matInput id="publisherremark" name="publisherremark" formControlName="publisherremark"
+                      placeholder="Enter Remark" cols="20" rows="2"></textarea>
+                  </mat-form-field>
+                  <small *ngIf="form.controls['publisherremark'].errors?.pattern"
+                    class="text-danger support-text logintrp-css spacing-adjust m-b-20">Please enter valid remarks</small>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-b-20" style="padding-left: 16px!important;">
+                  <mat-label>Having a referral</mat-label><br>
+                  <mat-checkbox class="m-t-20 m-l-20" formControlName="hasreffered"
+                    (change)="showReferDetails(referStatus?'Y':'N')" [(ngModel)]="referStatus">Has Referral
+                  </mat-checkbox>
+                </div>
+
+                <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10" *ngIf="isRefferedname">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Referred by Name</mat-label>
+                    <input matInput id="refferedname" name="refferedname" formControlName="refferedname"
+                      placeholder="Enter Referred by Name" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['refferedname'].errors?.whitespace && form.controls['refferedname'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid name</small>
+                  <small *ngIf="form.controls['refferedname'].errors?.minlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Name must be 3 characters</small>
+                  <small *ngIf="form.controls['refferedname'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Name must be characters</small>
+                </div>
+
+                <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10" *ngIf="isRefferedemail">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Referred by Email</mat-label>
+                    <input matInput id="refferedemail" name="refferedemail" formControlName="refferedemail"
+                      placeholder="Enter Referred by Email" value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['refferedemail'].errors && form.controls['refferedemail'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Must be a valid email address</small>
+                   
+                </div>
+
+                <div fxFlex.gt-sm="33.33" fxFlex="100" class="p-10" *ngIf="isRefferedmobile">
+                  <mat-form-field appearance="outline" class="p-r-0">
+                    <mat-label>Referred by Ph.No.</mat-label>
+                    <input matInput id="refferedmobile" name="refferedmobile" formControlName="refferedmobile"
+                      placeholder="Enter Referred by Ph.No." value="">
+                  </mat-form-field>
+                  <small *ngIf="form.controls['refferedmobile'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid mobile number</small>
+                    <small *ngIf="form.controls['refferedmobile'].errors?.minlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Mobile number must be 8 numeric  characters</small>
+                    <small *ngIf="form.controls['refferedmobile'].errors?.maxlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Mobile number must be 12 numeric characters</small>
+                </div>
+
+                <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+                  <div class="p-r-0 m-b-10 m-t-5 text-center">
+                    <button mat-stroked-button color="" id="" class=" bg-danger text-white">Submit</button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- form End -->
+
+        <div class="bg-opacity" *ngIf="isSpinnerVisible">
+          <div class="parent">
+            <div class="spin1"></div>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

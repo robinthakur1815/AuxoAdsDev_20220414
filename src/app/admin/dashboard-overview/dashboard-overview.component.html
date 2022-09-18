@@ -1,0 +1,1213 @@
+<!-- Level 1 start  -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Total Handling Accounts </mat-card-title>
+                <div class="m-t-15" fxLayout="row wrap">
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="50" fxFlex="100">
+                        <!-- <a href="javascript:void"> -->
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">{{ auxonetworkactiveaccount }}</h3>
+                                <small style="color: #455a64;">Total Active Auxo Network Accounts</small>
+                            </div>
+
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">{{ adxnewaccount }}</h3>
+                                <small style="color: #455a64;">New Auxo Network Account</small>
+                            </div>
+
+                            <div class="p-10" style="padding-bottom: 12px!important;">
+                                <h3 class="m-0 m-b-10 font-25">{{auxonetworkinactiveaccount | number}}</h3>
+                                <small style="color: #455a64;">Auxo Network InActive Account</small>
+                            </div>
+                        </mat-card>
+                        <!-- </a> -->
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="50" fxFlex="100">
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">{{adsenseactiveaccount | number}}</h3>
+                                <small style="color: #455a64;">Total Active Adsense Accounts</small>
+                            </div>
+
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">{{ adsensenewaccount }}</h3>
+                                <small style="color: #455a64;">New Adsense Account</small>
+                            </div>
+
+                            <div class="p-10" style="padding-bottom: 12px!important;">
+                                <h3 class="m-0 m-b-10 font-25">{{adsenseinactiveaccount | number}}</h3>
+                                <small style="color: #455a64;">Total InActive Adsense Accounts</small>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="50" fxFlex="100">
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">0</h3>
+                                <small style="color: #455a64;">Total Active Auxo Pro Accounts</small>
+                            </div>
+
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">0</h3>
+                                <small style="color: #455a64;">New Auxo Pro Account</small>
+                            </div>
+
+                            <div class="p-10" style="padding-bottom: 12px!important;">
+                                <h3 class="m-0 m-b-10 font-25">0</h3>
+                                <small style="color: #455a64;">Auxo Pro InActive Account</small>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="50" fxFlex="100">
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">{{auxonetworkactiveaccount+adsenseactiveaccount | number}}</h3>
+                                <small style="color: #455a64;">Total Active Accounts</small>
+                            </div>
+
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">{{adxnewaccount+adsensenewaccount | number}}</h3>
+                                <small style="color: #455a64;">New Total Account</small>
+                            </div>
+
+                            <div class="p-10" style="padding-bottom: 12px!important;">
+                                <h3 class="m-0 m-b-10 font-25">{{auxonetworkinactiveaccount+adsenseinactiveaccount | number}}</h3>
+                                <small style="color: #455a64;">Total InActive Account</small>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<!-- Level 1 end  -->
+
+<!-- Tabs  start  -->
+<mat-card>
+    <mat-card-content>
+        <mat-accordion>
+            <!-- Tabs Level 5 -->
+            <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title>Overview :</mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div fxLayout="row wrap" style="margin-top: -5px!important;">
+                    <div fxFlex.gt-sm="100" fxFlex="100">
+                        <form class="m-t-0  p-b-0" [formGroup]="form" (ngSubmit)="goFilters()">
+                            <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="14.28" fxFlex.gt-md="14.28" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>A/C Manager</mat-label>
+                                        <mat-select matInput #fontSize value="16px" (selectionChange)="accmanagerChange($event)" [formControl]="form.controls['manager_ids']">
+                                            <mat-option *ngFor="let list of managerList; let i = index" [value]="managerList[i].manager_id">{{managerList[i].name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="14.28" fxFlex.gt-md="14.28" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Network Partner</mat-label>
+                                        <mat-select matInput #fontSize value="16px" [formControl]="form.controls['pub_ids']">
+                                             <mat-option *ngFor="let list of pubList; let i = index" [value]="pubList[i].pub_id">{{pubList[i].name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="14.28" fxFlex.gt-md="14.28" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>All Account</mat-label>
+                                        <mat-select matInput #fontSize value="16px" [formControl]="form.controls['accounts']">
+                                            <mat-option value="adx">Auxo Network</mat-option>
+                                            <mat-option value="adsense">Adsense</mat-option>
+                                            <!-- <mat-option value="">Auxo Pro</mat-option> -->
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="14.28" fxFlex.gt-md="14.28" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Days</mat-label>
+                                        <mat-select matInput #fontSize value="16px" [formControl]="form.controls['days']">
+                                            <mat-option value="Last7days">Last 7 Days</mat-option>
+                                            <mat-option value="Last10days">Last 10 Days</mat-option>
+                                            <mat-option value="Last30days">Last 30 Days</mat-option>
+                                            <mat-option value="ThisMonth">This Month</mat-option>
+                                            <mat-option value="LastMonth">Last Month</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="17" fxFlex.gt-md="17" fxFlex.gt-xs="100"
+                                    fxFlex="100" fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <input matInput [matDatepicker]="picker" placeholder="MM-DD-YYYY" [formControl]="form.controls['strtdate']">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="17" fxFlex.gt-md="17" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <input matInput [matDatepicker]="picker1" placeholder="MM-DD-YYYY" [formControl]="form.controls['enddate']">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="5" fxFlex.gt-md="5" fxFlex.gt-xs="100" fxFlex="100"
+                                    class="p-10 m-t-10">
+                                    <button mat-stroked-button color="" class="bg-danger text-white">Go</button>
+                                </div>
+                            </div>
+                        </form>
+                    <!--loader-->
+                            <div class="bg-opacity" *ngIf="isSpinnerVisiblePre">
+                                <div class="parent">
+                                    <div class="spin1"></div>
+                                </div>
+                            </div>
+                 <!--loaderend-->
+                        <div class="table-responsive">
+                            <table mat-table [dataSource]="dataSource52" matSort class="no-wraap m-t-10 m-b-20 v-middle"
+                                style="width: 100%;" id="defaultOverview">
+                                <ng-container matColumnDef="acmanager">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                        Account Manager
+                                    </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                        {{element.acmanager}}
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="email">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Email Id
+                                    </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.email}}
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="adx">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Total Auxo
+                                        Network
+                                        Account </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                        {{element.adx}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="adsense">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Total
+                                        Adsense Account </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                        {{element.adsense}} </td>
+                                </ng-container>
+
+                               <!--  <ng-container matColumnDef="cdma">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Total CMDA
+                                        Account </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                        {{element.cdma}} </td>
+                                </ng-container> -->
+
+                                <ng-container matColumnDef="tpublisher">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Total
+                                        Publisher </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                        {{element.adx + element.adsense}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="onboard">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> On Board
+                                        Date </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                        {{element.onboard}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns52"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns52;"></tr>
+                            </table>
+
+                            <!---filter table-->
+                            <table mat-table [dataSource]="dataSource53" matSort class="no-wraap m-t-10 m-b-20 v-middle"
+                                style="width: 100%;display:none;" id="filterOverview">
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                        Network Partner
+                                    </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                        {{element.name}}
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="auxorev">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Auxo Network Revenue ($)
+                                    </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.auxorev | number:'1.2-2'}}
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="adsenserev">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                        Adsense Revenue ($) </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                        {{element.adsenserev | number:'1.2-2'}} </td>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="tpublisher">
+                                    <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Total Estimated Revenue ($) </th>
+                                    <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                        {{element.auxorev + element.adsenserev | number:'1.2-2'}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns53"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns53;"></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- Tabs Level 3  -->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title> Account Manager :</mat-panel-title>
+                </mat-expansion-panel-header>
+               
+                <div class="table-responsive">
+                    <table class="no-wraap m-t-0 v-middle" width="100%">
+                        <thead>
+                            <th style="border-right: 1px solid transparent;" colspan="1"
+                                class="font-medium font-16 p-15brk text-left color fontfamilyth"></th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Account Manager </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Requests </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Ad Impressions </th>
+                            <!-- <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Matched Ad Request </th> -->
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Coverage (%)</th>
+                            <!-- <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> CTR </th> -->
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated CPM ($)
+                            </th>
+                            <th class="font-medium font-16 p-15brk text-left color fontfamilyth"> Estimated Earnings ($)
+                            </th>
+                        </thead>
+
+                        <tbody>
+                            <ng-container *ngFor="let data of tablerootdata">
+                                <tr>
+                                    <td style="border-right: 1px solid transparent;"
+                                        class="p-15 font-normal fontfamily breaklinetable text-center"
+                                        (click)="data.expanded = !data.expanded"> {{ data.expanded ? '&ndash;' : '+'}}
+                                    </td>
+                                    <td class="p-15 font-normal fontfamily text-right"> {{data.manager_name}} </td>
+                                    <td class="p-15 font-normal fontfamily text-right"> {{data.adreq | number}} </td>
+                                    <td class="p-15 font-normal fontfamily text-right"> {{data.adimpr | number}} </td>
+                                    <td class="p-15 font-normal fontfamily text-right"> {{data.covg}} </td>
+                                    <td class="p-15 font-normal fontfamily text-right"> {{data.ecpm}} </td>
+                                    <td class="p-15 font-normal fontfamily text-right"> {{data.revenue}} </td>
+                                </tr>
+
+                                <ng-container *ngIf="data.expanded">
+                                    <tr *ngFor="let details of findDetails(data)">
+                                        <td style="border-right: 1px solid transparent;" colspan="1"></td>
+                                        <td style="padding-left: 40px;" class="p-15 font-normal fontfamily">
+                                            {{details.date}} </td>
+                                        <td class="p-15 font-normal fontfamily text-right">
+                                            {{details.adreq | number}} </td>
+                                        <td class="p-15 font-normal fontfamily text-right"> {{details.adimr | number}}
+                                        </td>
+                                        <td class="p-15 font-normal fontfamily text-right">
+                                            {{details.covg}} </td>
+                                        <td class="p-15 font-normal fontfamily text-right"> {{details.ecpm}}
+                                        </td>
+                                        <td class="p-15 font-normal fontfamily text-right"> {{details.adx_revenue}}
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- Tabs Level 1  -->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title> Top 30 Publishers of Auxo Network : ( {{Top20Date}} )</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource1" matSort class="no-wraap m-t-10 m-b-20 v-middle"
+                        style="width: 100%;">
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Publisher Name</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.name}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="adr">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Ad Requests </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.adr}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="adimr">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Ad Impressions </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.adimr}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="covg">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Coverage (%) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.covg}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="ecpm">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Estimated CPM ($)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.ecpm}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="revenue">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Estimated Earnings
+                                ($) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.revenue}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- Tabs Level 2  -->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title>Top 10 Movers of Auxo Network : ( {{AdxMoversDate}} ) </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-card>
+                    <mat-card-content>
+                        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4bajaj"
+                            mat-align-tabs="" backgroundColor="" disableRipple="true"
+                            style="margin-top: -28px!important;">
+                            <mat-tab label="Impression">
+                                <ng-template matTabContent>
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource2" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Name</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.name}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Impression">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Ad Impressions ⇡</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Impression}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Imp_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Impression (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Imp_vari}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                                        </table>
+                                    </div>
+                                    <!-- second table -->
+                                    <div class="table-responsive">
+                                        <table mat-table [dataSource]="dataSource9" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Name
+                                                    ($) </th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.name}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Impression">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Ad Impression ⇣ </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Impression}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Imp_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Impression (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Imp_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%)</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns9"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns9;"></tr>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                            </mat-tab>
+
+                            <mat-tab label="Earnings">
+                                <ng-template matTabContent>
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource11" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Name</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.name}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Revenue">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Earnings ($) ⇡</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Revenue}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="rev_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Earnings (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.rev_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns11"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns11;"></tr>
+                                        </table>
+                                    </div>
+                                    <!-- Second table -->
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource12" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Name</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.name}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Revenue">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Earnings ($) ⇣</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Revenue}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="rev_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Earnings (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.rev_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns12"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns12;"></tr>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                            </mat-tab>
+
+                            <mat-tab label="PageViews">
+                                <ng-template matTabContent>
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource13" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Name</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.name}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Page">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views ⇡</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Page}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="page_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views Variation (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.page_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns13"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns13;"></tr>
+                                        </table>
+                                    </div>
+                                    <!-- Second table -->
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource14" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="name">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Name</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.name}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Page">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views ⇣</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Page}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="page_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views Variation
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.page_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns14"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns14;"></tr>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </mat-card-content>
+                </mat-card>
+            </mat-expansion-panel>
+
+            <!-- Tabs Level 4  -->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title> Current Month Auxo Network Inactive Publishers</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource3" matSort class="no-wraap m-t-10 m-b-20 v-middle"
+                        style="width: 100%;">
+                        <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Date
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.date}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Publisher Name
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.name}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="website">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Website </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                {{element.website}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="earning30">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Earnings 30 Days ($)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.earning30}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="earning90">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Earnings 90 Days ($)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.earning90}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- Tabs Level 7  -->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title> Top 30 Publishers of AdSense : ( {{Top20DateAds}} )
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource5" matSort class="no-wraap m-t-10 m-b-20 v-middle"
+                        style="width: 100%;">
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Publisher Pub Id
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.name}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="adr">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Ad Requests </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.adr}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="adimr">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Ad Impression
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.adimr}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="covg">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Coverage (%)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.covg}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="ecpm">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Estimated CPM ($)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.ecpm}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="revenue">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Estimated Earnings
+                                ($)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.revenue}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns5"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns5;"></tr>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- Tabs Level 6  -->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title>Top 10 Movers of Adsense : ( {{AdsMoversDate}} )
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-card>
+                    <mat-card-content>
+                        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4bajaj"
+                            mat-align-tabs="" backgroundColor="" disableRipple="true"
+                            style="margin-top: -28px!important;">
+                            <mat-tab label="Impression">
+                                <ng-template matTabContent>
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource16" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Id</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.id}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Impression">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Ad Impressions ⇡ </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Impression}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Imp_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Impression (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Imp_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns16"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns16;"></tr>
+                                        </table>
+                                    </div>
+
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource17" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Id</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.id}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Impression">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Ad Impressions ⇣ </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Impression}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Imp_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Impression (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Imp_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns17"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns17;"></tr>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                            </mat-tab>
+
+                            <mat-tab label="Earnings">
+                                <ng-template matTabContent>
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource18" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Id</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.id}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Revenue">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Earnings ($) ⇡</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Revenue}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="rev_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Earnings (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.rev_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns18"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns18;"></tr>
+                                        </table>
+                                    </div>
+                                    <!-- Second table -->
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource19" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Id</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.id}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Revenue">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Earnings ($) ⇣</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Revenue}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="rev_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Variation Earnings (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.rev_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns19"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns19;"></tr>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                            </mat-tab>
+
+                            <mat-tab label="PageViews">
+                                <ng-template matTabContent>
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource20" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Id</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.id}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Page">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views ⇡</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Page}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="page_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views Variation (%)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.page_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns20"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns20;"></tr>
+                                        </table>
+                                    </div>
+                                    <!-- Second table -->
+                                    <div class="table-responsive m-t-30">
+                                        <table mat-table [dataSource]="dataSource21" matSort
+                                            class="no-wraap m-t-10 m-b-20 v-middle" style="width: 100%;">
+
+                                            <ng-container matColumnDef="id">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Publisher Id</th>
+                                                <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                                    {{element.id}}</td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Page">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views ⇣</th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.Page}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="page_vari">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Page Views Variation
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.page_vari | number:'1.2-2'}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="eCPM">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Estimated CPM ($)
+                                                </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.eCPM}} </td>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="covg">
+                                                <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                                    Coverage (%) </th>
+                                                <td mat-cell *matCellDef="let element"
+                                                    class="p-15 font-normal text-right">
+                                                    {{element.covg}} </td>
+                                            </ng-container>
+
+                                            <tr mat-header-row *matHeaderRowDef="displayedColumns21"></tr>
+                                            <tr mat-row *matRowDef="let row; columns: displayedColumns21;"></tr>
+                                        </table>
+                                    </div>
+                                </ng-template>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </mat-card-content>
+                </mat-card>
+            </mat-expansion-panel>
+
+            <!-- Tabs Level 8  -->
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header style="height: 70px!important;">
+                    <mat-panel-title> Current Month Adsense Inactive Publishers</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource15" matSort class="no-wraap m-t-10 m-b-20 v-middle"
+                        style="width: 100%;">
+                        <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Date
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.date}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Publisher Name
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.name}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="website">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Website </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                {{element.website}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="earning30">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Earnings 30 Days ($)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.earning30}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="earning90">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Earnings 90 Days ($)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.earning90}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns15"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns15;"></tr>
+                    </table>
+                </div>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </mat-card-content>
+    <!--loader-->
+    <div class="bg-opacity" *ngIf="isSpinnerVisible">
+        <div class="parent">
+            <div class="spin1"></div>
+        </div>
+    </div>
+    <div class="bg-opacity" *ngIf="isSpinnerVisiblePre">
+        <div class="parent">
+          <div class="spin1"></div>
+        </div>
+    </div>
+    <!--loaderend-->
+</mat-card>

@@ -1,0 +1,189 @@
+<!-- <button [matMenuTriggerFor]="flags" mat-icon-button class="m-r-5">
+    <i class="flag-icon flag-icon-{{selectedLanguage.icon}}"> </i>
+</button>
+<mat-menu #flags="matMenu" class="mymegamenu">
+    <button mat-menu-item *ngFor="let lang of languages" (click)="changeLanguage(lang)">
+        <i class="flag-icon flag-icon-{{lang.icon}} m-r-10"></i>
+        <span>{{lang.language}}</span>
+    </button>
+</mat-menu> -->
+<!------------------------------------>
+
+<!-- <div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100%">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Dialog Overview</mat-card-title>
+          <mat-card-subtitle>The
+            <code>&lt;MatDialog&gt;</code> service can be used to open modal dialogs with Material Design styling and animations.</mat-card-subtitle>
+          <ol>
+            <li>
+              <mat-form-field>
+                <input matInput [(ngModel)]="name" placeholder="What's your name?">
+              </mat-form-field>
+            </li>
+            <li>
+              <button mat-raised-button (click)="openDialog()">Pick one</button>
+            </li>
+            <li *ngIf="animal">
+              You chose:
+              <i>{{animal}}</i>
+            </li>
+          </ol>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div> -->
+
+
+<!-- daterangepicker start -->
+<div class="m-r-50" fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100" id="daterangepickeralignment">
+    <app-daterangepicker></app-daterangepicker>
+  </div>
+  <!-- daterangepicker End -->
+
+<!-- First month start -->
+<button mat-icon-button class="m-r-50 btnhidethismonth top1">
+    <small>This Month</small>
+    <h6 style="margin-top: -17px;" class="font-18">$58,356</h6>
+</button>
+<!-- First month End -->
+
+<!-- last month start -->
+<button   mat-icon-button class="m-r-25 btnhidethismonth top1">
+    <small>Last Month</small>
+    <h6 style="margin-top: -17px;" class="font-18">$48,356</h6>
+</button>
+<!-- last month End -->
+
+<button  mat-icon-button class="m-r-5 m-t-3 btnhidethismonth">
+<h6 style="margin-top: -2px;">|</h6>
+</button>
+
+<!-- Payment start -->
+<button routerLink="./invoice-list" mat-icon-button class="m-r-5 m-t-3 mobilehide1">
+    <mat-icon>account_balance</mat-icon>
+    <div class="notify">
+        <span class="heartbit"></span>
+        <span class="point"></span>
+    </div>
+</button>
+<!-- payment end -->
+
+
+<!-- Notification start -->
+<button [matMenuTriggerFor]="notification" mat-icon-button class="m-r-5 m-t-3 mobilehide1">
+    <mat-icon>message</mat-icon>
+    <div class="notify">
+        <span class="heartbit"></span>
+        <span class="point"></span>
+    </div>
+</button>
+<mat-menu #notification="matMenu" class="mymegamenu">
+    <div class="mailbox">
+        <ul>
+            <li>
+                <div class="drop-title">Notifications</div>
+            </li>
+            <li>
+                <div class="message-center">
+                    <perfect-scrollbar [config]="config">
+                        <!-- Message -->
+                        <a href="#" *ngFor="let notification of notifications">
+                            <div class="round {{notification.round}}">
+                                <i class="{{notification.icon}}"></i>
+                            </div>
+                            <div class="mail-content">
+                                <h5>{{notification.title}}</h5>
+                                <span class="mail-desc">{{notification.subject}}</span>
+                                <span class="time">{{notification.time}}</span>
+                            </div>
+                        </a>
+
+                    </perfect-scrollbar>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</mat-menu>
+<!-- =================notification end==================== -->
+
+
+<!-------------------email start ----------->
+
+<!-- <button [matMenuTriggerFor]="message" mat-icon-button class="m-r-5">
+    <mat-icon>email</mat-icon>
+    <div class="notify">
+        <span class="heartbit"></span>
+        <span class="point"></span>
+    </div>
+</button>
+<mat-menu #message="matMenu" class="mymessage">
+    <div class="mailbox">
+        <ul>
+            <li>
+                <div class="drop-title">You have 4 new Mymessages</div>
+            </li>
+            <li>
+                <div class="message-center">
+                    <perfect-scrollbar [config]="config">
+                        <a href="#" *ngFor="let mymessage of mymessages">
+                            <div class="user-img">
+                                <img src="{{mymessage.useravatar}}" alt="user" class="img-circle" width="40">
+                                <span class="profile-status {{mymessage.status}} pull-right"></span>
+                            </div>
+                            <div class="mail-content">
+                                <h5>{{mymessage.from}}</h5>
+                                <span class="mail-desc">{{mymessage.subject}}</span>
+                                <span class="time">{{mymessage.time}}</span>
+                            </div>
+                        </a>
+                    </perfect-scrollbar>
+                </div>
+            </li>
+        </ul>
+    </div>
+</mat-menu> -->
+<!-- =========================email end===================================== -->
+
+<!-- =======================Manage Users======================================= -->
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5 m-t-3 mobilehide1">
+<!-- <img src="assets/images/users/1.jpg" alt="user" class="profile-pic"> </button> -->
+<mat-icon style="font-size: 34px;">account_circle</mat-icon>
+<mat-menu #profile="matMenu" class="mymegamenu">
+    <div class="text-dark p-l-20 p-r-20"> 
+        <!-- bg-light-info -->
+        <div class="d-flex align-items-center">
+            <img src="assets/images/users/1.jpg" width="75" class="img-rounded" />
+            <div class="m-l-10">
+                <h5 style="color: #455a64;" class="m-0 font-medium">{{acc_name}}</h5>
+                <span class="text-muted font-14" style="color: #67757c;">{{useremail}}</span>
+            </div>
+        </div>
+    </div>
+
+    <button mat-menu-item>
+        <mat-icon style="color: #455a64;" id="usedhover">invert_colors</mat-icon>
+        <a style="color: #455a64;"  (click)="openDialog()" id="usedhover">Inventory Settings</a>
+    </button>
+    
+    <button mat-menu-item>
+        <mat-icon style="color: #455a64;" id="usedhover">settings</mat-icon>
+        <a style="color: #455a64;" routerLink="./manageusers" id="usedhover">Manage Users</a>
+    </button>
+
+    <button mat-menu-item>
+        <mat-icon style="color: #455a64;" id="usedhover">account_box</mat-icon>
+        <a style="color: #455a64;" routerLink="./bankdetails" id="usedhover">Bank Details</a>
+    </button>
+
+    <!-- <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon> Disable notifications
+    </button> -->
+
+    <button mat-menu-item>
+        <mat-icon style="color: #455a64;" id="usedhover">exit_to_app</mat-icon>
+        <a style="color: #455a64;" routerLink="./logout" id="usedhover">Log Out</a>
+    </button>
+</mat-menu>

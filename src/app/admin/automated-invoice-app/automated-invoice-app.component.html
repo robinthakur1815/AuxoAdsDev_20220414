@@ -1,0 +1,155 @@
+<!-- Level 1 start  -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Total Handling Accounts </mat-card-title>
+                <div class="m-t-15" fxLayout="row wrap">
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="50" fxFlex="100">
+                        <!-- <a href="javascript:void"> -->
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">2796</h3>
+                                <small style="color: #455a64;">Total AdX Accounts</small>
+                            </div>
+                        </mat-card>
+                        <!-- </a> -->
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="50" fxFlex="100">
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">409</h3>
+                                <small style="color: #455a64;">Total Adsense Accounts</small>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="50" fxFlex="100">
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">12</h3>
+                                <small style="color: #455a64;">Total Auxo Pro Accounts</small>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="50" fxFlex="100">
+                        <mat-card class="text-center">
+                            <div class="p-10">
+                                <h3 class="m-0 m-b-10 font-25">3217</h3>
+                                <small style="color: #455a64;">Total Accounts</small>
+                            </div>
+                        </mat-card>
+                    </div>
+
+                    <div fxFlex.gt-sm="50" fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="50" fxFlex="100">
+                        <mat-card class="text-center">
+                            <div class="p-10" style="padding-bottom: 1px!important;">
+                                <h3 class="m-0 m-b-10 font-25">63</h3>
+                                <small style="color: #455a64;">Total Account Managers</small>
+
+                                <div style="position: relative!important; top: 10px!important;">
+                                    <h6 class="text-muted m-t-0 font-16">Active /<span class="font-16 text-danger">
+                                            Inactive</span></h6>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<!-- Level 1 end  -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-lg="46" fxFlex.gt-md="46" fxFlex.gt-xs="100" fxFlex="100">
+                        <mat-card-title class="m-l-0 m-t-5">AdX For App Overview :</mat-card-title>
+                    </div>
+
+                    <div class="Revenue-invoicing-mobile" fxFlex.gt-lg="18" fxFlex.gt-md="18" fxFlex.gt-xs="33.33" fxFlex="100">
+                        <mat-card-title style="cursor: pointer;" class="text-center Revenue-invoicing-mobileposition">
+                            <button mat-stroked-button color="" id="" class=" bg-danger text-white">Revenue / Send
+                                Invoice</button>
+                        </mat-card-title>
+                    </div>
+
+                    <div class="Revenue-invoicing-mobile" fxFlex.gt-lg="18" fxFlex.gt-md="18" fxFlex.gt-xs="33.33" fxFlex="100">
+                        <mat-card-title style="cursor: pointer;" class="text-center Revenue-invoicing-mobileposition">
+                            <button mat-stroked-button color="" id="" class=" bg-danger text-white">Find
+                                Invoice</button>
+                        </mat-card-title>
+                    </div>
+
+                    <div class="Revenue-invoicing-mobile" fxFlex.gt-lg="18" fxFlex.gt-md="18" fxFlex.gt-xs="33.33" fxFlex="100">
+                        <mat-card-title style="cursor: pointer;" class="text-center Revenue-invoicing-mobileposition">
+                            <button mat-stroked-button color="" id="" class=" bg-danger text-white">Find Mismatch
+                                Earnings</button>
+                        </mat-card-title>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource" class="no-wraap m-t-20 v-middle" style="width: 100%;">
+                        <ng-container matColumnDef="select">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-10">
+                                <mat-checkbox (change)="$event ? masterToggle() : null"
+                                    [checked]="selection.hasValue() && isAllSelected()"
+                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                    [aria-label]="checkboxLabel()">
+                                </mat-checkbox>
+                            </th>
+                            <td mat-cell *matCellDef="let row" class="p-10 font-normal">
+                                <mat-checkbox (click)="$event.stopPropagation()"
+                                    (change)="$event ? selection.toggle(row) : null"
+                                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="position">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Network Partner
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.position}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="weight">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Network Partner AdX
+                                Id </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.weight}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="symbol">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Network Partner
+                                Email Id </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.symbol}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="lastmonth">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Last Invoice
+                            </th>
+                            <!-- <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.lastmonth}} </td> -->
+                            <td mat-cell *matCellDef="let element" class="p-20 font-normal text-left action-link">
+                                <p class="font-normal colorblackky"> {{element.lastmonth}}</p>
+                                
+                                <a href="https://angular.cybermediaservices.net/assets/web_api/invoice/invoice_upload/invoice_82032_CMS_2022_Feb.pdf"
+                                    target="_blank" class="link login-weight colorblackky">
+                                    <img href="" src="assets/images/users/pdf.png"
+                                        height="40" width="40" class="img-fluid cursor-pointer" />
+                                </a>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+                        </tr>
+                    </table>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

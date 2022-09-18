@@ -1,0 +1,139 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+                        <mat-card-title class="m-l-0 m-t-10">Overview :</mat-card-title>
+                    </div>
+                </div>
+
+
+                <div class="p-5 m-t-20 p-r-20 p-l-20" style="background-color: aliceblue;">
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-sm="100" fxFlex="100">
+                        <form class="m-t-30  p-b-0">
+                            <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+                                
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>A/C Manager</mat-label>
+                                        <mat-select (selectionChange)="getPublisherList()" matInput #fontSize value="16px" [formControl]="filterform.controls['acc_manager']">
+                                            <mat-option *ngFor="let acclist of acc_mgr_list;" value="{{acclist.manager_id}}"> {{acclist.manager_name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Publisher</mat-label>
+                                        <mat-select  matInput #fontSize value="16px" [formControl]="filterform.controls['pub_name']">
+                                            
+                                            <mat-option *ngFor="let publist of pub_name_list;" value="{{publist.pub_uniq_id}}"> 
+                                                <ng-container *ngIf="publist.pub_fname==''">{{publist.pub_email}}</ng-container>
+                                                <ng-container *ngIf="publist.pub_fname!=''">{{publist.pub_fname}}</ng-container>
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100"
+                                    fxFlex="100" fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Invoice Month</mat-label>
+                                        <mat-select  matInput #fontSize value="16px" [(ngModel)]="invMonthModel" [formControl]="filterform.controls['month_year']">
+                                            <mat-option value="All"> Select All</mat-option>
+                                            <mat-option *ngFor="let mnthlist of inv_mnth_list;" value="{{mnthlist.month}}"> {{mnthlist.month}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="10" fxFlex.gt-md="10" fxFlex.gt-xs="100" fxFlex="100"
+                                    class="p-10 m-t-15">
+                                    <button mat-stroked-button (click)="filterFunctn()" class="bg-danger text-white">Go</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource" matSort class="no-wraap m-t-10 v-middle"
+                        style="width: 100%;">
+                        <ng-container matColumnDef="pub_name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Publisher Name </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal">{{row.holdername}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="manager_name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Account Manager Name </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal">{{row.manager_name}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="month">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Invoice Month </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal">{{row.month}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="account_inv">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Amount Invoice (USD) </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal text-right">{{row.dis_rev+row.app_rev+row.vid_rev+row.hbads-row.invalid_traffic | number:'1.2-2'}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status_inv">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Status</th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal">
+                                <p *ngIf="row.invoice_status=='Paid'" class="text-success">Paid</p>
+                                <p *ngIf="row.invoice_status=='Approval Pending'" class="text-danger">Approval Pending</p>
+                                <p *ngIf="row.invoice_status=='Payment Under Process'" class="text-inverse">Payment Under Process</p>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="date_inv">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15" style="width: 150px!important;"> Approved On Invoiced
+                                Date </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal">{{row.date | date:'d MMM, Y'}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
+                </div>
+            </mat-card-content>
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+            <div class="bg-opacity" *ngIf="isSpinnerVisible1">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+            <div class="bg-opacity" *ngIf="isSpinnerVisible2">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+            <div class="bg-opacity" *ngIf="isSpinnerVisible3">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

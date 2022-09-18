@@ -1,0 +1,234 @@
+<!-- keyinsights content performance table start -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Top 10 Pages Performance Analysis : ( {{date}} )</mat-card-title>
+                <div class="table-responsive">
+                    <!-- responsive-table -->
+                    <table mat-table [dataSource]="dataSource" matSort class="no-wraap m-t-20 v-middle"
+                        style="width: 100%;">
+                        <!--  -->
+                        <ng-container matColumnDef="position">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Top 10 URLs </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                <a href="{{element.siteurl}}" target=”_blank” class="link login-weight colorblackky">
+                                    {{element.siteurl}}</a>
+                            </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> PageViews </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.pageviews}}
+                            </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="weight">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Avg. Page Load Time
+                                (Sec) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.pageload | number:'1.1-1'}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="symbol">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Estimated Earnings
+                                ($) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.earning}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+            </mat-card-content>
+            
+        </mat-card>
+    </div>
+</div>
+
+<!-- Heat Map - Last 7 Days Top Landing Pages Start -->
+
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+                        <mat-card-title>Last 7 Days Top Landing Pages : ( {{date_heatmap}} )</mat-card-title>
+                        
+                        <div class="m-t-20 heapszmobile" id="heapmaprowClass">
+                            <!-- <button mat-button color="primary" class="m-t-5 colorblackky heatmapsxz">
+                                fresh2refresh.com - Overall
+                            </button><br> -->
+                            <ng-container *ngFor="let toppage of top7tabledata;let i = index">
+                                <ng-container *ngIf="i===0">
+                                    <button (click)="heatmapchange(toppage.siteurl,i)" mat-button color="primary" class="m-t-5 colorblackky heatmapsxz countrow{{i}} buttonActive">
+                                        {{toppage.siteurl}}
+                                    </button><br>
+                                </ng-container>
+                                <ng-container *ngIf="i!=0">
+                                    <button (click)="heatmapchange(toppage.siteurl,i)" mat-button color="primary" class="m-t-5 colorblackky heatmapsxz countrow{{i}}">
+                                        {{toppage.siteurl}}
+                                    </button><br>
+                                </ng-container>
+                            </ng-container>
+                            
+                        </div>
+                    </div>
+
+                    <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+                        <!-- <mat-card-title>Last 7 Days Top Landing Pages : ( 01 Dec - 07 Dec , 2021 )</mat-card-title> -->
+                        <div style="height: 400px;" [chart]="heatmapchart"></div> 
+                    </div>
+                </div>
+            </mat-card-content>
+            <!--loader-->
+            <div class="bg-opacity" *ngIf="isSpinnerVisibleheatMap">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+            <!--loaderend-->
+        </mat-card>
+    </div>
+</div>
+<!-- Heat Map - Last 7 Days Top Landing Pages end -->
+
+
+
+
+
+
+<!-- Landing Page Analysis start -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Landing Page Analysis Top 10 : ( {{landing_daterange}} )</mat-card-title>
+                <div class="card-group">
+                    <mat-card class="text-center">
+                        <mat-card-content>
+                            <mat-icon class="text-primary font-35">pages</mat-icon>
+                            <h3 class="m-0 text-primary">{{tot_landing_Pageviews}}</h3>
+                            <h5 class="text-muted m-0 m-t-5">PageViews</h5>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <mat-card class="text-center">
+                        <mat-card-content>
+                            <mat-icon class="text-warning font-35">add_alarm</mat-icon>
+                            <h3 class="m-0 text-warning">{{tot_landing_Avgsession}}</h3>
+                            <h5 class="text-muted m-0 m-t-5">Avg. Session Duration</h5>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <mat-card class="text-center">
+                        <mat-card-content>
+                            <mat-icon class="text-success font-35">multiline_chart</mat-icon>
+                            <h3 class="m-0 text-success">{{tot_landing_Avgbounce}}%</h3>
+                            <h5 class="text-muted m-0 m-t-5">Avg. Bounce Rate</h5>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div [chart]="cione"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<!-- Exit Page Analysis start -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Exit Page Analysis Top 10 : ( {{exit_daterange}} )</mat-card-title>
+                <div class="card-group">
+                    <mat-card class="text-center">
+                        <mat-card-content>
+                            <mat-icon class="text-primary font-35">pages</mat-icon>
+                            <h3 class="m-0 text-primary">{{tot_exit_Pageviews}}</h3>
+                            <h5 class="text-muted m-0 m-t-5">PageViews</h5>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <mat-card class="text-center">
+                        <mat-card-content>
+                            <mat-icon class="text-warning font-35">healing</mat-icon>
+                            <h3 class="m-0 text-warning">{{tot_exit_Avgsession}}</h3>
+                            <h5 class="text-muted m-0 m-t-5">Total Exits</h5>
+                        </mat-card-content>
+                    </mat-card>
+
+                    <mat-card class="text-center">
+                        <mat-card-content>
+                            <mat-icon class="text-success font-35">graphic_eq</mat-icon>
+                            <h3 class="m-0 text-success">{{tot_exit_exitPageviews}}</h3>
+                            <h5 class="text-muted m-0 m-t-5">Avg. Exits / PageViews</h5>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div [chart]="citwo"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<!-- Landing Page by Highest Bounce Rate start container  -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Top 5 Landing Pages By Highest Bounce Rate : ( {{date_highbounce}} )</mat-card-title>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource1" matSort class="no-wraap m-t-0 m-t-20 v-middle"
+                        style="width: 100%;">
+                        <!--  -->
+                        <ng-container matColumnDef="position1">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Landing Page URL
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                <a target=”_blank” class="link login-weight colorblackky">
+                                    {{element.pagepath}} </a>
+                            </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="name1">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> PageViews </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.pageview}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="weight1">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Bounce Rate (%)
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.bounce}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                    </table>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<!--loader-->
+<div class="bg-opacity" *ngIf="isSpinnerVisible1 || isSpinnerVisible2">
+    <div class="parent">
+        <div class="spin1"></div>
+    </div>
+</div> 
+<!-- <div class="bg-opacity" *ngIf="isSpinnerVisibleheatMap">
+    <div class="parent">
+        <div class="spin1"></div>
+    </div>
+</div> -->
+<!--loaderend-->

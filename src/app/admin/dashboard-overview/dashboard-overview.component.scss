@@ -1,0 +1,44 @@
+@media only screen and (max-width: 1167px) {
+.adxpub-mob-hide {
+display: none!important;
+}
+}
+
+@media all and (min-width: 1168px) and (max-width: 2560px) {
+.adxpub-lap-hide {
+    display: none!important;
+}
+}
+
+@media all and (min-width: 768px) and (max-width: 2560px) {
+.lap-adxpublish {
+margin-top: 15px!important;
+}
+}
+
+// table expandable color css 
+.color
+{
+color: rgba(0, 0, 0, 0.54);
+}
+
+.fontfamilyth
+{
+font-family: Noto Sans KR , sans-serif;
+font-size: 16px;
+border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+.fontfamily
+{
+font-family: Noto Sans KR , sans-serif;
+font-size: 14px;
+border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+table, th, td {
+border: 1px solid #e8eef3;
+}
+
+
+

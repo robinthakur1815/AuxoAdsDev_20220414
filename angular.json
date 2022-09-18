@@ -1,0 +1,177 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "Materialpro",
+  "projects": {
+    "project": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/materialpro",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "allowedCommonJsDependencies": [
+              "rxjs",
+              "date-fns",
+              "rxjs-compat",
+              "ngx-quill",
+              "lodash",
+              "c3",
+              "d3",
+              "chartist",
+              "dom-plane",
+              "dom-set",
+              "chart.js",
+              "apexcharts/dist/apexcharts.min.js",
+              "crossvent",
+              "calendar-utils",
+              "angular-calendar",
+              "@mattlewis92/dom-autoscroller",
+              "@agm/core",
+              "dom-autoscroller",
+              "angular-draggable-droppable",
+              "@swimlane/ngx-charts",
+              "ng-apexcharts",
+              "apexcharts"
+            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/chartist/dist/chartist.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/quill/dist/quill.bubble.css",
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "node_modules/dragula/dist/dragula.css",
+              "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+              "node_modules/@swimlane/ngx-datatable/index.css",
+              "node_modules/@swimlane/ngx-datatable/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/assets/icons.css",
+              "src/assets/styles/style.scss",
+
+              "src/assets/registerlp/css/animate.css",
+              "src/assets/registerlp/css/owl.carousel.min.css",
+              "src/assets/registerlp/css/owl.theme.default.min.css",
+              "src/assets/registerlp/css/fontnotosanskr.css",
+              "src/assets/registerlp/css/materialicons.css"
+             
+            ],
+            "scripts": [
+              "src/assets/js/jquery.js",
+              
+              "src/assets/registerlp/js/bootstrap.bundle.min.js",
+              "src/assets/registerlp/js/counter.js",
+              "src/assets/registerlp/js/custom.js",
+              "src/assets/registerlp/js/jqBootstrapValidation.js",
+              "src/assets/registerlp/js/jquery.easing.min.js",
+              "src/assets/registerlp/js/jquery.min.js",
+              "src/assets/registerlp/js/owl.carousel.js",
+              "src/assets/registerlp/js/particles.js",
+              "src/assets/registerlp/js/scrolling-nav.js",
+              "src/assets/registerlp/js/sweetalert.min.js",
+              "src/assets/registerlp/js/wow.min.js"
+               
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "13mb",
+                  "maximumError": "15mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "300kb",
+                  "maximumError": "300kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "project:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "project:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "project:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "project:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "project:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "project",
+  "cli": {
+    "analytics": "9301ccc3-a05e-44c2-a9df-b081f23d06e3"
+  }
+}

@@ -1,0 +1,26 @@
+<!-- <mat-card>
+  <mat-card-content> -->
+<div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+  <input type="text"
+  ngxDaterangepickerMd
+  [(ngModel)]="selected"
+  [showCustomRangeLabel]="true"
+  [alwaysShowCalendars]="alwaysShowCalendars"
+  [ranges]="ranges"
+  [showClearButton]="false"
+  [showCancel]="true"
+  [linkedCalendars]="true"
+  [isTooltipDate] = "isTooltipDate"
+  [isInvalidDate] = "isInvalidDate"
+  [locale]="{applyLabel: 'Done'}"
+  [maxDate]='maxDate'
+  (rangeClicked)="rangeClicked($event)"
+  (datesUpdated)="datesUpdated($event)"
+  [keepCalendarOpeningWithRange]="keepCalendarOpeningWithRange"
+  [showRangeLabelOnInput]="showRangeLabelOnInput"
+  class="form-control"
+  placeholder="Select Date..."/> 
+</div>
+<!-- </mat-card-content>
+</mat-card> -->
+

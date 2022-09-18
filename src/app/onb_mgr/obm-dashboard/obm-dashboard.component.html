@@ -1,0 +1,205 @@
+<mat-card>
+    <mat-card-content>
+        <mat-card-title>Publisher Account </mat-card-title>
+        <div class="p-t-15" fxLayout="row wrap" style="margin-bottom: -20px!important;">
+            <div fxFlex.gt-sm="50" fxFlex.gt-lg="16.66" fxFlex.gt-md="16.66" fxFlex.gt-xs="50" fxFlex="100">
+                <mat-card class="reduce-margin">
+                    <mat-card-content class="reduce-padding">
+                        <button mat-fab color="primary" mat-card-icon class="shadow-none bg-primary mat-card"
+                            (click)="loadPublisherServiceData('AdxData')" style="pointer-events: none !important;">
+                            <mat-icon class="fonttopbar">account_box</mat-icon>
+                        </button>
+                        <h3 class="m-0 font-22 m-t-20 m-b-10">{{totalAdxCount}}</h3>
+                    </mat-card-content>
+                    <div class="textbox6break" style="position: relative!important; top: -25px!important;">
+                        <a class="link login-weight m-t-0 font-15 adsense_head"
+                            (click)="loadPublisherServiceData('AdxData')" style="cursor: pointer;">Adx Accounts</a>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex.gt-lg="16.66" fxFlex.gt-md="16.66" fxFlex.gt-xs="50" fxFlex="100">
+                <mat-card class="reduce-margin">
+                    <mat-card-content class="reduce-padding">
+                        <button mat-fab color="warn" mat-card-icon class="shadow-none bg-warning  mat-card"
+                            (click)="loadPublisherServiceData('AdSenseData')" style="pointer-events: none !important;">
+                            <mat-icon class="fonttopbar">account_circle</mat-icon>
+                        </button>
+                        <h3 class="m-0 font-22 m-t-20 m-b-10">{{totalAdsenseCount}}</h3>
+                    </mat-card-content>
+                    <div class="textbox6break" style="position: relative!important; top: -25px!important;">
+                        <a class="link login-weight m-t-0 font-15 adsense_head"
+                            (click)="loadPublisherServiceData('AdSenseData')" style="cursor: pointer;">Adsense
+                            Accounts</a>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex.gt-lg="16.66" fxFlex.gt-md="16.66" fxFlex.gt-xs="50" fxFlex="100">
+                <mat-card class="reduce-margin">
+                    <mat-card-content class="reduce-padding">
+                        <button mat-fab color="accent" mat-card-icon class="shadow-none bg-success mat-card"
+                            (click)="loadPublisherServiceData('AuxoProData')" style="pointer-events: none !important;">
+                            <mat-icon class="fonttopbar">eject</mat-icon>
+                        </button>
+                        <h3 class="m-0 font-22 m-t-20 m-b-10">{{totalCyberadsCount}}</h3>
+                    </mat-card-content>
+                    <div class="textbox6break" style="position: relative!important; top: -25px!important;">
+                        <a class="link login-weight m-t-0 font-15 adsense_head"
+                            (click)="loadPublisherServiceData('AuxoProData')" style="cursor: pointer;">Auxo Pro</a>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex.gt-lg="16.66" fxFlex.gt-md="16.66" fxFlex.gt-xs="50" fxFlex="100">
+                <mat-card class="reduce-margin">
+                    <mat-card-content class="reduce-padding">
+                        <button mat-fab color="warn" mat-card-icon class="shadow-none bg-info mat-card"
+                            (click)="loadPublisherServiceData('KeyInSightData')" style="pointer-events: none !important;">
+                            <mat-icon class="fonttopbar">domain</mat-icon>
+                        </button>
+                        <h3 class="m-0 font-22 m-t-20 m-b-10">{{totalKeyinsightsCount}}</h3>
+                    </mat-card-content>
+                    <div class="textbox6break" style="position: relative!important; top: -25px!important;">
+                        <a class="link login-weight m-t-0 font-15 adsense_head"
+                            (click)="loadPublisherServiceData('KeyInSightData')" style="cursor: pointer;">Key
+                            Insights</a>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex.gt-lg="16.66" fxFlex.gt-md="16.66" fxFlex.gt-xs="50" fxFlex="100">
+                <mat-card class="reduce-margin">
+                    <mat-card-content class="reduce-padding">
+                        <button mat-fab color="warn" mat-card-icon class="shadow-none mat-card"
+                            style="background-color: #a9a9a9; pointer-events: none !important;" (click)="loadPublisherServiceData('TrafficData')">
+                            <mat-icon class="fonttopbar">devices_other</mat-icon>
+                        </button>
+                        <h3 class="m-0 font-22 m-t-20 m-b-10">{{totalTrafficCount}}</h3>
+                    </mat-card-content>
+                    <div class="textbox6break" style="position: relative!important; top: -25px!important;">
+                        <a class="link login-weight m-t-0 font-15 adsense_head"
+                            (click)="loadPublisherServiceData('TrafficData')" style="cursor: pointer;">Traffic
+                            Optimization</a>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div fxFlex.gt-sm="50" fxFlex.gt-lg="16.66" fxFlex.gt-md="16.66" fxFlex.gt-xs="50" fxFlex="100">
+                <mat-card class="reduce-margin">
+                    <mat-card-content class="reduce-padding">
+                        <button mat-fab color="warn" mat-card-icon class="shadow-none bg-danger mat-card"
+                            style="pointer-events: none !important;">
+                            <mat-icon class="fonttopbar">control_point_duplicate</mat-icon>
+                        </button>
+                        <h3 class="m-0 font-22 m-t-20 m-b-10">{{totalActiveCount}} /<span class="font-22 text-danger">
+                                {{totalInactiveCount}}</span></h3>
+                    </mat-card-content>
+                    <div class="textbox6break" style="position: relative!important; top: -25px!important;">
+                        <h6 class="text-muted m-t-0 font-15 adsense_head">Active /<span class="font-16 text-danger">
+                                Inactive</span></h6>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<!-- Table start -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="p-5 p-r-20 p-l-20" style="background-color: aliceblue;">
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    </mat-form-field>
+                </div>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource" matSort class="no-wraap m-t-20 v-middle"
+                        style="width: 100%;">
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> User
+                                Name </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.name | titlecase
+                                | replacenullwithtext:'--'}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="pub_email">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Email </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.pub_email |
+                                lowercase}} </td>
+                        </ng-container>
+                        <ng-container matColumnDef="onboarddate">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Onboard Date </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"
+                                [innerHTML]="formatOnBoardDate(element.onboarddate)">
+                                <!-- {{element.onboarddate | date:'d MMM, y'}} -->
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="services">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Services </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"
+                                [innerHTML]="publisherSplitService(element.services)">
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="pub_display_share">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Revenue Share (%) </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                <p>{{element.pub_display_share}}</p>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="mcm_status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Status </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+
+                                <p [ngClass]="{'text-success': element.mcm_status == 'APPROVED',
+                                'text-inverse': element.mcm_status == 'invite' , 
+                                'text-danger': element.mcm_status == '' || element.mcm_status == 'NULL'}">
+                                    {{element.mcm_status | titlecase}}</p>
+
+                            </td>
+                        </ng-container>
+
+                        <!-- <ng-container matColumnDef="website">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> Website Details </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal">
+                                <p><a href="Https://www.google.com" target="_blank" class="link login-weight colorblackky">Click Here     
+                                </a></p>
+                                <p><a href="Https://www.google.com" target="_blank" class="link login-weight colorblackky">Click Here     
+                                </a></p>
+                                
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="access">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> Access Dashboard </th>
+                            <td mat-cell *matCellDef="let row" class="p-15 font-normal"> 
+                                <a href="http://localhost:4200/dashboard" target="_blank" class="link login-weight colorblackky">Click Here     
+                                </a>
+                            </td>
+                        </ng-container>
+                        -->
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div class="bg-opacity" *ngIf="isSpinnerVisible">
+    <div class="parent">
+        <div class="spin1"></div>
+    </div>
+</div>

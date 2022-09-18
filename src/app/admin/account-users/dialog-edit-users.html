@@ -1,0 +1,81 @@
+<div mat-icon-button class="close-button m-t-5" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</div>
+<h2 class="font-bold m-l-10" mat-dialog-title><strong>Update User</strong></h2>
+<form class="m-t-0  p-b-0" [formGroup]="editUserForm" (ngSubmit)="editUserFormSubmit()">
+  <mat-dialog-content class="pb-3">
+    <div fxLayout="row wrap">
+      <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+        <mat-form-field appearance="outline" class="p-r-0">
+          <mat-label>First Name</mat-label>
+          <input matInput [formControl]="editUserForm.controls['fname']" [(ngModel)]="editUser_f_name" placeholder="Enter First Name">
+        </mat-form-field>
+        <small *ngIf="editUserForm.controls['fname'].errors?.whitespace && editUserForm.controls['fname'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid first name</small>
+        <small *ngIf="editUserForm.controls['fname'].errors?.minlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> First name must be 3 characters</small>
+        <small *ngIf="editUserForm.controls['fname'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">First name must be characters</small>
+      </div>
+
+      <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+        <mat-form-field appearance="outline" class="p-r-0">
+          <mat-label>Last Name</mat-label>
+          <input matInput [formControl]="editUserForm.controls['lname']" [(ngModel)]="editUser_l_name" placeholder="Enter Last Name">
+        </mat-form-field>
+        <small *ngIf="editUserForm.controls['lname'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Last name must be characters</small>
+      </div>
+
+      <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+        <mat-form-field appearance="outline" class="p-r-0">
+          <mat-label>Email</mat-label>
+          <input matInput [formControl]="editUserForm.controls['email']" [(ngModel)]="editUser_email" placeholder="Enter Email">
+        </mat-form-field>
+        <small *ngIf="editUserForm.controls['email'].errors && editUserForm.controls['email'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Must be a valid email address</small>
+      </div>
+
+      <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+        <mat-form-field appearance="outline" class="p-r-0">
+          <mat-label>Login Password</mat-label>
+          <input matInput [formControl]="editUserForm.controls['password']" [(ngModel)]="editUser_password" placeholder="Enter Login Password">
+        </mat-form-field>
+        <small *ngIf="editUserForm.controls['password'].errors?.minlength && editUserForm.controls['password'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Password must be at least 8 characters</small>
+      </div>
+
+      <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+        <mat-form-field appearance="outline" class="p-r-0">
+          <mat-label>Contact Number</mat-label>
+          <input matInput [formControl]="editUserForm.controls['contact']" [(ngModel)]="editUser_contact" placeholder="Enter Contact Number">
+        </mat-form-field>
+        <small *ngIf="editUserForm.controls['contact'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid contact number</small>
+        <small *ngIf="editUserForm.controls['contact'].errors?.minlength && editUserForm.controls['contact'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Contact number must be 10 numeric characters</small>
+      </div>
+
+      <div fxFlex.gt-sm="50" fxFlex="100" class="p-10">
+        <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+          <mat-label>Select User Role</mat-label>
+          <mat-select [formControl]="editUserForm.controls['roleId']" [(ngModel)]="editUser_role_id" matInput #fontSize value="16px">
+            <mat-option *ngFor="let rolelist11 of rolelist;" value="{{rolelist11.role_id}}">
+              {{rolelist11.role_name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+        <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+          <mat-label>User Status</mat-label>
+          <mat-select [formControl]="editUserForm.controls['user_status']" [(ngModel)]="editUser_user_status" matInput #fontSize value="16px">
+            <mat-option value="Y">Active</mat-option>
+            <mat-option value="N">InActive</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+        <div class="p-r-0 m-b-10 m-t-5 text-center">
+          <button mat-stroked-button color="" id="" class=" bg-danger text-white">Submit</button>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <div class="bg-opacity" *ngIf="isSpinnerVisible">
+    <div class="parent">
+      <div class="spin1"></div>
+    </div>
+  </div>
+</form>

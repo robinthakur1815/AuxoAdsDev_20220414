@@ -1,0 +1,150 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+                        <mat-card-title class="m-l-0 m-t-10">Overview :</mat-card-title>
+                    </div>
+
+                    <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100">
+                    </div>
+                </div>
+
+                <div class="p-5 m-t-20 p-r-20 p-l-20" style="background-color: aliceblue;">
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-sm="100" fxFlex="100">
+                        <form class="m-t-30  p-b-0" [formGroup]="filterform">
+                            <div fxLayout="row wrap" fxFlexAlign="center" class="row">
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Select Publisher</mat-label>
+                                        <mat-select matInput #fontSize value="16px" (selectionChange)="customFilter()" [formControl]="filterform.controls['pub_type']">
+                                            <mat-option value="Adx">Auxo Network Publisher</mat-option>
+                                            <mat-option value="Adsense">Adsense Publisher</mat-option>
+                                            <mat-option value="Pro">Auxo Pro</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Account Manager</mat-label>
+                                        <mat-select (selectionChange)="customFilter()" matInput #fontSize value="16px" [formControl]="filterform.controls['acc_manager']">
+                                            <mat-option *ngFor="let acclist of acc_mgr_list;" value="{{acclist.manager_id}}"> {{acclist.manager_name}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Publisher Status</mat-label>
+                                        <mat-select matInput #fontSize (selectionChange)="customFilter()" value="16px" [formControl]="filterform.controls['pub_status']">
+                                            <mat-option value="Active">Active </mat-option>
+                                            <mat-option value="InActive">InActive</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="50" fxFlex.gt-lg="23" fxFlex.gt-md="23" fxFlex.gt-xs="100"
+                                    fxFlex="100" class="p-10">
+                                    <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                                        <mat-label>Document Status</mat-label>
+                                        <mat-select matInput #fontSize value="16px" [formControl]="filterform.controls['doc_status']" (selectionChange)="customFilter()">
+                                            <mat-option value="1">Approved</mat-option>
+                                            <mat-option value="2">Doubt</mat-option>
+                                            <mat-option value="3">Docs not Verified</mat-option>
+                                            <mat-option value="4">New</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div fxFlex.gt-sm="100" fxFlex.gt-lg="8" fxFlex.gt-md="8" fxFlex.gt-xs="100" fxFlex="100"
+                                    class="p-10 m-t-15 text-center resetBtnMobile">
+                                    <button mat-stroked-button color="" (click)="resetFormfilter()" class="bg-danger text-white">Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="partnerList" matSort class="no-wraap m-t-10 v-middle"
+                        style="width: 100%;">
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Publisher Name </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.pub_name}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="manager_name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Account Manager Name </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.manager_name}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="partner_email">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Publisher Email-Id </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.pub_email}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="onboard_date">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Publisher On Board Date</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.created_at}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="docstatus">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">
+                                Document Status </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">
+                                <p *ngIf="element.status_bank =='1'" class="text-success">Approved</p>
+                                <p *ngIf="element.status_bank =='2'" class="text-danger">Doubt</p>
+                                <p *ngIf="element.status_bank =='3'" class="text-danger">Doc Not Verified</p>
+                                <p *ngIf="element.status_bank =='4'" class="text-inverse">New</p>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-20"> Action </th>
+                            <td mat-cell *matCellDef="let element" class="p-20 font-normal action-link"
+                                style="width: 150px!important;">
+                                <a [routerLink]="['../finance/network-partner-profile',element.pub_id]"
+                                    matTooltip="View / Update Publisher Profile" aria-label="tooltip"
+                                    class="m-r-20 cursor-pointer">
+                                    <i class="fa fa-user font-20 text-danger networkpartner-mobile"></i>
+                                </a>
+
+                                <a [routerLink]="['../finance/bank-details',element.pub_uniq_id]"
+                                    matTooltip="View / Update Publisher Bank Information"
+                                    class="m-r-20 cursor-pointer ">
+                                    <i class="fa fa-university font-20 text-danger networkpartner-mobile"></i>
+                                </a>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
+                </div>
+            </mat-card-content>
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

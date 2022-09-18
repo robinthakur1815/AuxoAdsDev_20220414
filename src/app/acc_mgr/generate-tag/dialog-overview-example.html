@@ -1,0 +1,206 @@
+<div mat-icon-button class="close-button m-t-5" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</div>
+<h2 class="font-bold m-l-0" mat-dialog-title><strong>Quick Tags</strong></h2>
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4bajaj" mat-align-tabs=""
+  backgroundColor="" disableRipple="true" style="margin-top: 10px!important;">
+
+  <mat-tab label="Domain">
+    <ng-template matTabContent>
+      <form class="m-t-30  p-b-20" [formGroup]="quickTagsform">
+        <mat-dialog-content class="pb-3">
+          <div fxLayout="row wrap">
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                <mat-label>Select Domain</mat-label>
+                <mat-select matInput required #fontSize value="16px" (selectionChange)="quickTags()"
+                  [formControl]="quickTagsform.controls['quick_domain']">
+                  <mat-option *ngFor="let domain of quick_domainList;" value="{{domain.web_name}}">{{domain.web_name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                <mat-label>Select Category</mat-label>
+                <mat-select matInput required #fontSize value="16px" (selectionChange)="quickTags()"
+                  [formControl]="quickTagsform.controls['quick_cate']">
+                  <mat-option *ngFor="let cat of quick_catList;" value="{{cat.Tier_1}}">{{cat.Tier_1}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickTag1 placeholder="CM_domain_name_entertainment_TOP_responsive_WC1"
+                  value="{{quick_tag_1}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickTag1)"
+                style="height: 45px;  width: 45px; cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickTag2 placeholder="CM_domain_name_entertainment_ATF_responsive_WC2"
+                  value="{{quick_tag_2}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickTag2)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickTag3 placeholder="CM_domain_name_entertainment_BTF_responsive_WC3"
+                  value="{{quick_tag_3}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickTag3)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickTag4 placeholder="CM_domain_name_entertainment_EOP_responsive_WC4"
+                  value="{{quick_tag_4}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickTag4)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="90" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickTag5 placeholder="" value="{{quick_tag_5}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickTag5)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+        </mat-dialog-content>
+        <div class="bg-opacity" *ngIf="isSpinnerVisible_quick">
+          <div class="parent">
+            <div class="spin1"></div>
+          </div>
+        </div>
+      </form>
+
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="App" *ngIf="quickAppstatus">
+    <ng-template matTabContent>
+      <form class="m-t-30  p-b-20" [formGroup]="quickTagsAppform">
+        <mat-dialog-content class="pb-3">
+          <div fxLayout="row wrap">
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                <mat-label>Select App</mat-label>
+                <mat-select matInput required #fontSize value="16px" (selectionChange)="quickAppTags()" [formControl]="quickTagsAppform.controls['quick_app_list']">
+                  <mat-option *ngFor="let app of quickAppList;" value="{{app.app_name}}">{{app.app_name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="100" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0 m-b-f5">
+                <mat-label>Select Category</mat-label>
+                <mat-select matInput required #fontSize value="16px" (selectionChange)="quickAppTags()"
+                  [formControl]="quickTagsAppform.controls['quick_app_cate']">
+                  <mat-option *ngFor="let cat of quick_catList;" value="{{cat.Tier_1}}">{{cat.Tier_1}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickAppTag1 placeholder="CM_App_Name_InApp_Category_Interstitial"
+                  value="{{quick_app_tag_1}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickAppTag1)"
+                style="height: 45px;  width: 45px; cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickAppTag2 placeholder="CM_App_Name_InApp_Category_Banner"
+                  value="{{quick_app_tag_2}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickAppTag2)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickAppTag3 placeholder="CM_App_Name_InApp_Category_Anchor"
+                  value="{{quick_app_tag_3}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickAppTag3)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="40" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickAppTag4 placeholder="CM_App_Name_InApp_Category_Native"
+                  value="{{quick_app_tag_4}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickAppTag4)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+
+            <div fxFlex.gt-sm="90" fxFlex="100" class="p-10">
+              <mat-form-field appearance="outline" class="p-r-0">
+                <input matInput #quickAppTag5 placeholder="" value="{{quick_app_tag_5}}">
+              </mat-form-field>
+            </div>
+            <div fxFlex.gt-sm="10" fxFlex="100" class="p-10 p-b-30 respombilebnk" style="margin-top: 9px;">
+              <div mat-card-avatar (click)="copyTextQuick(quickAppTag5)"
+                style="height: 45px;  width: 45px;cursor: pointer;">
+                <img src="assets/images/users/copy.png" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+        </mat-dialog-content>
+        <div class="bg-opacity" *ngIf="isSpinnerVisible_quick">
+          <div class="parent">
+            <div class="spin1"></div>
+          </div>
+        </div>
+      </form>
+      
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,874 @@
+<header class="bg-primary text-white">
+   <!-- <div id="particles-js"></div> -->
+   <!--- class(wow animated) data-wow-delay="0.1s" --->
+   <nav class="navbar osahan-navbar navbar-expand-lg navbar-dark fadeInDown" id="mainNav">
+      <div class="container">
+         <a class="navbar-brand js-scroll-trigger menu-btn1" href="/">
+          <img class="img-fluid" src="assets/registerlp/img/new/safe-logo1.png" alt="" height="70px" width="140px">
+        </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button> 
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto navbar-font-bold">
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#features">Platform</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+               </li>
+               
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#testimonials">Testimonials</a>
+               </li>
+               
+               <!-- <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="http://blog-safe.cybermediaservices.net">Blog</a>
+               </li> -->
+               
+               <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#newsletter">Newsletter</a>
+               </li>
+               
+               
+                <li class="nav-item">
+                  <a class="js-scroll-trigger menu-btn" href="#trial">Sign Up</a>
+               </li>
+              
+               <li class="nav-item">
+                  <a [routerLink]="['/authentication/login']" class="js-scroll-trigger menu-btn">Login</a>
+                  <!-- <a class="js-scroll-trigger menu-btn" href="/authentication/login-new">Login</a> -->
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+ 
+   <section class="banner-block pb-0 info-banner" id="page-top">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 col-md-6 text-left fadeInUp animated box bounce">
+                  <img class="img-fluid mb-1 wow fadeInUp animated" src="assets/registerlp/img/new/main-image.png" alt="" style="position: relative; top: -25px!important">
+              </div>
+              <div class="col-md-6 col-md-6 text-center">
+                  <h1 class="text-white mt-5 font-weight"> 
+                  <div class="waviy">
+                  <span style="--i:1">A</span>
+                  <span style="--i:2">n</span>
+                  <span style="--i:3">a</span>
+                  <span style="--i:4">l</span>
+                  <span style="--i:5">y</span>
+                  <span style="--i:6">z</span>
+                  <span style="--i:7">e</span>
+                  </div>
+
+                    <div class="waviy">
+                  <span style="--i:1">P</span>
+                  <span style="--i:2">R</span>
+                  <span style="--i:3">E</span>
+                  <span style="--i:4">D</span>
+                  <span style="--i:5">I</span>
+                  <span style="--i:6">C</span>
+                  <span style="--i:7">T</span>
+                  </div>
+
+                     <div class="waviy">
+                  <span style="--i:1">M</span>
+                  <span style="--i:2">O</span>
+                  <span style="--i:3">N</span>
+                  <span style="--i:4">E</span>
+                  <span style="--i:5">T</span>
+                  <span style="--i:6">I</span>
+                  <span style="--i:7">Z</span>
+                  <span style="--i:7">E</span>
+                  </div>
+<!-- <span>Analyze.</span> -->
+<!-- <span>Predict.</span> <span>Monetize.</span> -->
+                  </h1>
+                  <p class="lead mb-5 text-white">A unified hub to manage your entire monetization stack, ad operations and user data analytics</p>
+                  <p class="mb-0"><a href="#liveDemoModal" data-toggle="modal" class="btn btn-light btn-lg">LIVE DEMO</a> &nbsp; <a href="#trial" class="btn btn-light btn-lg">Register Now</a></p>
+              </div>
+          </div>
+      </div>
+  </section>
+   <div class="effectiv">
+      <img class="svg" src="assets/registerlp/img/bg2.svg" alt="" />
+   </div>
+</header>
+
+<!-- Live demo modal start -->
+<div class="modal fade" id="liveDemoModal" style="overflow: scroll;">
+   <div class="modal-dialog modal-lg" style="margin-top: 8%;">
+      <div class="modal-content">
+         <div class="modal-body">
+            <div mat-icon-button class="close-button m-r-10" #closebutton data-toggle="modal" data-target="#liveDemoModal">
+               <mat-icon class="close-icon" color="warn">close</mat-icon>
+           </div>
+            <!-- <span class="close" #closebutton data-toggle="modal" data-target="#liveDemoModal">&#10005;</span> -->
+            <h5 class="text-center live-demo-heading">Request Here for a Live Demo</h5>
+            <!--loader-->
+            <div class="bg-opacity" *ngIf="isSpinnerVisiblelivedemo">
+               <div class="parent parent-landingpage">
+                  <div class="spin1"></div>
+               </div>
+            </div>
+            <!--loaderend-->
+            <div class="row">
+               <div class="col-lg-6">
+                  <div class="demo-image">
+                     <img src="assets/registerlp/img/demo.png" alt="demo-image" class="img-responsive" style="width: 100%;">
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="trial-block demo-from">
+                     <form [formGroup]="liveDemoform" (ngSubmit)="liveDemoSubmit()">
+                        <div fxLayout="row wrap">
+                            <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                  <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Name" [formControl]="liveDemoform.controls['userName']">
+                                </mat-form-field>
+                                <small *ngIf="liveDemoform.controls['userName'].errors?.whitespace && liveDemoform.controls['userName'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid name</small>
+                                <small *ngIf="liveDemoform.controls['userName'].errors?.minlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Name must be 3 characters</small>
+                                <small *ngIf="liveDemoform.controls['userName'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Name must be characters</small>
+                            </div>
+    
+                             <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                               <mat-form-field appearance="outline" class="p-r-0">
+                                   <mat-label>Email</mat-label>
+                                     <input type="email" matInput placeholder="Email" [formControl]="liveDemoform.controls['livedemoemail']">
+                                 </mat-form-field>
+                                 <small *ngIf="liveDemoform.controls['livedemoemail'].errors && liveDemoform.controls['livedemoemail'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid email</small>
+                             </div>
+   
+                             <div fxFlex.gt-sm="100" fxFlex="100">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                <mat-label>Your Message Here</mat-label>
+                                 <textarea matInput placeholder="" [formControl]="liveDemoform.controls['textname']"></textarea>
+                              </mat-form-field>
+                              <small *ngIf="liveDemoform.controls['textname'].errors?.whitespace && liveDemoform.controls['textname'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid message</small>
+                              <small *ngIf="liveDemoform.controls['textname'].errors?.minlength && liveDemoform.controls['userName'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Message must be 3 characters</small>
+                            </div>
+                    
+                            <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                              <button style="padding: 0px 39px!important;" type="submit" id="reg_submit" name="" class="btn btn-primary btn-lg btn-block m-t-10">SUBMIT</button>
+                           </div>
+                        </div>
+                    </form>
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- Header end -->
+
+<!-- Our Platform start -->
+<section class="features-block ff" id="features" >
+  <div class="container">
+     <div class="section-title text-center wow animated zoomIn pb-0">
+        <h2>Our Platform</h2>
+        <span class="section-title-line "></span>
+     </div>
+     <div class="row">
+        <div class="col-md-4 wow animated fadeInUp ppagem" data-wow-delay="0.1s" id="gam">
+           <div class="features-item text-center">
+              <img class="img-fluid mb-4" src="assets/registerlp/img/icons/icon2.png" alt="">
+              <h5 class="mb-4">Ads Management</h5>
+              <p>End-to-end ad inventory management across direct, programmatic and ad network demand</p>
+           </div>
+        </div>
+         <div class="col-md-4 wow animated fadeInUp ppagem" data-wow-delay="0.5s" id="d-ad">
+           <div class="features-item text-center">
+              <img class="img-fluid mb-4" src="assets/registerlp/img/icons/icon5.png" alt="">
+              <h5 class="mb-4">Programmatic Demand</h5>
+              <p>Earn More Via Programmatic & Premium Direct Demand</p>
+           </div>
+        </div>
+        <div class="col-md-4 wow animated fadeInUp ppagem" data-wow-delay="0.3s" id="report">
+           <div class="features-item text-center">
+              <img class="img-fluid mb-4" src="assets/registerlp/img/icons/icon3.png" alt="">
+              <h5 class="mb-4">Unified Reporting</h5>
+              <p>Live and Consolidated Data and Reports at your finger-tips </p>
+           </div>
+        </div>
+     </div>
+     
+     <div class="row mt-5">
+        <div class="col-md-4 wow animated fadeInUp ppagem" data-wow-delay="0.4s" id="ed">
+           <div class="features-item text-center">
+              <img class="img-fluid mb-4" src="assets/registerlp/img/icons/icon1.png" alt="">
+              <h5 class="mb-4">Editorial Dashboard</h5>
+              <p>Analyze and Empower your most critical asset – your Content! </p>
+           </div>
+        </div>
+          <div class="col-md-4 wow animated fadeInUp ppagem" data-wow-delay="0.2s" id="da">
+           <div class="features-item text-center">
+              <img class="img-fluid mb-4" src="assets/registerlp/img/icons/icon4.png" alt="">
+              <h5 class="mb-4">Deep Analytics</h5>
+              <p>Get Crucial Insights and make Effective Editorial & Revenue decisions</p>
+           </div>
+        </div>
+        <div class="col-md-4 wow animated fadeInUp ppagem" data-wow-delay="0.5s" id="afm">
+           <div class="features-item text-center">
+              <img class="img-fluid mb-4" src="assets/registerlp/img/icons/icon6.png" alt="">
+              <h5 class="mb-4">Auxoads Log In & Payments </h5>
+              <p>Secure and Automated platform ensures auxoads log-in and timely payments </p>
+           </div>
+        </div>
+        
+     </div>
+     <!-- <div class="clearfix" id="trial" ></div> -->
+  </div>
+</section>
+
+
+<!-- counter start -->
+<section class="why-us-block bg-primary" id="why-us">
+   <div class="container-fluid">
+       <div class="section-title text-center">
+           <h2 class="text-white">Our Numbers</h2>
+           <!-- <span class="section-title-line section-title-line line-white"></span> -->
+       </div>
+       <div class="row">
+           <div class="col-lg-3 col-sm-6">
+               <div class="why-us-item text-center text-white m-t-20">
+                  <img src="assets/registerlp/img/icons/domain.png">
+                   <!-- <h1 class="mb-0 mt-3 text-white timer count-title count-number"data-to="4000" data-speed="20000"></h1> -->
+                   <h1 class="mb-0 mt-3 text-white counterfont">{{domainCount}}</h1>
+                   <p class="mb-0 text-white">DOMAINS</p>
+               </div>
+           </div>
+           <div class="col-lg-3 col-sm-6">
+               <div class="why-us-item text-center text-white m-t-20">
+                  <img src="assets/registerlp/img/icons/impression.png">
+                      <h1 class="mb-0 mt-3 text-white counterfont">{{impressionCount}}</h1>
+                      <p class="mb-0 text-white">IMPRESSIONS SERVED</p>
+                    <!-- <h1 class="mb-0 mt-3 text-white timer count-title count-number"data-to="7500000000" data-speed="3400189"></h1> -->
+               </div>
+           </div>
+           <div class="col-lg-3 col-sm-6">
+               <div class="why-us-item text-center text-white m-t-20">
+                  <img src="assets/registerlp/img/icons/page-views.png">
+                   <!-- <h1 class="mb-0 mt-3 text-white timer count-title count-number"data-to="3000000000" data-speed="3420189"></h1> -->
+                   <h1 class="mb-0 mt-3 text-white counterfont">{{pageviewCount}}</h1>
+                   <p class="mb-0 text-white">PAGEVIEWS</p>
+               </div>
+           </div>
+           <div class="col-lg-3 col-sm-6">
+               <div class="why-us-item text-center text-white m-t-20">
+                  <img src="assets/registerlp/img/icons/demand.png">
+                    <!-- <h1 class="mb-0 mt-3 text-white timer count-title count-number"data-to="50" data-speed="20000"></h1> -->
+                    <h1 class="mb-0 mt-3 text-white counterfont">{{demandCount}}</h1>
+                   <p class="mb-0 text-white">DEMAND PARTNERS</p>
+               </div>
+           </div>
+       </div>
+       <div class="clearfix" id="trial" ></div>
+   </div>
+</section>
+
+<!-- Sign up start -->
+<section class="trial-block" style="background:#f2f5fa;padding:100px 0px 50px 0px;">
+   <div class="container">
+       <div class="section-title text-center wow animated zoomIn">
+           <h2>Sign Up</h2>
+           <p>Please complete the form below and we will get in touch ASAP!</p>
+           <span class="section-title-line section-title-line"></span>
+           <div class="alert-success"></div>
+             <div class="error text-danger"></div>
+       </div>
+
+       <div class="row">
+           <div class="col-md-6 col-sm-12"><img src="assets/registerlp/img/new/Register-user.png" class="img-responsive laptopsize"> 
+      </div>
+
+           <div class="col-md-6">
+                   <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                       <div fxLayout="row wrap">
+                           <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                             <mat-form-field appearance="outline"  class="p-r-0">
+                                 <mat-label>Email</mat-label>
+                                   <input matInput placeholder="Email" type="text"  [formControl]="form.controls['email']">
+                               </mat-form-field>
+                               <small *ngIf="form.controls['email'].errors && form.controls['email'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Must be a valid email address</small>
+                               <small *ngIf="emailCheck"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">E-Mail address already exists, please check details!</small>  
+                           </div>
+   
+                           <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                 <mat-label>Password</mat-label>
+                                   <input matInput type="password" placeholder="Password" [formControl]="form.controls['password']" minlength="8">
+                                   
+                               </mat-form-field>
+                               <small *ngIf="form.controls['password'].errors?.minlength && form.controls['password'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Password must be at least 8 characters</small>
+                               <small *ngIf="form.controls['password'].errors?.cannotContainSpace && form.controls['password'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Password can not contain space</small>
+                           </div>
+
+                           <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                  <mat-label>Confirm Password</mat-label>
+                                    <input matInput type="password" placeholder="Confirm Password" [formControl]="form.controls['confirmPassword']" minlength="8">
+                                </mat-form-field>
+                                <small *ngIf="form.controls['confirmPassword'].errors?.equalTo && form.controls['confirmPassword'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Passwords do not match</small>
+                                <small *ngIf="form.controls['confirmPassword'].errors?.minlength && form.controls['confirmPassword'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Password must be at least 8 characters</small>
+                            </div>
+
+                            <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                  <mat-label>First Name</mat-label>
+                                    <input matInput type="text" placeholder="First Name" [formControl]="form.controls['fname']">
+                                </mat-form-field>
+                                <small *ngIf="form.controls['fname'].errors?.whitespace && form.controls['fname'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid first name</small>
+                                   
+                                <small *ngIf="form.controls['fname'].errors?.minlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> First name must be 3 characters</small>
+                                <small *ngIf="form.controls['fname'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">First name must be characters</small>
+                            </div>
+
+                            <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                  <mat-label>Last Name</mat-label>
+                                    <input matInput type="text" placeholder="Last Name" [formControl]="form.controls['lname']">
+                                </mat-form-field>
+                                <small *ngIf="form.controls['lname'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Last name must be characters</small>
+                            </div>
+                            <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                  <mat-label>Select Website/App</mat-label>
+                                  <mat-select #fontSize (selectionChange)="onBusnChange($event)" value="16px" placeholder="Website/App" [formControl]="form.controls['business_type']">
+                                       <mat-option value="App">App</mat-option>
+                                       <mat-option value="Website">Website</mat-option>
+                                   </mat-select> 
+                              </mat-form-field>
+                            </div>
+                            <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline">
+                                  <mat-label>Domain URL</mat-label>
+                                    <input type="text" matInput placeholder="Domain URL" [formControl]="form.controls['domain']">
+                                </mat-form-field>
+                                <small *ngIf="form.controls['domain'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please provide a valid domain address</small>
+                                <small *ngIf="domainCheck"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">{{errorDomain}}</small>
+                            </div>
+                            
+                            <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                  <mat-label>Select Country Code</mat-label>
+                                     <!-- <input matInput placeholder="Country Code" [formControl]="form.controls['country']"> -->
+                                  <mat-select #fontSize value="16px" placeholder="Country Code" [formControl]="form.controls['country']">
+                                       <mat-option *ngFor="let country of countrydata; let i = index" [value]="countrydata[i].id">{{countrydata[i].nicename}} +{{countrydata[i].phonecode}}</mat-option>
+                                      <!--  <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option> -->
+                                   </mat-select> 
+                              </mat-form-field>
+                            </div>
+
+                            <div fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100" class="pform5">
+                              <mat-form-field appearance="outline" class="p-r-0">
+                                  <mat-label>Mobile Number</mat-label>
+                                    <input type="text" maxlength=12 matInput placeholder="Mobile Number" [formControl]="form.controls['mobile']" >
+                                </mat-form-field>
+                                <small *ngIf="form.controls['mobile'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid mobile number</small>
+                                <small *ngIf="form.controls['mobile'].errors?.minlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Mobile number must be 8 numeric  characters</small>
+                                <small *ngIf="form.controls['mobile'].errors?.maxlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Mobile number must be 12 numeric characters</small>
+                            </div>
+
+                            <div class="form-group m-l-10">
+                              <div class="checkbox m-b-5">
+                                 <div class="chiller_cb" >
+                                    <input id="myCheckbox" type="checkbox" [formControl]="form.controls['savetc']">
+                                    <label for="myCheckbox">I accept the <a id="doclink1" href="#tncModal" data-toggle="modal" class="tnc">terms &amp; conditions</a></label>
+                                    <span></span>
+                                 </div>      
+                              </div>
+                            
+                              <span class="m-b-5 font-12" *ngIf="submitted && form.controls['savetc'].errors" style="color:#e94265;">please accept the terms & conditions</span>
+                              <!-- <span class="m-b-5 font-16" *ngIf="submitted && form.valid"  style="color:#3dd080;">{{message}}</span> -->
+                              <span class="m-b-5 font-16" *ngIf="submitted && form.valid"  style="color:#e94265;">{{error}}</span>
+                           </div>
+                            
+                           <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                              <button style="margin-top:10px;" type="submit" id="" name="" class="btn btn-primary btn-lg btn-block" >SIGN UP</button>
+                           </div>
+                       </div>
+                   </form>
+      <!-- html form start -->
+               <!-- <form name="reg_form1" id="regContactForm" method="post" action="" novalidate autocomplete="off">
+                  <div class="control-group form-group">
+                       <div class="controls">
+                           <input type="email" name="pub_emial" placeholder="Enter Your Email" class="form-control" id="pub_emial" required readonly onfocus="this.removeAttribute('readonly');"/>
+                       </div>
+                   </div>
+
+                         <input type="text" id="reg_uname_res" name="reg_uname_res" value="" hidden />
+
+                   <div class="row">
+                       <div class="control-group form-group col-md-6">
+                           <div class="controls">
+                               <input type="password" placeholder="Enter Your Password" class="form-control" id="pub_pass" name="pub_pass" required readonly onfocus="this.removeAttribute('readonly');" onblur="Validatepassword()" />
+                           </div>
+                       </div>
+                       <div class="control-group form-group col-md-6">
+                           <div class="controls">
+                               <input type="password" placeholder="Confirm Password" class="form-control" id="pub_pass_conf" name="pub_pass_conf" required onblur="Validatepassword()" readonly onfocus="this.removeAttribute('readonly');">
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="row">
+                        <div class="control-group form-group col-md-6">
+                           <div class="controls">
+                              <input type="text" placeholder="First Name" class="form-control" id="reg_first_name" name="reg_first_name" required data-validation-required-message="Please enter your first name.">
+                           </div>
+                       </div>
+
+                       <div class="control-group form-group col-md-6">
+                           <div class="controls">
+                               <input type="text" placeholder=" Last Name" class="form-control" id="reg_last_name" name="reg_last_name" >
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="control-group form-group">
+                       <div class="controls">
+                           <input type="text" placeholder="Domain URL" class="form-control" id="reg_website" name="reg_website" required data-validation-required-message="Please enter your primary domain url.">
+                           <div id="uweb_response" name="uweb_response" class="response"></div>
+                       </div>
+                   </div>
+
+                   <div class="row">
+                   <div class="control-group form-group col-md-5">
+                   <div class="controls">
+                   <select name="country_id" id="country_id" class="form-control">
+                   <option value="">Select Country Code</option>
+                   <option value="abc">abc</option>
+                   </select>
+                   </div>
+                   </div>
+
+                   <div class="control-group form-group col-md-7">
+                   <div class="controls">
+                   <input type="tel" placeholder="Mobile Number (Global)" class="form-control" id="phone" name="reg_cont_no" required data-validation-required-message="Please enter your mobile number.">
+                   </div>
+                   </div>   
+                   </div>
+
+               <div class="form-group">
+                  <div class="checkbox">
+                     <div class="chiller_cb">
+                        <input id="myCheckbox" type="checkbox" checked="">
+                        <label for="myCheckbox">I accept the <a id="doclink1" href="#tncModal" data-toggle="modal" class="tnc">terms &amp; conditions</a></label>
+                        <span></span>
+                     </div>
+                  </div>
+               </div>
+              <button style="margin-top:25px;" type="submit" id="reg_submit" name="" class="btn btn-primary btn-lg btn-block">SIGN UP</button>
+               </form> -->
+     <!-- html form End -->
+           </div>
+       </div>
+       <div class="clearfix" id="services"></div>
+       <div class="clearfix" id="cdp"></div>
+   </div>
+</section>
+
+<!-- SignUp Modal start -->
+<div class="modal fade" id="tncModal">
+   <div class="modal-dialog modal-lg" style="margin-top: 8%;">
+      <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title">Terms & Conditions</h4>
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            <div mat-icon-button class="close-button m-r-10 m-t-20" data-dismiss="modal">
+               <mat-icon class="close-icon" color="warn">close</mat-icon>
+         </div>
+      </div>
+      
+         <div class="modal-body" style="max-height:400px; overflow-y:scroll;">
+            <h5 class="text-center"></h5>
+            <div class="col-md-10 col-md-offset-1">
+            <h5>RECITALS</h5>
+            <ol>
+            <li>Cyber Media Research &amp; Services Limited (&ldquo;CyberMedia&rdquo;) has expertise to provide CyberAds services to its clients/publishers using technology including Google technology on their websites.</li>
+            <li>The Publisher/Client desires to avail of CyberAds services of CyberMedia.</li>
+            <li>Based on representations, the Publisher has agreed to avail of CyberMedia's services and CyberMedia has agreed to provide its CyberAds Services on sharing the revenue&nbsp; to be collected by the Publisher pursuant to the services to be provide by CyberMedia on the terms and conditions mentioned herein:</li>
+            </ol>
+            <p>&nbsp;</p>
+           <h5>NOW THIS AGREEMENT WITNESSETH AS UNDER:</h5>
+           <ol>
+            <li><strong>Duration:</strong>&nbsp;This Agreement shall be for a period of 1 (One) year, effective from the date of last signature/acceptance by the Publisher/Client. This Agreement shall be automatically renew after the expiry of 1 (One) year for a further term of 1 (one) year unless either Party expresses its unwillingness to the other Party by giving a prior notice in writing in this regard at least 30 (thirty) days prior to the expiry of the Term.</li>
+            <li><strong>Services:</strong>&nbsp;CyberMedia shall provide the publisher/Client the services as described in the Annexure-I ("Services").</li>
+            <li><strong>Fee and Payment Terms:</strong> Fee and Payment terms for the services to be provided under this Agreement shall be as per Annexure-II.</li>
+            <li><strong>Termination:</strong>&nbsp;Either Party may, at any time, terminate this Agreement after serving 30 (thirty) days' prior notice in writing to the other.</li>
+            <li><strong>Indemnification:&nbsp;</strong>CyberMedia's Indemnity: CyberMedia shall indemnify and keep indemnified the Publisher, its officers, directors, agents and employees all times against actions, losses, damages, costs (including reasonable legal expenses), charges and expenses (but not loss of revenue) which may be levied against the Publisher or incurred as a consequence of, or in connection with, any default or breach of the terms and conditions, or fraudulent act negligence, omissions or any misrepresentations, made by CyberMedia, its associates, employees etc.</li>
+            
+            <p style="font-size: 16px!important; line-height: 25px!important;"><strong>The Publisher' Indemnity:</strong>&nbsp;The Publisher shall indemnify and hold harmless CyberMedia, its officers, directors, agents and employees from any claim or demand or actions including reasonable attorneys' fees made by and third party or penalty imposed due to or arising out of the Publisher's breach any term of this Agreement. Provided that the Publisher's liability under this Agreement shall not exceed in any event the amount of revenue share of CyberMedia.</p>
+            
+            <li><strong>Confidentiality:</strong>&nbsp;The terms of this Agreement will be treated strictly confidential by the Parties hereto except as required in performance of this Agreement or when required to be disclosed pursuant to law. Both Parties shall safeguard, treat and keep confidential all confidential information received under this Agreement. Neither Party shall not disclose, divulge or impart such Confidential Information to any third party, either during the validity of this Agreement or any time thereafter and shall return to the other Party all such Confidential Information immediately upon the termination of this Agreement.</li>
+            <br/>
+            <li><strong>Miscellaneous:</strong></li>
+            </ol>
+            <ul>
+            <li><strong>Service of Notices:</strong>Any notice or communication required to be given under this Agreement shall not be binding unless the same is in writing. All communications between the parties shall be made in English and delivered by hand or sent by registered mail, courier or by facsimile to the addresses as set out above.</li>
+            <li><strong>Consent for Use of Information</strong>: The Publisher/Client has agreed that CyberMedia shall have the right to use Publisher/Client&rsquo;s customers&rsquo; information received pursuant to this Agreement and process the same for better service operations.</li>
+            <li><strong>Assignment:</strong>Neither party shall without prior written intimation and first accepted by the other party, not assign or transfer this Agreement to any third party.</li>
+            <li><strong>Relationship of parties</strong>: This Agreement is being entered into on a non-exclusive, principal to principal basis and each party is independent entity and not an agent / employee of the other.</li>
+            <li><strong>Force Majeure:</strong>Neither party will be liable for inadequate performance to the extent caused by a condition (for example, natural disaster, act of god or war or terrorism, riot, labour condition, governmental action and Internet disturbance) that was beyond the party's reasonable control. Provided that the party subject to such events shall take necessary steps to mitigate the effect of such events.</li>
+            <li><strong>Modification:</strong>The terms of this Agreement can only be modified or amended through written instrument signed by duly authorised representatives of the Parties.</li>
+            <li><strong>Intellectual Property rights:</strong>No party will acquire any right, title or interest in any intellectual property rights belonging to the other party.</li>
+            <li><strong>'CyberMedia' and 'Publisher/Client'</strong>unless repugnant to the context or meaning thereof, are herein deemed to include their respective successors and permitted assignees etc. &lsquo;CyberMedia&rsquo; and &lsquo;Publisher/Client&rdquo; are herein collectively referred to as &ldquo;Parties&rdquo; and individually as &ldquo;Party&rsquo;</li>
+            <li><strong>Arbitration:</strong>In the event of any disputes, differences or claims arising between the parties hereto in connection with this Agreement, the parties shall first endeavour to amicably settle such disputes etc., failing which the same shall be referred to the arbitration to a Sole Arbitrator to be mutually appointed and be decided in accordance with the provisions of the Arbitration and Conciliation Act, 1996 including any statutory amendment thereto. The arbitration proceedings shall be conducted at Delhi and the language be English.</li>
+            <li><strong>Governing Laws:</strong>The provisions of this Agreement shall be governed and construed in accordance with the laws of the Republic of India. The courts at Delhi shall have exclusive jurisdiction on all matters and disputes arising out of and relating to any provision of this Agreement.</li>
+            </ul>
+           </div>
+         </div>
+     <div class="modal-footer">
+</div>
+      </div>
+   </div>
+</div>
+
+<!-- Our Services start -->
+<section class="features-mid-block" style="padding: 60px 0px 30px 0px" id=""> 
+   <div class="container">
+   <div class="section-title text-center wow  zoomIn animated" style="visibility: visible; animation-name: zoomIn;">
+         <h2>Our Services</h2>
+         <span class="section-title-line section-title-line"></span>
+      </div>
+
+       <div class="row">
+        <div class="col-md-6 wow animated fadeInLeft" data-wow-delay="0.5s">
+            <div class="features-mid-right text-left">
+               <img class="img-fluid" src="assets/registerlp/img/new/customer-data.png" alt="">
+            </div>
+         </div>
+         <div class="col-md-6 wow animated fadeInRight" data-wow-delay="0.10s" >
+            <div class="features-mid-left pt-4">
+               <h2 class="mb-2"  style="font-size:25px;">Customer Data Platform (CDP)</h2>
+               <span class="section-title-line mb-4"></span>
+               <p class="mb-5 ">Our CDP solution enables publishers to get control of their data and audiences. Publishers are able to use this solution to deliver targeted campaigns to their advertising partners. This helps drive higher monetization programmatically.</p>
+               <!-- <a href="#trial" class="btn btn-primary">Create Your Account</a> -->
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="clearfix" id="ao"></div>
+</section>
+
+<section class="features-mid-block pt-0" style="padding: 60px 0px 60px 0px" id="">
+   <div class="container">
+      <div class="row" >
+          <div class="col-md-6 fadeInLeft" data-wow-delay="0.5s" >
+            <div class="features-mid-left pt-4">
+               <h2 class="mb-2"  style="font-size:25px;">Ad Operation Management</h2>
+               <span class="section-title-line mb-4"></span>
+               <p class="mb-5 ">If Ad server management and optimization is your business concern then let our experts provide you the best in class support for your campaign management and ad serving.  As a Google Partner we  are equipped  with world class GAM360 management capabilities thus helping you optimize your ROI.</p>
+               <!-- <a href="#trial" class="btn btn-primary">Create Your Account</a> -->
+            </div>
+         </div>
+
+           <div class="col-md-6 wow animated fadeInRight" data-wow-delay="0.10s">
+            <div class="features-mid-right text-right">
+               <img class="img-fluid" src="assets/registerlp/img/new/management.png" alt="">
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="clearfix" id="seo"></div>
+</section>
+
+ <section class="features-mid-block pt-0" style="padding: 60px 0px 60px 0px" id="">
+   <div class="container">
+       <div class="row" >
+         <div class="col-md-6 wow animated fadeInLeft" data-wow-delay="0.5s">
+            <div class="features-mid-right text-left">
+               <img class="img-fluid" src="assets/registerlp/img/new/seo-new.png" alt="">
+            </div>
+         </div>
+         <div class="col-md-6 wow animated fadeInRight" data-wow-delay="0.10s" >
+            <div class="features-mid-left pt-4">
+               <h2 class="mb-2" style="font-size:25px;">Traffic Optimization</h2>
+               <span class="section-title-line mb-4"></span>
+               <p class="mb-5 ">Our SEO support includes analysis of keywords, page speeds, meta-data to help you optimize accessibility of your website. Drive organic growth by deploying best practices that ensure long-term impact across search traffic.</p>
+               <!-- <a href="#trial" class="btn btn-primary">Create Your Account</a> -->
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="clearfix" id="cs"></div>
+</section>
+
+<section class="features-mid-block pt-0" style="padding: 60px 0px 60px 0px" id="">
+   <div class="container">
+      <div class="row" >
+         <div class="col-md-6 wow animated fadeInRight" data-wow-delay="0.10s">
+            <div class="features-mid-left pt-4">
+               <h2 class="mb-2"  style="font-size:25px;">Content Strategy</h2>
+               <span class="section-title-line mb-4"></span>
+               <p class="mb-5 ">Our 30+ years experience in building Content and Communities helps publishers create their future Growth Strategy. Discover the best processes, tips and resources for your content strategy and engage your readers more.</p>
+               <!-- <a href="#trial" class="btn btn-primary">Create Your Account</a> -->
+            </div>
+         </div>
+
+          <div class="col-md-6 wow animated fadeInLeft" data-wow-delay="0.5s" >
+            <div class="features-mid-right text-left">
+               <img class="img-fluid" src="assets/registerlp/img/new/ads-management.png" alt="">
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Screenshots start -->
+<section class="screens-block bg-primary" id="screen" style="padding: 60px 0px 60px 0px">
+   <div class="screens-container-fluid">
+   <div class="section-title text-center wow animated zoomIn">
+      <h2 class="text-white">Screenshots</h2>
+      <!-- <span class="section-title-line section-title-line line-white"></span> -->
+   </div>
+   <div class="screens-row text-center" style="filter: blur(0.7px);">
+   <div class="screens owl-carousel owl-theme">
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new1.png" class="img-responsive">
+      </div>
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new2.png" class="img-responsive">
+      </div>
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new3.png" class="img-responsive">
+      </div>
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new4.png" class="img-responsive">
+      </div>
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new5.png" class="img-responsive">
+      </div>
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new6.png" class="img-responsive">
+      </div>
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new7.png" class="img-responsive">
+      </div>
+      <div class="item">
+         <img src="assets/registerlp/img/screenshot/new8.png" class="img-responsive">
+      </div>
+   </div>
+   </div></div>
+</section>
+
+<!-- Watch Our Video start -->
+   <!--    <section class="video-block pb-0" id="video">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Watch Our Video</h2>
+                <span class="section-title-line"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-11 mx-auto">
+                    <div class="video-item text-center">
+                        <p><a data-toggle="modal" data-target="#video-model" class="play-btn" href="#"><i class="fa fa-play"></i></a></p>
+                        <img class="img-fluid mt-5" src="landing_page/img/app-shot.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="video-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Watch Our Video</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/UIWAyPidR7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- our happy clients -->
+    <section class="testimonials-block" id="testimonials" style="padding: 100px 0px 60px 0px">
+      <div class="container">
+         <div class="section-title text-center wow animated zoomIn">
+            <h2>Our Happy Clients</h2>
+            <span class="section-title-line"></span>
+         </div>
+         <div class="row wow animated zoomIn" data-wow-delay="0.9s">
+           
+            <div class="blogs-slider owl-carousel owl-theme">
+               <div class="item">
+                  <div class="col-md-12 wow  fadeInUp animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                     <div class="custom-card testimonials-item text-center">
+                        <img class="img-fluid mb-4" src="assets/registerlp/img/test1.jpg" alt="">
+                        <p class="mb-4 fonttt18">Rajnikant V/s CID Jokes is India's leading Facebook page in entertainment category. When we started our website, we didn't choose any adsense partner network. After 6 months, we got associated with Cybermedia just to try their services for 2 months but our monthly adsense revenue was increased by 80% in very first month with almost same number of page views. We never knew playing with ad placement can help us increasing the adsense revenue with this much margin. All thanks to Cybermedia.</p>
+                        <h6 class="mb-0 text-primary">- Rajnikant V/s CID</h6>
+                      <!--  <small>Director</small>-->
+                     </div>
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="col-md-12 wow  fadeInUp animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                     <div class="custom-card testimonials-item text-center">
+                        <img class="img-fluid mb-4" src="assets/registerlp/img/test2.jpg" alt="">
+                        <p class="mb-4 fonttt18">I enjoy working with Cybermedia. Everyone is very nice and helpful. I get AdX services from them and I am extremely happy. Timing and quality have always met my expectations all the way around from start to finish and everything is communicated in a professional and timely manner. Keep up the GREAT work!</p>
+                        <h6 class="mb-0 text-primary">- Candy Reader</h6>
+                        <!--<small>Director</small>-->
+                     </div>
+                  </div>
+               </div>
+               <div class="item">
+                  <div class="col-md-12 wow  fadeInUp animated" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                     <div class="custom-card testimonials-item text-center">
+                        <img class="img-fluid mb-4" src="assets/registerlp/img/t-1.jpg" alt="">
+                        <p class="mb-4 fonttt18">I am very glad that I chose CyberMedia as a partner to increase my website revenue through adsense Program. They helped me with ad placement strategies and various other aspects to optimize website. Monetization is about trying strategies and keeping the one which best works. I found the Ad Recommendations suggested by the CyberMedia people meaningful and through which I was able to increase CTR and RPM of my website. Looking forward to take the earning to newest level with the help of CyberMedia team.</p>
+                       <!-- <h6 class="mb-0 text-primary">- Lorem Ipsum</h6>-->
+                       <!-- <small>Sr. Manager</small>-->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- SignUp NewsLetter start -->
+   <section class="sign-up-blockdelete" id="newsletter" style="padding: 100px 0px 50px 0px">
+      <div class="container">
+         <div class="section-title text-center wow animated zoomIn" style="padding-bottom: 19px;">
+            <h2>Get Started with Auxo Ads Newsletter</h2>
+            <span class="section-title-line"></span>
+         </div>
+         <div class="row">
+            <div class="col-md-10 mx-auto wow animated fadeInUp" data-wow-delay="0.12s">
+               <div class="sign-up-formdelete">
+                  
+                  <form [formGroup]="newsletterform" (ngSubmit)="nwsltrSubmit()" style="margin-top: -5px;">
+                     <div fxLayout="row wrap" class="align-items-center">
+                        <div fxFlex="100" fxFlex.gt-md="40" class="p-10">
+                           <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Name</mat-label>
+                              <input matInput [formControl]="newsletterform.controls['nwsltrname']"
+                                 placeholder="Your Name">
+                           </mat-form-field>
+                           <small *ngIf="newsletterform.controls['nwsltrname'].errors?.whitespace && newsletterform.controls['nwsltrname'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid name</small>
+                           <small *ngIf="newsletterform.controls['nwsltrname'].errors?.minlength"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth"> Name must be 3 characters</small>
+                           <small *ngIf="newsletterform.controls['nwsltrname'].errors?.pattern"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Name must be characters</small>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="40" class="p-10">
+                           <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Email</mat-label>
+                              <input type="email" matInput required [formControl]="newsletterform.controls['nwsltremail']"
+                                 placeholder="Your Email">
+                           </mat-form-field>
+                           <small *ngIf="newsletterform.controls['nwsltremail'].errors && newsletterform.controls['nwsltremail'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20 customWidth">Please enter valid email</small>
+                        </div>
+                        <div fxFlex="100" fxFlex.gt-md="20" class="p-10" style="margin-top: -30px;">
+                           <button type="submit" id="reg_submit_news" name=""
+                              class="btn btn-primary btn-lg btn-block m-t-10 mbilesub" style="padding: 0px;">Subscribe
+                              Now</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <p class="mt-1 text-center">We believe Privacy is important & don't sell data to any third-party</p>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!-- Footer start -->
+   <footer class="py-5 text-center wow animated zoomIn">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-3  col-sm-6 col-xs-6">
+            <ul class="list-inline links links1"> 
+             <p class="footertitle">OUR OFFICES</p>
+             <!-- <p class="footertitle" style="font-size: 15px!important;"><u>Singapore Office</u></p> -->
+           <u><li style="font-size: 15px!important; font-weight: 500;">Singapore Office</li></u> 
+             <li>1 North Bridge Road, #07-10 </li>
+             <li>High Street Center</li>
+             <li>Singapore - 179094</li>
+             </ul>
+
+             <ul class="list-inline links links1"> 
+               <br>
+            <!-- <p class="footertitle" style="font-size: 15px!important;"><u>India Office</u></p> -->
+               <u><li style="font-size: 15px!important; font-weight: 500;">India Office</li></u> 
+               <li>Cyber House B-35 Sec-32  </li>
+               <li>Gurgaon (NCR Delhi)</li>
+               <li>India - 122001</li>
+               </ul>
+            </div>
+
+
+         <div class="col-md-3 col-sm-6 col-xs-6">
+            <ul class="list-inline links"><p class="footertitle">PLATFORM</p>
+               <li><a href="#gam">Ads Management</a></li>
+               <li><a href="#d-ad">Programmatic Demand</a></li>
+               <li><a href="#report">Unified Reporting</a></li>
+               <li><a href="#ed">Editorial Dashboard</a></li>
+               <li><a href="#da">Deep Analytics</a></li>
+               <li><a href="#afm">Auxo Ads Log In & Payments</a></li>
+            </ul>
+         </div>
+
+         <div class="col-md-3 col-sm-6 col-xs-6">
+				<ul class="list-inline links"><p class="footertitle">SERVICES</p>
+            <li><a href="#cdp">Customer Data Platform (CDP)</a></li>
+            <li><a href="#ao">Ad Operation Management</a></li>
+            <li><a href="#seo">Traffic Optimization</a></li>
+            <li><a href="#cs">Content Strategy</a></li>
+				</ul>
+			</div>
+
+         <div class="col-md-3 col-sm-6 col-xs-6 logos">
+				<ul class="list-inline links"><p class="footertitle">CONTACT</p>
+					<li style="font-size:14px;"><strong>Email : </strong> <a href="mailto:enquiry@auxoads.com">enquiry@auxoads.com</a></li>
+               <li>
+                  <img src="assets/registerlp/img/new/safe-logo.png" class="marginfooter" style="margin-left: -10px!important;" width="170" height="auto">
+               </li>
+				</ul>
+
+           <!-- <span style="float:left;">
+				<a href="https://www.facebook.com/CyberMedia-India-Limited-127319944012858/" target="_blank"><i style="font-size: 25px;" class="fa fa-facebook-official" aria-hidden="true"></i></a>
+	
+				<a href="https://in.linkedin.com/company/cybermedia" target="_blank"><i style="font-size: 25px; margin-left: 5px;" class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+				</span>
+            <br>
+
+          <ul class="list-inline links">
+             <li>
+            <img src="assets/registerlp/img/safe-logo.png" style="margin-left: -60px!important; margin-top: 15px!important;" width="170" height="auto">
+             </li>
+          </ul> -->
+		 </div>
+
+      </div>
+   </div>
+
+   <div class="container" style="border-top:1px solid #f1f1f1; margin-top:30px;">
+      <p style="position: relative; top: 17px;" class="mt-0 mb-0 pt-2">&copy; Copyright 2022  <a class="text-primary"  target="_blank" href="/">Auxo Ads</a>. All Rights Reserved.</p>
+   </div>
+</footer>
+<!--loader-->
+<div class="bg-opacity" *ngIf="isSpinnerVisiblenewsletter">
+   <div class="parent parent-landingpage">
+      <div class="spin1"></div>
+   </div>
+</div>
+<!--loaderend-->
+<!--loader-->
+<div class="bg-opacity" *ngIf="isSpinnerVisible">
+   <div class="parent parent-landingpage">
+   <div class="spin1"></div>
+   </div>
+</div>
+<!--loaderend-->

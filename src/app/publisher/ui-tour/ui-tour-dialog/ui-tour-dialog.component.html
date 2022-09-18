@@ -1,0 +1,33 @@
+<div class="bg-colora">
+  <div class="row" style="margin-top: -20px;">
+    <div style="width: 80%; float: left; height: 125px; margin-top: 0px; background-color: #fff;">
+    <div class="paraimag" style="height: 125px; width: 40%; float: left; text-align: center; background-color: #fff;">
+    <img class="m-0 m-r-10 tourmobile" src="{{srcImage}}" style="margin-top: 12px;" width="" height=""/>
+    </div>
+
+    <div class="para1" style="height: 125px; width: 60%; float: left; background-color: #fff;">
+      <p class="text-whitee m-t-0 text-left mobilerespotours m-left1" style="font-size: 20px; color: rgba(0, 0, 0, 0.87); margin-top: 47px;">{{ stepText }}</p>
+    </div>
+  </div>
+
+    <div class="gotit" style="height: 125px; width: 20%; float: left; margin-top: 0px; background-color: #fff;">
+      <div class="text-right m-r-20" style="position: relative; top: 20px; left: 5px;">
+        <div mat-icon-button class="close-button" (click)="onNoClick1()">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </div>
+      </div>
+      <mat-card-actions class="m-l-0 text-center tourbtnmobile">
+        <!-- <a class="m-r-10">
+           <button mat-stroked-button color="" (click)="prev()" class="m-r-10 bg-danger text-white">Back</button>
+       </a> -->
+
+        <a class="m-r-10">
+          <button mat-stroked-button (click)="next()" *ngIf="nextit" color="" class="m-r-10  bg-danger text-white gotitmobile1" style="margin-top: 37px;"
+           >Next</button>
+           <button mat-stroked-button (click)="onNoClick()" *ngIf="gotit" color="" class="m-r-10  bg-danger text-white gotitmobile1"style="margin-top: 37px;"
+          >Got it!</button>
+        </a>
+      </mat-card-actions>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="p-5 p-r-20 p-l-20" style="background-color: aliceblue;">
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    </mat-form-field>
+                </div>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource" matSort class="no-wraap m-t-20 v-middle"
+                        style="width: 100%;">
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">Publisher Name </th>
+                            <td mat-cell  *matCellDef="let element" class="p-15 font-normal">
+                                <a *ngIf="element.vertical == '' || element.vertical == null" class="link login-weight colorblackky colorOragne" [routerLink]="['../obm-admanager-app-publisherdetails/',element.pub_id,element.app_id]">{{element.name | titlecase}}</a>
+                                <a *ngIf="element.vertical !='' && element.vertical !=null" class="link login-weight colorblackky" [routerLink]="['../obm-admanager-app-publisherdetails/',element.pub_id,element.app_id]">{{element.name | titlecase}}</a>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="onboarddate">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">Onboard Date </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal" [innerHTML]="formatOnBoardDate(element.onboarddate)"></td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="child_net_code">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">Child Network Code</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">{{element.child_net_code | replacenullwithtext:'--'}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="app_name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> App Name </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal breaklinetabletd">{{element.app_name | titlecase}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">App Status</th>
+                            <td mat-cell *matCellDef="let element; let i = index" class="p-15 font-normal">
+                                <mat-form-field appearance="outline" class="p-r-0 m-t-20">
+                                    <mat-label>Select App Status</mat-label>
+                                    <mat-select #fontSize [(ngModel)]="element.status" id="pub_app_status" name="pub_app_status" (selectionChange)="getPublisherAppStatus($event,i)">
+                                        <mat-option *ngFor="let appstatus of pubAppStatus" value="{{appstatus}}">{{appstatus}}</mat-option>
+                                      </mat-select>
+                                      
+                                  </mat-form-field>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="tag_status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> DFP Tag Status </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> 
+                                <p [ngClass]="{'text-success': element.tag_status == 'Live',
+                                'text-danger': element.tag_status == 'Pending' , 
+                                'text-inverse': element.tag_status == '' || element.tag_status == 'NULL'}">{{element.tag_status | titlecase}}</p>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
+                </div>
+
+                <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                    <div class="parent">
+                      <div class="spin1"></div>
+                    </div>
+                </div>
+                
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

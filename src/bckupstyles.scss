@@ -1,0 +1,1067 @@
+/* Author Name- Mr . bajaj
+Email- himanshub@cybermedia.co.in
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  Front End Design start
+
+// Topbar header color css
+.mat-toolbar.mat-primary {
+    background: #F4F4F3!important;
+}
+
+// table start
+table, th , td {
+border: 1px solid #e8eef3;
+border-collapse: collapse;
+}
+
+
+table tr:nth-child(even) {
+background-color: aliceblue;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+padding-left: 15px!important;
+}
+
+// .responsive-table .mat-cell:first-of-type, .responsive-table .mat-footer-cell:first-of-type, .responsive-table .mat-header-cell:first-of-type {
+//   padding-left: 15px!important;
+// }
+
+// table scrollbar bar only  css 
+@media all and (min-width: 768px) and (max-width: 2560px) {
+.only-used-scroll-table {
+margin-bottom: -16px!important;
+}
+}
+
+// Clickable table start color
+.colorblackky
+{
+    // color: rgba(0, 0, 0, 0.87)!important;
+    color: #8d70fa!important;
+    font-size: 14px!important;
+    text-decoration: underline!important;
+}
+
+
+// Topbar start logo & Heading Start
+@media all and (min-width: 768px) and (max-width: 2560px) {
+#logoalignment {
+margin-left: 25%;
+}
+}
+
+
+@media only screen and (max-width: 1023px) {
+.mainpagehead {
+display: none!important;
+}
+}
+
+.mainpagehead {
+white-space: nowrap!important;
+margin-top: -5px!important;
+}
+
+
+@media all and (min-width: 1024px) and (max-width: 2560px) {
+.mat-icon-button {
+width: 54px!important;
+}
+}
+
+// this month and last month New 3 March 2022 start
+@media only screen and (max-width: 599px) {
+.thislastmonth {
+display: none!important;
+}
+}
+
+.thislastmonth {
+white-space: nowrap!important;
+margin-top: -3px!important;
+}
+
+@media all and (min-width: 768px) and (max-width: 2560px) {
+.m-t-3 {
+position: relative!important;
+top: 7px!important;
+}
+}
+
+.m-r-36
+{
+  margin-right: 36px!important;
+}
+
+@media only screen and (max-width: 768px) {
+.iconmobilenav{
+  position: relative!important;
+  top: 7px!important;
+}
+}
+
+// old This month and last month css start
+// .top1 {
+// position: relative;
+// top: -5px!important;
+// pointer-events: none !important;
+// cursor: none!important;
+// }
+
+// @media only screen and (max-width: 426px) {
+// .btnhidethismonth {
+// display: none!important;
+// }
+// }
+// old This month and last month css End
+
+
+// daterangepickeralignment start topbar laptop & mobile
+@media all and (min-width: 1440px) and (max-width: 2560px) {
+#daterangepickeralignment {
+color: #000 !important;
+width: 330px!important;
+}
+}
+
+@media all and (min-width: 1025px) and (max-width: 1439px) {
+#daterangepickeralignment {
+color: #000 !important;
+}
+}
+
+@media all and (min-width: 320px) and (max-width: 1268px) {
+#daterangepickeralignment {
+display: none!important;
+}
+}
+
+@media all and (min-width: 1024px) and (max-width: 2560px) {
+.mat-toolbar-row, .mat-toolbar-single-row {
+white-space: normal!important;
+}
+}
+
+// breadcumbdaterangepicker start topbar mobile
+@media all and (min-width: 425px) and (max-width: 1268px) {
+#breadcumbdaterangepicker {
+  padding: 10px 30px 10px 30px!important;
+}
+}
+
+@media all and (min-width: 1269px) and (max-width: 2560px) {
+#breadcumbdaterangepicker {
+display: none;
+}
+}
+
+// daterangepicker colors and fonts start
+.md-drppicker .ranges ul li button.active {
+background-color: #e94265 !important;
+font-family: 'Noto Sans KR' !important;
+}
+
+.md-drppicker td.active, .md-drppicker td.active:hover {
+background-color: #e94265 !important;
+font-family: 'Noto Sans KR' !important;
+}
+
+.md-drppicker .ranges ul li button {
+font-family: 'Noto Sans KR' !important ;
+}
+
+.md-drppicker .calendar td, .md-drppicker .calendar th {
+font-family: 'Noto Sans KR' !important;
+}
+
+.md-drppicker .calendar td, .md-drppicker .calendar th {
+font-family: 'Noto Sans KR' !important;
+}
+
+.md-drppicker .btn
+{
+background-color: #e94265 !important;
+font-family: 'Noto Sans KR' !important;
+border-radius: 60px!important;
+padding: 0 15px !important;
+}
+
+.btn.btn-default {
+color: #fff !important;
+background-color: #e94265 !important;
+margin-right: 10px !important;
+}
+
+.md-drppicker th.month {
+font-family: 'Noto Sans KR' !important;
+}
+
+.md-drppicker .clear {
+box-shadow: none;
+background-color: #a9a9a9!important;
+}
+
+.md-drppicker .buttons {
+text-align: center !important;
+}
+
+.md-drppicker .clear svg {
+color: #e94265 !important;
+margin-right: -20px !important;
+}
+
+// button danger start
+.mat-raised-button {
+border-radius: 60px!important;
+}
+
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+border-radius: 60px!important;
+}
+
+// notification start setting topbar
+.mailbox .message-center a:hover {
+color: #000!important;
+}
+
+// manageUsers start setting topbar
+#usedhover:hover
+{
+color: #000!important;
+}
+
+// sidebar setting, bankac, logout dashboard Left dashboard mobile
+// @media all and (min-width: 767px) and (max-width: 2560px) {
+// .profilelaptophide {
+// display: none;
+// }
+// }
+
+// .user-profile .profile-text > a {
+// padding: 15px 62px!important;
+// }
+
+// @media only screen and (max-width: 767px) {
+// .mobilehide1 {
+// display: none!important;
+// }
+// }
+
+// toggle button start
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+background-color: #e94265!important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+background-color: rgb(253,221,230)!important;  
+}
+
+//toggle default css
+.mat-slide-toggle-content {
+display: none!important;
+}
+
+// popup vertical header inventory css
+@media only screen and (max-width: 424px) {
+.m-t-mobile {
+position: relative!important;
+top: -29px!important;
+}
+}
+
+// popup css cross button close
+.close-button{
+float: right;
+position: relative;
+cursor: pointer;
+top: -16px;
+right: -16px;
+}
+
+.close-icon {
+transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+transform: rotate(180deg);
+}
+
+::ng-deep .icon-outside .close-button{
+float: right;
+top:-52px;
+right:-52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+overflow: unset
+}
+
+// starting 4 boxes Earning trend, Cpm trend, Ctr trend, Filled % css  & Tabs are also used this fonts
+.m-t-2spacing
+{
+ position: relative;
+ top: 2px!important;
+}
+
+// used only h3 tag up and down data css
+@media all and (min-width: 1280px) and (max-width: 1340px) {
+.m-t-2spacing {
+font-size: 16px!important;
+}
+}
+
+.font-13
+{
+font-size: 13px!important;
+}
+
+@media all and (min-width: 1280px) and (max-width: 1365px) {
+.font15_lap1280_1365 {
+font-size: 13px!important;
+}
+}
+
+.font-15
+{
+font-size: 15px;
+}
+
+.font-16
+{
+font-size: 16px;
+}
+
+.font-17
+{
+font-size: 17px;
+}
+
+.font-18
+{
+font-size: 18px;
+}
+
+.font-22
+{
+font-size: 22px;
+}
+
+.font-25
+{
+font-size: 25px;
+}
+// html body .font-16 {
+//   font-size: 13px!important;
+// }
+
+.m-b-margin
+{
+// margin-top: -27px!important;
+margin-top: -14px!important;
+
+}
+
+// scrollbar old start
+// @media all and (min-width: 768px) and (max-width: 2560px) {
+// ::-webkit-scrollbar {
+// width: 15px
+// }
+// }
+
+// @media all and (min-width: 768px) and (max-width: 2560px) {
+// ::-webkit-scrollbar-thumb {
+// border-width: 1px 1px 1px 2px;
+// border-radius: 11px;
+// }
+// }
+
+// @media all and (min-width: 768px) and (max-width: 2560px) {
+// ::-webkit-scrollbar-track {
+// background-clip: padding-box;
+// border: solid transparent;
+// }
+// }
+
+// ::-webkit-scrollbar-thumb:horizontal {
+// background-color: transparent;
+// background-clip: padding-box;
+// border: solid transparent;
+// }
+
+// @media all and (min-width: 768px) and (max-width: 2560px) {
+// ::-webkit-scrollbar-thumb:vertical {
+// background-color: #a9a9a9;
+// background-clip: padding-box;
+// border: solid transparent;
+// }
+// }
+
+// @media all and (min-width: 768px) and (max-width: 2560px) {
+// ::-webkit-scrollbar-thumb:vertical:hover {
+// background-color: grey;
+// }
+// }
+// scrollbar old End
+
+// scrollbar new launching 28-02-2022 start
+@media all and (min-width: 768px) and (max-width: 2560px) {
+  ::-webkit-scrollbar {
+  width: 15px
+  }
+  }
+  
+  @media all and (min-width: 768px) and (max-width: 2560px) {
+  ::-webkit-scrollbar-thumb {
+  border-width: 1px 1px 1px 2px;
+  border-radius: 11px;
+  }
+  }
+  
+  @media all and (min-width: 768px) and (max-width: 2560px) {
+  ::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  }
+  }
+  
+  ::-webkit-scrollbar:horizontal{
+    background-color: #fff;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:horizontal{
+    background-color: #a9a9a9;
+    border-radius: 10px;
+    background-clip: padding-box;     
+   }
+  
+  @media all and (min-width: 768px) and (max-width: 2560px) {
+  ::-webkit-scrollbar-thumb:vertical {
+  background-color: #a9a9a9;
+  background-clip: padding-box;
+  border: solid transparent;
+  }
+  }
+  
+  @media all and (min-width: 768px) and (max-width: 2560px) {
+  ::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: grey;
+  }
+  }
+  // scrollbar new launching 28-02-2022 End
+
+
+// publisher tools- otherTools css
+@media only screen and (max-width: 424px) {
+.toolsmobile {
+font-size: 24px!important;
+}
+}
+
+.mat-hint {
+color: rgb(0 0 0 / 41%)!important;
+}
+
+// keyinsights content performance css
+.social-widget .soc-header {
+padding: 5px!important;
+}
+
+// border keyinsights content performance Css
+html body .b-all {
+    border: 1px solid rgba(120, 130, 140, 0.20)!important;
+}
+
+html body .b-r {
+    border-right: 1px solid rgba(120, 130, 140, 0.20)!important;
+}
+
+.font-35
+{
+    font-size: 35px!important;
+}
+
+// icon download button prodashboard display device , etc
+@media only screen and (max-width: 510px) {
+  .respomobile-laptop {
+  position: relative;
+  top: 3px!important;
+  right: 5px!important;
+  }
+  }
+  
+@media all and (min-width: 511px) and (max-width: 1024px) {
+  .respomobile-laptop {
+    position: relative;
+    top: 5px!important;
+  }
+  }
+
+@media all and (min-width: 1025px) and (max-width: 2560px) {
+.respomobile-laptop
+{
+position: relative;
+left: 10px!important;
+}
+}
+
+
+// landing page css
+body
+{
+  background-color: #fff!important;
+}
+
+// Menu left sidebar start icon 
+#snav .mat-nav-list .mat-list-item a mat-icon {
+    color: #455a64!important;
+    }
+    
+    #snav .mat-nav-list .mat-list-item.selected > .mat-list-item-content > a mat-icon {
+    color: #ffffff!important;
+    }
+
+#snav .mat-nav-list .mat-list-item a mat-icon:not(.dd-icon) {
+    margin-right: 8px;
+    line-height: 40px !important;
+    display: inline-block !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 20px !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    border-radius: 12% !important;
+    box-shadow: 0 0 10px rgb(0 0 0 / 12%) !important;
+    }
+
+// menu left sidebar Option1 Link active css Again start 16-09-2021
+#snav .mat-nav-list .mat-list-item.selected .sub-item .mat-list-item-content a.selected {
+    color: red!important;
+}
+
+#snav .mat-nav-list .sub-item .child-sub-item a {
+    padding: 11px 0 0 40px!important;
+}
+
+// menu left sidebar Option2 Bg color active css Again start 22-09-2021 & also used in inline css from publisher/publisher-sidebar/publisher-vertical-sidebar component 
+#snav .mat-nav-list .mat-list-item.selected .sub-item .mat-list-item-content a.selected {
+    background: #7460ee!important;
+    color: #fff!important;
+    border-radius: 4px!important;
+    height: 45px!important;
+    margin-bottom: 9px!important;
+}
+
+#snav .mat-nav-list .mat-list-item.selected > .mat-list-item-content > a {
+  background: #5131a0 !important;
+}
+
+#snav .mat-nav-list .mat-list-item a
+{
+    height: 45px!important;
+}
+
+#snav .mat-nav-list .mat-list-item a .dd-icon {
+  margin: 5px 0px 2px 5px!important;
+  }
+
+// form css
+
+    .m-t-35
+    {
+        margin-top: 35px!important;
+    }
+
+    .p-b-15
+    {
+        padding-bottom: 15px!important;
+    }
+
+    .p-b-35
+    {
+        padding-bottom: 35px!important;
+    }
+
+    .m-b-18
+    {
+        margin-bottom: 18px!important;
+    }
+
+     // buttonDownload css start
+     .btn.download {
+        -webkit-animation: download 3s linear infinite;
+        animation: download 3s linear infinite;
+      }
+     
+      @-webkit-keyframes download {
+        0% {
+          transform: translateY(-16px);
+        }
+        100% {
+          transform: translateY(16px);
+        //   opacity: 0;
+        }
+      }
+      @keyframes download {
+        0% {
+          transform: translateY(-16px);
+        }
+        100% {
+          transform: translateY(16px);
+          opacity: 0;
+        }
+      }
+
+      // Template css mobile -  Heading or matcard
+      @media only screen and (max-width: 424px) {
+      .mat-card .mat-card-title 
+      {
+        font-size: 15px!important;
+      }
+    }
+ 
+    @media only screen and (max-width: 424px) {
+      .mat-card 
+      {
+        margin-left: 0px!important;
+        margin-right: 0px!important;
+      }
+    }
+
+// Footer start
+.footer
+{
+background-color: #fff;
+padding: 2px 0px 2px 0px;
+margin-left: 16px!important;
+margin-right: 14px!important;
+border-radius: 4px!important;
+}
+
+// is dependent on Template css mobile matcard only
+@media only screen and (max-width: 424px) {
+.footer
+{
+width: 100%!important;
+margin: 15px 0px 0px 0px !important;
+padding: 5px !important;
+}
+}
+
+// loader New launching 22feb-2022
+.parent {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.8);
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 30px;
+  position: fixed;
+  padding-top: 20%;
+  padding-left: 52%;
+}
+
+@media only screen and (max-width: 500px) {
+  .parent
+  {
+  position: fixed;
+  padding-top: 80%;
+  padding-left: 37%;
+  }
+}
+
+@media all and (min-width: 767px) and (max-width: 898px) {
+  .parent
+  {
+  position: fixed;
+  padding-top: 36%!important;
+  padding-left: 45%!important;
+  }
+}
+
+@media all and (min-width: 899px) and (max-width: 1022px) {
+  .parent
+  {
+  position: fixed;
+  padding-top: 32%!important;
+  padding-left: 46%!important;
+  }
+}
+
+@media all and (min-width: 1023px) and (max-width: 1024px) {
+  .parent
+  {
+  position: fixed;
+  padding-top: 35%!important;
+  padding-left: 55%!important;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+:root {
+  --Magenta: #8d70fa;
+}
+
+.spin1 {
+  width: 100px;
+  height: 100px;
+  border: 10px solid var(--Magenta);
+  border-radius: 50%;
+  border-left-color: #DDD;
+  animation-name: spin;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+// OnlyLandingpage loader position css
+.parent-landingpage
+{
+  position: fixed;
+  padding-top: 19%;
+  padding-left: 46%;
+}
+
+@media only screen and (max-width: 500px) {
+  .parent-landingpage
+  {
+  position: fixed;
+  padding-top: 80%;
+  padding-left: 37%;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .parent-landingpage
+  {
+  position: fixed;
+  padding-top: 33%!important;
+  padding-left: 40%!important;
+  }
+}
+//  end
+// loader New launching end 22feb-2022
+
+
+// popup lineheight start
+  .popuplineheight {
+    line-height:25px !important;
+ }
+   
+ 
+ // dashbaord Tabs Top start also
+ .example-stretched-tabs {
+  max-width: 100%;
+   padding: 0px 0px;
+}
+
+.mat-tab-label:hover{
+  border-bottom: 3px solid #7460ee;
+}
+
+.mat-tab-label {
+  border: 2px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: rgba(0, 0, 0, 0.87) !important;
+  font-size: 20px;
+  opacity: 1.6  !important;
+  height: 86px!important;
+  border-left: 1px solid #dee2e6!important;
+  border-top: 1px solid #dee2e6!important;
+  border-right: 1px solid #dee2e6!important;
+}
+
+@media only screen and (max-width: 599px) {
+  .mat-tab-label  {
+    padding: 36px!important;
+  }
+  }
+
+.mat-tab-label-active {
+  color: rgba(0, 0, 0, 0.87);
+  border-bottom: 3px solid #7460ee!important;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  font-size: 20px;
+  border: 2px solid  #dee2e6;
+}
+
+.mat-tab-nav-bar, .mat-tab-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.mat-ink-bar {
+display: none;
+}
+
+.row1 
+{
+  margin: -14px -15px;
+  margin-bottom: 15px;
+ }
+
+ @media only screen and (max-width: 767px) {
+  .row1 {
+  margin: 15px -14px!important;
+  }
+  }
+
+ .basic-container
+ {
+   margin-top: 15px;
+   margin-bottom: 15px;
+ }
+//  dashbaord Tabs Top End
+
+// Logout, manageuser, bankdetails popup start
+.mat-menu-panel {
+  min-width: 112px!important;
+  max-width: 350px!important;
+}
+
+
+// Signup Form , Login, Resetpasword, Forgot Input Type validation & form css start
+.logintrp-css
+    {
+    float: left;
+
+    }
+
+    .spacing-adjust
+    {
+    margin-top: -18px;
+    }
+
+    .pform5
+    {
+    padding-right: 7px;
+    padding-left: 7px;
+    }
+
+    .fonttt18
+    {
+      font-size: 18px!important;
+    }
+
+    .m-trp-60
+    {
+        margin-top: 65px;
+    }
+
+    .login-weight
+    {
+        font-weight: 500!important;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .mobile-logo
+      {
+        width: 130px!important;
+      }
+  }
+
+  @media only screen and (max-width: 600px) {
+      .mobile-spacing
+      {
+       margin-top: 15px;
+       margin-right: 10px!important;
+      }
+}
+
+// highcharts css button back
+.highcharts-button-box+text {
+  fill: #e94265 !important;
+}
+
+//highcharts underline remove
+.highcharts-xaxis-labels text {
+  text-decoration: none !important;
+}
+
+// Html Table Expandable th break line 19-10-21
+.no-wrap td, .no-wrap th  {
+  white-space: inherit!important;
+}
+ 
+.p-15brk
+{
+  width: 0px!important;
+  padding: 15px!important;
+}
+   
+// Table scrollbar hide new angular template table mobiledevices
+@media only screen and (max-width: 600px) {
+  .angulartablescrollmobile
+  {
+   margin-bottom: 0px!important;
+  }
+}
+
+// Table td character First line break  Html Expandable table
+// Expandable table break line html td
+.breaklinetable
+{
+  max-width: 360px!important; 
+  word-wrap: break-word!important;
+  cursor: pointer!important;
+}
+
+@media only screen and (max-width: 768px) {
+  .breaklinetable
+  {
+    max-width: 190px!important; 
+  }
+}
+
+// breaklinetable working on td start
+.breaklinetabletd
+{
+  max-width: 200px!important; 
+  word-wrap: break-word!important;
+}
+
+.breaklinetabletd1
+{
+  max-width: 100px!important; 
+  word-wrap: break-word!important;
+}
+
+// bank details inputtype with button icon from Mobile 
+@media only screen and (max-width: 768px) {
+  .respombilebnk {
+      margin-top: -20px!important;
+  }
+  }
+
+// Bank details icon animation start
+.notify .point {
+position: absolute!important;
+right: 5px!important;
+width: 5px!important;
+height: 5px!important;
+}
+
+.heartbit {
+  position: absolute!important;
+  top: -22px!important;
+  right: -5px!important;
+}
+
+// toggle icon mobile navbar
+@media only screen and (max-width: 768px) {
+  .togglemobile768 {
+    position: relative!important;
+    top: 12px!important;
+  }
+  }
+
+// Form input placeholder css
+// .mat-input-element {
+//  padding: 5px 0px 5px 0px !important;
+// }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+// Admin Panel Css Start
+
+
+// OBM Dashboard Start
+.fonttopbar
+{
+  font-size: 33px!important;
+  position: relative!important;
+  right: 4px!important;
+  top: -5px!important;
+}
+
+.adsense_head
+{
+  position: relative!important;
+  left: 14px!important;
+  line-height: 20px;
+}
+
+@media all and (min-width: 1280px) and (max-width: 1370px) {
+.adsense_head
+{
+  font-size: 13px!important;
+}
+}
+
+.reduce-margin
+{
+   margin: 5px!important;
+}
+
+.reduce-margin .reduce-padding
+{
+   padding: 24px 14px 24px 14px!important;
+}
+
+.textbox5break
+{
+  max-width: 162px!important; 
+  word-wrap: break-word!important;
+}
+
+.textbox6break
+{
+  max-width: 145px!important; 
+  word-wrap: break-word!important;
+}
+
+// OBM Dashboard End
+
+
+// MatTabs Other Pages start
+.mat-tab-label .mat-tab-label-content {
+  font-size: 21px!important;
+}
+
+// MatTabs Other Pages End
+// Tabs Mobile Used in future 20-1-2022
+// .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+//   display: none!important;
+// }
+
+// .mat-tab-label-container {
+//   display: block!important;
+// }
+
+// .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+//   padding: 43px!important;
+// }
+// Tabs Mobile End
+
+
+// Notification Network Manager start
+.mailbox .message-center a .mail-content .mail-desc, .mailbox .message-center a .mail-content .time {
+  white-space: inherit!important;
+}
+
+.mailbox .message-center {
+  height: 280px!important;
+}
+
+.mailbox {
+  // width: 335px!important;
+  min-width: 315px!important;
+  max-width: 335px!important;
+}
+
+// single Date Calendar start
+.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-datepicker-toggle-default-icon, .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+  color: #e91e63!important;
+}
+
+// Forms checkbox color change

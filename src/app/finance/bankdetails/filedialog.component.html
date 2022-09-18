@@ -1,0 +1,17 @@
+<div mat-icon-button class="close-button m-t-5" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</div>
+<mat-dialog-content>
+  <p class="">{{data.message}}</p>
+  <ng-container *ngIf="data.message2=='pdf'">
+
+    <div style='position: relative; z-index: 1; height: 405px; width: 850px; margin-left: -12px;'>
+      <pdf-viewer [src]="data.message1" [show-all]="false" [autoresize]="true" [original-size]='true'
+        [fit-to-page]='true' [render-text]="false" style="display: block;">
+      </pdf-viewer>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="data.message2=='png' || data.message2=='jpg' || data.message2=='jpeg'">
+    <img class="m-t-5" style="margin-left: 1px;" height='420px' mat-card-image [src]="data.message1" alt="img1">
+  </ng-container>
+</mat-dialog-content>

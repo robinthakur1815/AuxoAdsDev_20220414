@@ -1,0 +1,46 @@
+.mailbox_width
+{
+width: 100%!important;
+max-width: 100%!important;
+min-width: 100%!important;
+}
+
+@media all and (min-width: 768px) and (max-width: 2560px) {
+.notification_padding_laptop{
+  padding: 20px!important;
+}
+}
+
+.layout-height {
+height: 500px !important;
+}
+
+.unread-new {
+background-color: #e94265!important;
+padding: 4px;
+color: #fff;
+border-radius: 5px!important;
+font-size: 13px;
+position: relative;
+top: -1px;
+left: 8px;
+// pointer-events: none!important;
+}
+
+@media screen and (max-width: 599px) {
+.unread-new {
+position: relative;
+top: -1px;
+padding: 3px;
+font-size: 8px;
+left: 5px;
+}
+}
+
+@media screen and (max-width: 599px) {
+.margin_notification_mobile {
+position: relative!important;
+right: 20px!important;
+bottom: 10px!important;
+}
+}

@@ -1,0 +1,66 @@
+<div fxLayout="row wrap">
+    <div fxFlex="100">
+        <mat-card>
+            <mat-card-content *ngIf="isSpinnerVisible">
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                    <div class="spin1"></div>
+                </div>
+            </div>
+            </mat-card-content>
+            <mat-card-content *ngIf="!isSpinnerVisible">
+                <div class="text-right m-r-0 m-b-25" style="margin-top: 5px!important;">
+                    <div (click)="backPage()" mat-icon-button class="close-button"
+                        [mat-dialog-close]="true">
+                        <mat-icon class="close-icon" color="warn">close</mat-icon>
+                    </div>
+                </div>
+                <mat-card-title class=" m-t-20 p-b-35">Payment Details</mat-card-title>
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="invoiceList" matSort class="no-wrap m-t-0 v-middle">
+                        <ng-container matColumnDef="billFrom">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                Month </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.month}}
+                            </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="billTo">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">
+                                Revenue ($)</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">
+                                {{element.final_rev}}
+                            </td>
+                        </ng-container>
+
+
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Status</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.status}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Action</th>
+                            <td mat-cell *matCellDef="let element" class="p-l-0 font-normal" style="cursor: pointer;">
+                                <ng-container *ngIf="element.status!='In Process' && element.status!='No Billing'">
+                                    <a mat-icon-button [routerLink]="['./viewInvoice/',element.month]">
+                                        <mat-icon class="text-danger p-0">remove_red_eye</mat-icon>
+                                    </a> <span [routerLink]="['./viewInvoice/',element.month]">View Payment
+                                        Advice</span>
+                                </ng-container>
+
+                            </td>
+
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-card-footer style="margin-bottom: 60px!important;"></mat-card-footer>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

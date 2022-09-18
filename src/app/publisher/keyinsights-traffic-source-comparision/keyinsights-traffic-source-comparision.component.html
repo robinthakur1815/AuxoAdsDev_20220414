@@ -1,0 +1,136 @@
+ <!-- KeyInsights Traffic comparision Analysis start -->
+ <div fullscreen appUiTour #tour="appUiTour">
+    <div fxLayout="row wrap">
+        <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100"> 
+            <mat-card>
+                <mat-card-content>
+                    <mat-card-title>Traffic Source Comparison : ( {{daterangeCur}} )</mat-card-title>
+                    <!-- <mat-card-subtitle style="margin-top: 15px;" class="text-muted text-center"> ( 07 Jun - 13 Jun, 2021 )</mat-card-subtitle> -->
+                    <div class="card-group">
+                        <mat-card class="text-center">
+                            <mat-card-content>
+                                <mat-icon class="text-primary font-35">person</mat-icon>
+                                <h3 class="m-0 text-primary">{{usersCur}}</h3>
+                                <h5 class="text-muted m-0 m-t-5">Users</h5>
+                            </mat-card-content>
+                        </mat-card>
+                    
+                        <mat-card class="text-center">
+                            <mat-card-content>
+                                <mat-icon class="text-warning font-35">add_alarm</mat-icon>
+                                <h3 class="m-0 text-warning">{{sessCur}}</h3>
+                                <h5 class="text-muted m-0 m-t-5">Avg. Session Duration</h5>
+                            </mat-card-content>
+                        </mat-card>
+                    
+                        <mat-card class="text-center">
+                            <mat-card-content>
+                                <mat-icon class="text-success font-35">multiline_chart</mat-icon>
+                                <h3 class="m-0 text-success">{{bounceCur}}%</h3>
+                                <h5 class="text-muted m-0 m-t-5">Avg. Bounce Rate</h5>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div [chart]="trafficone"></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    
+        <div fxFlex.gt-lg="50" fxFlex.gt-md="50" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card>
+                <mat-card-content>
+                    <mat-card-title>Traffic Source Comparison : ( {{daterangePre}})</mat-card-title>
+                    <!-- <mat-card-subtitle style="margin-top: 15px;" class="text-muted text-center"> ( 31 May - 06 Jun, 2021)</mat-card-subtitle> -->
+                    <div class="card-group">
+                        <mat-card class="text-center">
+                            <mat-card-content>
+                                <mat-icon class="text-primary font-35">person</mat-icon>
+                                <h3 class="m-0 text-primary">{{usersPre}}</h3>
+                                <h5 class="text-muted m-0 m-t-5">Users</h5>
+                            </mat-card-content>
+                        </mat-card>
+                    
+                        <mat-card class="text-center">
+                            <mat-card-content>
+                                <mat-icon class="text-warning font-35">add_alarm</mat-icon>
+                                <h3 class="m-0 text-warning">{{sessPre}}</h3>
+                                <h5 class="text-muted m-0 m-t-5">Avg. Session Duration</h5>
+                            </mat-card-content>
+                        </mat-card>
+                    
+                        <mat-card class="text-center">
+                            <mat-card-content>
+                                <mat-icon class="text-success font-35">multiline_chart</mat-icon>
+                                <h3 class="m-0 text-success">{{bouncePre}}%</h3>
+                                <h5 class="text-muted m-0 m-t-5">Avg. Bounce Rate</h5>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div [chart]="traffictwo"></div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+<!-- Earnings Analysis By Traffic Sources Graph Start -->
+ <!-- <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+                        <mat-card-title>Earnings Analysis By Traffic Sources  : ( 17 May - 23 May, 2021 )</mat-card-title>
+                    </div>
+
+                    <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100">
+                   <mat-card-title style="cursor: pointer;" class="text-right"> 
+                    <img #tooltip1="matTooltip" (mouseenter)="tooltip1.show()" matTooltipPosition="after" mat-raised-button matTooltip="Click on graph for drilldown analysis" aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn2.png" width="25"/>
+
+                    <img #tooltip2="matTooltip" (mouseenter)="tooltip2.show()" matTooltipPosition="after" mat-raised-button matTooltip="Email weekly report"  aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn1.png" width="25"/>
+
+                    <img #tooltip3="matTooltip" (mouseenter)="tooltip3.show()" matTooltipPosition="after" mat-raised-button matTooltip="Download Report" aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn3.png"  width="25"/>
+                </mat-card-title>
+                </div>
+            </div>
+
+            <div id="trafficthreeA"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+ </div> -->
+
+     <!-- Traffic Analysis Top 10 Location start -->
+ <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Traffic Analysis Top 10 Location : ( {{daterange}} )</mat-card-title>
+                <highcharts-chart
+                id="container" 
+                [Highcharts]="Highcharts"
+                [constructorType]="chartConstructor"
+                [options]="chartOptions"
+                [(update)]="updateFlag"
+                style="width: 100%; height: 430px; display: block;">
+                </highcharts-chart>
+                <!-- <div id="container" style="width: 100%; height: 430px; display: block;"></div> -->
+            </mat-card-content>
+        </mat-card>
+    </div>
+ </div>
+<!-- <div class="tour_publisherend" appUiTourStep="1"></div>
+<div class="tour_publisherend" appUiTourStep="2"></div>
+<div class="tour_publisherend" appUiTourStep="3"></div> -->
+</div>
+<!--loader-->
+<div class="bg-opacity" *ngIf="isSpinnerVisible">
+    <div class="parent">
+        <div class="spin1"></div>
+    </div>
+</div>
+<div class="bg-opacity" *ngIf="isSpinnerVisible1">
+    <div class="parent">
+        <div class="spin1"></div>
+    </div>
+</div>
+<!--loaderend-->

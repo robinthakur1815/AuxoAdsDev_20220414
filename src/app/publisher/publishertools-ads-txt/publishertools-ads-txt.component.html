@@ -1,0 +1,31 @@
+<div fxLayout="row wrap">
+<div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+<mat-card>
+<mat-card-content>
+    <mat-card-title>Ads.txt</mat-card-title>
+          <!-- form start -->
+            <div fxLayout="row wrap">
+                <div fxFlex.gt-sm="100" fxFlex="100">
+                      <!-- <form class="m-t-20" > -->
+                        <div fxLayout="row wrap" fxFlexAlign="center" class="row">  
+                          <div fxFlex.gt-sm="100" fxFlex="100" class="p-10 m-t-10">
+                            <mat-form-field appearance="outline" class="p-r-0">
+                              <mat-label>Your Code</mat-label>
+                                <textarea matInput placeholder="" cols="20" rows="5" #userinput readonly>{{valueText}}</textarea>
+                               
+                            </mat-form-field>
+                          </div>
+
+                          <div  class="p-r-0 m-b-0" style="margin-top: -5px;">
+                            <div  class="p-r-0 m-b-0" style="margin-left: 12px!important;">
+                              <button mat-stroked-button color="" class=" bg-danger text-white" (click)="copyInputMessage(userinput)">Copy</button>
+                            </div>
+                          </div>
+                        </div>
+                     <!--  </form> -->
+                    </div>
+                  </div>
+                </mat-card-content>
+                </mat-card>
+                </div>
+                </div>

@@ -1,0 +1,49 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>ApiDocumentation</mat-card-title>
+          <!-- form start -->
+          <div fxLayout="row wrap">
+            <div fxFlex.gt-sm="100" fxFlex="100">
+              <mat-card>
+                <mat-card-content>
+                  <div fxLayout="row wrap">
+                    <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100" *ngIf="display == 1">
+                      <mat-card-title> Display </mat-card-title>
+                    </div>
+                    <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100" *ngIf="display == 1">
+                      <mat-card-title style="cursor: pointer;" class="text-right">
+                        <button mat-stroked-button (click)="downloadPdf(display)" color=""
+                          class="m-r-10 bg-danger text-white">Download</button>
+                      </mat-card-title>
+                    </div>
+                      <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100"  *ngIf="vedio == 1">
+                      <mat-card-title> Video </mat-card-title>
+                    </div>
+                    <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100"*ngIf="vedio == 1">
+                      <mat-card-title style="cursor: pointer;" class="text-right">
+                        <button mat-stroked-button (click)="downloadVideoPdf(Video)" color=""
+                          class="m-r-10 bg-danger text-white">Download</button>
+                      </mat-card-title>
+                    </div>  
+                    
+                    <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100"  *ngIf="app == 1">
+                    <mat-card-title> App </mat-card-title>
+                  </div>
+                  <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100"*ngIf="app == 1">
+                    <mat-card-title style="cursor: pointer;" class="text-right">
+                      <button mat-stroked-button (click)="downloadVideoPdf(Video)" color=""
+                        class="m-r-10 bg-danger text-white">Download</button>
+                    </mat-card-title>
+                  </div>  
+                </div>
+                  <div id="container"></div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

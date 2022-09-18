@@ -1,0 +1,82 @@
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div class="p-5 p-r-20 p-l-20" style="background-color: aliceblue;">
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+                    </mat-form-field>
+                </div>
+                <div class="table-responsive m-t-10">
+                    <table mat-table [dataSource]="dataSource" matSort class="no-wraap m-t-20 v-middle" style="width: 100%;">
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> Publisher Name </th>
+                            <td mat-cell  *matCellDef="let element" class="p-15 font-normal">
+                                <span *ngIf="element.mcm_status == 'APPROVED'">
+                                <a *ngIf="element.pub_type == '' || element.pub_type == null" class="link login-weight  text-warning" [routerLink]="element.mcm_status == 'APPROVED' ? ['../admanager-invite-publisherdetails/',element.pub_id] : null">{{element.name | titlecase | replacenullwithtext:'--'}}</a>
+                                <a *ngIf="element.pub_type !='' && element.pub_type !=null" class="link login-weight purple-color" [routerLink]="element.mcm_status == 'APPROVED' ? ['../admanager-invite-publisherdetails/',element.pub_id] : null">{{element.name | titlecase | replacenullwithtext:'--'}}</a>
+                                </span>
+
+                                <span *ngIf="element.mcm_status != 'APPROVED'">
+                                    <a class="link login-weight black-color" href="javascript:void(0)">{{element.name | titlecase | replacenullwithtext:'--'}}</a>
+                                </span>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="pub_email">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> Email </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal">{{element.pub_email | lowercase}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="onboarddate">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> Onboard Date </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal" [innerHTML]="formatOnBoardDate(element.onboarddate)"></td>
+                            <!-- {{element.onboarddate | date:'d MMM, y'}} -->
+                        </ng-container>
+
+                        <ng-container matColumnDef="company_id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> Company ID </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">{{element.company_id | replacenullwithtext:'--'}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="child_net_code">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">Child Network Code </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right">{{element.child_net_code | replacenullwithtext:'--'}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="mcm_status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15">MCM Status </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> 
+                                <p [ngClass]="{'text-success': element.mcm_status == 'APPROVED',
+                                'text-inverse': element.mcm_status == 'invite' , 
+                                'text-danger': element.mcm_status == '' || element.mcm_status == 'NULL'}">{{element.mcm_status | titlecase | replacenullwithtext:'--'}}</p>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="tag_status">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-medium font-16 p-15"> DFP Tag Status </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> 
+                                <p [ngClass]="{'text-success': element.tag_status == 'Live',
+                                'text-danger': element.tag_status == 'Pending' , 
+                                'text-inverse': element.tag_status == '' || element.tag_status == 'NULL'}">{{element.tag_status | titlecase}}</p>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[25, 50, 75, 100]"></mat-paginator>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+<div class="bg-opacity" *ngIf="isSpinnerVisible">
+    <div class="parent">
+        <div class="spin1"></div>
+    </div>
+</div>
+

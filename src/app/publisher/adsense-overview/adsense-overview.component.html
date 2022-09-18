@@ -1,0 +1,224 @@
+<!-- start 4 boxes -->
+<!-- <div *ngIf="isSpinnerVisible" fxLayout="row wrap" id="formobile11" style="height: 200px;">
+    <div class="bg-opacity hegihtLoader" >
+        <div class="parent" style="position: absolute;top: 8% !important;">
+            <div class="spin1"></div>
+        </div>
+    </div>
+</div>  -->
+<!-- <div *ngIf="!isSpinnerVisible" fxLayout="row wrap"> -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card class="bg-primary">
+            <mat-card-content>
+                <h6 class="font15_lap1280_1365 text-white text-left"
+                    style="font-size: 15px; line-height: 20px!important;">AdSense Earnings 10-Days</h6>
+                <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                    <h2 class="text-white text-left m-0 p-t-10 font-25">${{earning10day}}</h2>
+
+                    <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                        <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{earning10dayUpDownPer/100 | percent: '1.1-1'}}
+                            <mat-icon *ngIf="earningUpArrow" class="font-18">arrow_upward</mat-icon>
+                            <mat-icon *ngIf="earningDownpArrow" class="font-18">arrow_downward</mat-icon>
+                        </h3>
+                    </div>
+
+                    <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                        <div class="d-flex flex-column" style="overflow: inherit!important;">
+                            <div class="m-t-0" [chart]="cyberadsdashboardone"
+                                style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <!-- 2 box -->
+    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card class="bg-warning">
+            <mat-card-content>
+                <h6 class="font15_lap1280_1365 text-white text-left"
+                    style="font-size: 15px; line-height: 20px!important;">AdSense CPM 10-Days</h6>
+                <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                    <h2 class="text-white text-left m-0 p-t-10 font-25">${{CPM10day}}</h2>
+
+                    <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                        <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{CPM10dayUpDownPer/100 | percent: '1.1-1'}}
+                            <mat-icon *ngIf="cpmUpArrow" class="font-18">arrow_upward</mat-icon>
+                            <mat-icon *ngIf="cpmDownpArrow" class="font-18">arrow_downward</mat-icon>
+                        </h3>
+                    </div>
+
+                    <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                        <div class="d-flex flex-column" style="overflow: inherit!important;">
+                            <div class="m-t-0" [chart]="cyberadsdashboardtwo"
+                                style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+ 
+    <!-- 3box -->
+    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card class="bg-success">
+            <mat-card-content>
+                <h6 class="font15_lap1280_1365 text-white text-left"
+                    style="font-size: 15px; line-height: 20px!important;">AdSense CTR 10-Days</h6>
+                <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                    <h2 class="text-white text-left m-0 p-t-10 font-25">{{CTR10day/100 | percent:'1.2-2'}}</h2>
+
+                    <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                        <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{CTR10dayUpDownPer/100 | percent: '1.1-1'}}
+                            <mat-icon *ngIf="ctrUpArrow" class="font-18">arrow_upward</mat-icon>
+                            <mat-icon *ngIf="ctrDownpArrow" class="font-18">arrow_downward</mat-icon>
+                        </h3>
+                    </div>
+
+                    <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                        <div class="d-flex flex-column" style="overflow: inherit!important;">
+                            <div class="m-t-0" [chart]="cyberadsdashboardthree"
+                                style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <!-- 4box -->  
+    <div fxFlex.gt-sm="50" fxFlex.gt-lg="25" fxFlex.gt-md="25" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card class="bg-info">
+            <mat-card-content>
+                <h6 class="font15_lap1280_1365 text-white text-left"
+                    style="font-size: 15px; line-height: 20px!important;">AdSense Filled % 10-Days</h6>
+                <div class="stats" style="margin-top: -35px; padding-bottom: 62px;">
+                    <h2 class="text-white text-left m-0 p-t-10 font-25">{{Filled10day/100 | percent:'1.2-2'}}</h2>
+
+                    <div class="p-t-20" style="height: 65px; width: 50%; float: left;">
+                        <h3 class="text-white text-left font-18 m-0 p-t-10 m-t-2spacing">{{Filled10dayUpDownPer/100 | percent: '1.1-1'}}
+                            <mat-icon *ngIf="fillUpArrow" class="font-18">arrow_upward</mat-icon>
+                            <mat-icon *ngIf="fillDownpArrow" class="font-18">arrow_downward</mat-icon>
+                        </h3>
+                    </div>
+
+                    <div class="ml-auto" style="height: 65px; width: 50%; float: right; text-align: -webkit-center!important;">
+                        <div class="d-flex flex-column" style="overflow: inherit!important;">
+                            <div class="m-t-0" [chart]="cyberadsdashboardfour"
+                                style="height: 65px; width: 100%; position: relative!important; top: -3px!important;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<!-- start 4boxes end -->
+
+ <!-- AdSense start -->
+ <div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <div fxLayout="row wrap">
+                    <div fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+                        <mat-card-title>AdSense Estimated Earnings : ( {{date}} )</mat-card-title>
+                    </div>
+
+                    <div fxFlex.gt-lg="30" fxFlex.gt-md="30" fxFlex.gt-xs="100" fxFlex="100">
+                   <mat-card-title style="cursor: pointer;" class="text-right"> 
+
+                    <!-- <img #tooltip1="matTooltip" (mouseenter)="tooltip1.show()" matTooltipPosition="after" mat-raised-button matTooltip="Click on graph for drilldown analysis" aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn2.png" width="25"/> -->
+
+                  <!--   <img #tooltip2="matTooltip" (mouseenter)="tooltip2.show()" matTooltipPosition="after" mat-raised-button matTooltip="Email weekly report"  aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn1.png" width="25"/> -->
+
+                    <img #tooltip3="matTooltip" (mouseenter)="tooltip3.show()" matTooltipPosition="after" mat-raised-button matTooltip="Download Report" aria-label="tooltip" class="font-bold font-20 m-0 respomobile-laptop m-r-15" src="assets/images/users/iconn3.png"  width="25" (click)="downloadadsoverview();" />
+
+                </mat-card-title>
+                </div>
+            </div>
+
+                <div [chart]="cyberadsdashboardfive"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+ </div>
+
+
+<!-- Table start  -->
+<div fxLayout="row wrap">
+    <div fxFlex.gt-lg="100" fxFlex.gt-md="100" fxFlex.gt-xs="100" fxFlex="100"> 
+        <mat-card>
+            <mat-card-content>
+                <!-- <mat-card-title></mat-card-title> -->
+                <div class="table-responsive">
+                    <table mat-table [dataSource]="dataSource" matSort class="no-wrap m-t-0 v-middle" style="width: 100%;">
+                        <!--  -->
+                        <ng-container matColumnDef="date">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15"> Date</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal"> {{element.date}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="requests">
+                            <th mat-header-cell *matHeaderCellDef class="font-medium font-16 p-15">Ad Requests </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.adr | number}} </td>
+                        </ng-container>
+
+                        <!--  -->
+                        <ng-container matColumnDef="impressions">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15">Ad Impressions </th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.adimr | number}} </td>
+                        </ng-container>
+
+                           <!--  -->
+                           <ng-container matColumnDef="matched">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15">Fill Rate (%)</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.fillrate}} </td>
+                        </ng-container>
+
+                           <!--  -->
+                           <ng-container matColumnDef="coverage">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15">Coverage (%)</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.covg}} </td>
+                        </ng-container>
+
+                           <!--  -->
+                           <ng-container matColumnDef="ctr">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15">CTR (%)</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.ctr}} </td>
+                        </ng-container>
+
+                           <!--  -->
+                           <ng-container matColumnDef="cpm">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15">Estimated CPM ($)</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.ecpmx}} </td>
+                        </ng-container>
+
+                         <!--  -->
+                         <ng-container matColumnDef="revenue">
+                            <th mat-header-cell *matHeaderCellDef  class="font-medium font-16 p-15">Estimated Earnings ($)</th>
+                            <td mat-cell *matCellDef="let element" class="p-15 font-normal text-right"> {{element.revenue_cmsShare}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+            </mat-card-content>
+            <!--loader-->
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent">
+                <div class="spin1"></div>
+                </div>
+            </div>
+            <!--loaderend--> 
+        </mat-card>
+    </div>
+ </div>

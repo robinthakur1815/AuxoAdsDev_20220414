@@ -1,0 +1,28 @@
+@media only screen and (max-width: 425px) {
+  .richmediaModule{
+      padding: 24px 24px 24px 10px!important;
+  }
+  }
+  .dashboard-bg-opacity{
+    height: 2217px!important;
+    z-index: 99999!important;
+}
+@media all and (min-width: 768px) and (max-width: 2560px) {
+  .maindashboard {
+    margin-top: -40%!important;
+  }
+}
+// bg bank details start
+@media all and (min-width: 320px) and (max-width: 1150px) {
+  .bg-bank-details {
+    font-size: 14px!important;
+    padding-bottom: 25px!important;
+  }
+}
+  
+@media only screen and (max-width: 425px) {
+    .bg-bank-btn{
+      padding-bottom: 25px!important;
+    }
+}
+    // bg bank details end 

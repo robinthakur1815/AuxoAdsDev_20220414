@@ -1,0 +1,229 @@
+/* New  Css Tour launching 3 March 2022 start */
+.bg-colora
+{
+background-color: #fff;
+}
+
+/* body
+{
+  pointer-events: none!important;
+} */
+
+.ui-tour-dialog {
+display: block;
+background: #ffff;
+padding: 20px;
+border-radius: 5px;
+width: 3840px;
+border: 2px solid #e94265;
+height: 130px;
+position: relative!important;
+top: 9px!important;
+}
+
+@media only screen and (max-width: 1024px) {
+.ui-tour-dialog {
+position: relative!important;
+top: 10px!important;
+}
+}
+
+.tour_publisherend
+{
+position: fixed!important;
+bottom: 0!important;
+top: initial!important;
+transform: none!important;
+margin-bottom: 0px!important;
+}
+
+/* only used in background opacity purpose only on Tour */
+.cdk-overlay-backdrop {
+position: fixed!important;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+}
+
+
+.highlight {
+position: relative;
+z-index: 1001;
+pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+.mobilerespotours {
+font-size: 14px!important;
+margin-top: 30px!important;
+padding: 8px!important;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.close-icon {
+transition: none!important;
+}
+}
+
+@media all and (min-width: 1025px) and (max-width: 3840px) {
+.m-left1 {
+position: relative;
+left: 2%;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.para1
+{
+height: 70px!important; 
+}
+}
+
+@media only screen and (max-width: 600px) {
+.gotit
+{
+height: 70px!important; 
+}
+}
+
+
+@media only screen and (max-width: 600px) {
+.gotitmobile1
+{
+margin-top: -5px!important;
+}
+}
+
+
+@media only screen and (max-width: 768px) {
+.tourmobile
+{
+width: 100px!important;
+margin-top: 30px!important;
+}
+}
+
+@media all and (min-width: 769px) and (max-width: 3840px) {
+.tourmobile
+{
+width: 145px!important;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.tourbtnmobile
+{
+margin-top: 44px!important;
+}
+}
+
+
+
+/* Tour old css start */
+/* .bg-colora
+{
+background-color: #fff;
+}
+
+.ui-tour-dialog {
+display: block;
+background: #ffff;
+padding: 20px;
+border-radius: 5px;
+width: 2560px;
+border: 2px solid #e94265;
+height: 130px;
+
+position: sticky;
+margin-top: 35%;
+margin-bottom: 11px;
+}
+
+@media only screen and (max-width: 600px) {
+.ui-tour-dialog {
+height: 130px!important;
+margin-bottom: 3%!important;
+}
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+.ui-tour-dialog {
+height: 128px!important;
+margin-top: 49%!important;
+}
+}
+
+.highlight {
+position: relative;
+z-index: 1001;
+pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+.mobilerespotours {
+font-size: 15px!important;
+margin-top: 20px!important;
+padding: 8px!important;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.close-icon {
+transition: none!important;
+}
+}
+
+@media all and (min-width: 1025px) and (max-width: 2540px) {
+.m-left1 {
+position: relative;
+left: 2%;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.para1
+{
+height: 70px!important; 
+}
+}
+
+@media only screen and (max-width: 600px) {
+.gotit
+{
+height: 70px!important; 
+}
+}
+
+
+@media only screen and (max-width: 600px) {
+.gotitmobile1
+{
+margin-top: -5px!important;
+}
+}
+
+
+@media only screen and (max-width: 768px) {
+.tourmobile
+{
+width: 100px!important;
+margin-top: 30px!important;
+}
+}
+
+@media all and (min-width: 769px) and (max-width: 2560px) {
+.tourmobile
+{
+width: 145px!important;
+}
+}
+
+@media only screen and (max-width: 600px) {
+.tourbtnmobile
+{
+margin-top: 44px!important;
+}
+} */
+

@@ -1,0 +1,85 @@
+<body style="overflow-y : hidden;">
+<header class="bg-primary text-white">
+   <!-- <div id="particles-js"></div> -->
+   <nav  id="mainNav"><!--class="navbar osahan-navbar navbar-expand-lg navbar-dark fadeInDown"-->
+      <div class="container">
+         <a style="margin-top: 18px; margin-left: -7px;" class="navbar-brand js-scroll-trigger menu-btn1" href="/">
+          <img class="img-fluid" src="assets/registerlp/img/new/safe-logo1.png" alt="" height="70px" width="140px">
+        </a>
+      </div>
+   </nav>
+ 
+   <section class="banner-block pb-0 info-banner" id="banner">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-7 col-md-7 text-left fadeInUp animated box bounce">
+                  <img class="img-fluid mb-1 wow fadeInUp animated imgsize" src="assets/registerlp/img/new/reset.png" width="450" alt="">
+              </div>
+
+              <!--loader-->
+            <div class="bg-opacity" *ngIf="isSpinnerVisible">
+                <div class="parent parent-landingpage">
+                <div class="spin1"></div>
+                </div>
+            </div>
+            <!--loaderend--> 
+
+              <div class="col-md-5 col-md-5 text-center">
+               <mat-card>
+                  <mat-card-content>
+                      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                          <div class="text-center">
+                              <!-- <img alt="homepage" class="mobile-logo"  width="140" src="assets/registerlp/img/new/safe-logo.png"> -->
+                              <h6 class="m-t-15 m-b-20" style="font-size: 21px;">Reset Password</h6>
+                          </div>
+      
+                          <div fxLayout="row wrap">
+                              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>New Password</mat-label>
+                                      <input matInput type="password" placeholder="Password" [formControl]="form.controls['password']">
+                                  </mat-form-field>
+                                  <small *ngIf="form.controls['password'].errors?.whitespace && form.controls['password'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20">Password can not contain space</small>
+                                  <small *ngIf="form.controls['password'].errors?.minlength && form.controls['password'].touched"  class="text-danger support-text logintrp-css spacing-adjust m-b-20">Password must be at least 8 characters</small>
+                              </div>
+                              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Confirm Password</mat-label>
+                                      <input matInput type="password" placeholder="Confirm Password" [formControl]="form.controls['cpassword']">
+                                  </mat-form-field>
+                                  
+                                  <small *ngIf="submitted && passwordNotMatch"  class="text-danger support-text logintrp-css spacing-adjust m-b-20">Password and Confirm password does not match</small>
+                                  <small *ngIf="submitted && form.valid"  class="text-success support-text logintrp-css spacing-adjust m-b-20">{{message}}</small>
+                                   <small *ngIf="submitted && form.valid"  class="text-danger support-text logintrp-css spacing-adjust m-b-20">{{error}}</small>
+                                   
+                              </div>
+                             
+                              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+                                <button type="submit" id="reg_submit" name="" class="btn btn-primary btn-lg btn-block">Reset</button>
+                              </div>
+                  
+                              <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100" class="text-center login-weight m-t-20">
+                                  <span>Back to
+                                    <a [routerLink]="['/authentication/login']" class="text-primary link">Login</a>
+                                     
+                                  </span>
+                              </div>
+
+                          </div>
+                      </form>
+                  </mat-card-content>
+              </mat-card>
+              </div>
+          </div>
+      </div>
+  </section>
+   <div class="effectiv">
+      <img class="svg" src="assets/registerlp/img/bg2.svg" alt="" />
+   </div>
+</header>
+</body>
+<!-- Header end -->
+
+ 
+
+
